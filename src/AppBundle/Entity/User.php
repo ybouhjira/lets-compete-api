@@ -16,6 +16,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     "normalization_context"={"groups"={"user", "user-read"}},
  *     "denormalization_context"={"groups"={"user", "user-write"}}
  * })
+ * @ORM\Table(name="fos_user")
  */
 class User extends BaseUser
 {
