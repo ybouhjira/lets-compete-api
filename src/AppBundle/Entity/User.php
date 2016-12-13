@@ -32,11 +32,18 @@ class User extends BaseUser
      */
     protected $email;
 
+
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=false)
      * @Groups({"user"})
      */
-    protected $fullname;
+    protected $firstName;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=false)
+     * @Groups({"user"})
+     */
+    protected $lastName;
 
     /**
      * @Groups({"user-write"})
@@ -48,15 +55,34 @@ class User extends BaseUser
      */
     protected $username;
 
-    public function setFullname($fullname)
+    public function setFirstName($firstName)
     {
-        $this->fullname = $fullname;
+        $this->firstName = $firstName;
 
         return $this;
     }
-    public function getFullname()
+
+    public function setLastName($lastName)
     {
-        return $this->fullname;
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
     }
 
     public function isUser(UserInterface $user = null)
