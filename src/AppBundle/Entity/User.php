@@ -1,7 +1,5 @@
 <?php
 
-// src/AppBundle/Entity/User.php
-
 namespace AppBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
@@ -12,13 +10,21 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="_type", type="string")
+ * @ORM\DiscriminatorMap({
+ *     "programer" = "Programer",
+ *     "admin" = "Admin",
+ *     "organiser" = "Organiser"
+ * })
+ * @ORM\Table(name="fos_user")
+ *
  * @ApiResource(attributes={
  *     "normalization_context"={"groups"={"user", "user-read"}},
  *     "denormalization_context"={"groups"={"user", "user-write"}}
  * })
- * @ORM\Table(name="fos_user")
  */
-class User extends BaseUser
+abstract class User extends BaseUser
 {
     /**
      * @ORM\Id
@@ -31,7 +37,6 @@ class User extends BaseUser
      * @Groups({"user"})
      */
     protected $email;
-
 
     /**
      * @ORM\Column(type="string", length=255, nullable=false)
@@ -54,6 +59,15 @@ class User extends BaseUser
      * @Groups({"user"})
      */
     protected $username;
+
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->addRole('ROLE_USER');
+    }
 
     public function setFirstName($firstName)
     {
