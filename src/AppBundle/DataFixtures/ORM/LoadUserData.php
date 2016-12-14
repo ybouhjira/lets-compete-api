@@ -3,6 +3,7 @@
 namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\Admin;
+use AppBundle\Entity\Competition;
 use AppBundle\Entity\Organiser;
 use AppBundle\Entity\Programer;
 use Doctrine\Common\DataFixtures\FixtureInterface;
@@ -27,6 +28,19 @@ class LoadUserData implements FixtureInterface
             ->setLastName('OrgLastName')
             ->setUsername('org1')
             ->setPlainPassword('password');
+
+        $competitions = array_map(function($c) {
+            $newCompeition = new Competition();
+            $newCompeition->setName($c);
+            return $newCompeition;
+        }, [
+            'competition 1',
+            'competition 2',
+            'competition 3',
+        ]);
+
+        foreach($competitions as $competition)
+            $organiser->addCompetition($competition);
 
         $admin = new Admin();
         $admin
