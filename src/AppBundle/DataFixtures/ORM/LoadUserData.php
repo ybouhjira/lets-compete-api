@@ -2,26 +2,57 @@
 
 namespace AppBundle\DataFixtures\ORM;
 
+use AppBundle\Entity\Admin;
+use AppBundle\Entity\Competition;
+use AppBundle\Entity\Organisateur;
+use AppBundle\Entity\Participant;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use AppBundle\Entity\User;
 
 class LoadUserData implements FixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $user = new User();
-        $user->setEmail('youssef@bouhjira.com');
-        $user->setFullname("Youssef Bouhjira");
-        $user->setUsernameCanonical('youssef');
-        $user->setUsername('youssef');
-        $user->setPlainPassword('password');
+        $programer = new Participant();
+        $programer
+            ->setEmail('youssef@bouhjira.com')
+            ->setFirstName('Youssef')
+            ->setLastName('Bouhjira')
+            ->setUsername('youssef')
+            ->setPlainPassword('password');
 
-        $user->addRole('ADMIN');
-        $user->setSuperAdmin(true);
-        $user->setEnabled(true);
+        $organiser = new Organisateur();
+        $organiser
+            ->setEmail('organiser1@gmail.com')
+            ->setFirstName('OrgFirstName')
+            ->setLastName('OrgLastName')
+            ->setUsername('org1')
+            ->setPlainPassword('password');
 
-        $manager->persist($user);
+        $competitions = array_map(function($c) {
+            $newCompeition = new Competition();
+            $newCompeition->setName($c);
+            return $newCompeition;
+        }, [
+            'competition 1',
+            'competition 2',
+            'competition 3',
+        ]);
+
+        foreach($competitions as $competition)
+            $organiser->addCompetition($competition);
+
+        $admin = new Admin();
+        $admin
+            ->setEmail('admin@competition.com')
+            ->setFirstName('Admin')
+            ->setLastName('Admin')
+            ->setUsername('admin1')
+            ->setPlainPassword('password');
+
+        $manager->persist($programer);
+        $manager->persist($organiser);
+        $manager->persist($admin);
         $manager->flush();
     }
 }
