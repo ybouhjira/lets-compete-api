@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     "denormalization_context"={"groups"={"write"}}
  * })
  */
-class Admin extends User
+class Admin extends Utilisateur
 {
     public function __construct()
     {

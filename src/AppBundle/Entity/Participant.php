@@ -8,13 +8,13 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Programer
  *
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ProgramerRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ParticipantRepository")
  * @ApiResource(attributes={
  *     "normalization_context"={"groups"={"read"}},
  *     "denormalization_context"={"groups"={"write"}}
  * })
  */
-class Programer extends User
+class Participant extends Membre
 {
     public function __construct()
     {

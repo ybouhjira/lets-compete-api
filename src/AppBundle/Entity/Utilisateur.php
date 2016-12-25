@@ -13,18 +13,18 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="_type", type="string")
  * @ORM\DiscriminatorMap({
- *     "programer" = "Programer",
  *     "admin" = "Admin",
- *     "organiser" = "Organiser"
+ *     "organisateur" = "Organisateur",
+ *     "participant" = "Participant"
  * })
- * @ORM\Table(name="fos_user")
+ * @ORM\Table(name="utilisateur")
  *
  * @ApiResource(attributes={
  *     "normalization_context"={"groups"={"user", "user-read"}},
  *     "denormalization_context"={"groups"={"user", "user-write"}}
  * })
  */
-abstract class User extends BaseUser
+abstract class Utilisateur extends BaseUser
 {
     /**
      * @ORM\Id

@@ -14,12 +14,12 @@ use Doctrine\ORM\Mapping as ORM;
  *     "denormalization_context"={"groups"={"write"}}
  * })
  */
-class Organiser extends User
+class Organisateur extends Utilisateur
 {
     /**
      * @ORM\OneToMany(
      *     targetEntity="Competition",
-     *     mappedBy="organiser",
+     *     mappedBy="organisateur",
      *     cascade={"persist"}
      * )
      * @var
@@ -36,7 +36,7 @@ class Organiser extends User
     public function addCompetition(Competition $competition)
     {
         $this->competitions->add($competition);
-        $competition->setOrganiser($this);
+        $competition->setOrganisateur($this);
         return $this;
     }
 

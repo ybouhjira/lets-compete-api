@@ -84,7 +84,7 @@ nelmio_cors:
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
-    user_class: AppBundle\Entity\User
+    user_class: AppBundle\Entity\Utilisateur
 
 lexik_jwt_authentication:
     private_key_path: "%jwt_private_key_path%"

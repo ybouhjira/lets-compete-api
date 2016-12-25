@@ -4,8 +4,8 @@ namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\Admin;
 use AppBundle\Entity\Competition;
-use AppBundle\Entity\Organiser;
-use AppBundle\Entity\Programer;
+use AppBundle\Entity\Organisateur;
+use AppBundle\Entity\Participant;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -13,7 +13,7 @@ class LoadUserData implements FixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $programer = new Programer();
+        $programer = new Participant();
         $programer
             ->setEmail('youssef@bouhjira.com')
             ->setFirstName('Youssef')
@@ -21,7 +21,7 @@ class LoadUserData implements FixtureInterface
             ->setUsername('youssef')
             ->setPlainPassword('password');
 
-        $organiser = new Organiser();
+        $organiser = new Organisateur();
         $organiser
             ->setEmail('organiser1@gmail.com')
             ->setFirstName('OrgFirstName')
@@ -52,6 +52,7 @@ class LoadUserData implements FixtureInterface
 
         $manager->persist($programer);
         $manager->persist($organiser);
+        $manager->persist($admin);
         $manager->flush();
     }
 }
