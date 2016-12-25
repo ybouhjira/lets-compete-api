@@ -4,24 +4,29 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * Membre
+ * @ORM\Entity
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="_type", type="string")
  *
- * @ORM\Table(name="membre")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\MembreRepository")
- * @ORM\DiscriminatorMap({
+ * @ApiResource(attributes={
+ *     "normalization_context"={"groups"={"read"}},
+ *     "denormalization_context"={"groups"={"write"}}
+ * })
+ *
+ * ORM\DiscriminatorMap({
  *     "organisateur" = "Organisateur",
  *     "participant" = "Participant"
  * })
- * @ApiResource
  */
 abstract class Membre extends Utilisateur
 {
     /**
      * @var string
-     *
-     * @ORM\Column(name="presentation", type="text", nullable=true)
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="text", nullable=true)
      */
     private $presentation;
 
@@ -29,12 +34,15 @@ abstract class Membre extends Utilisateur
      * @var string
      *
      * @ORM\Column(name="telephone", type="string", length=30, nullable=true, unique=true)
+     * @Groups({"read", "write"})
      */
     private $telephone;
+
 
     /**
      * @var string
      *
+     * @Groups({"read", "write"})
      * @ORM\Column(name="siteWeb", type="string", length=255, nullable=true, unique=true)
      */
     private $siteWeb;
@@ -84,7 +92,6 @@ abstract class Membre extends Utilisateur
     public function setTelephone($telephone)
     {
         $this->telephone = $telephone;
-
         return $this;
     }
 
@@ -121,5 +128,7 @@ abstract class Membre extends Utilisateur
     {
         return $this->siteWeb;
     }
+
+    abstract public function getNomAffiche() : string;
 }
 

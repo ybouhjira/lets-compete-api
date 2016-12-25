@@ -179,6 +179,7 @@ class Competition
     }
 
     /**
+     * @var Organisateur
      * @Groups({"read", "write"})
      * @ORM\JoinColumn(name="organiser_id", referencedColumnName="id", nullable=false)
      * @ORM\ManyToOne(targetEntity="Organisateur", inversedBy="competitions")

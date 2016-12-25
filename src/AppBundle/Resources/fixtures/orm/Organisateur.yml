@@ -1,0 +1,12 @@
+AppBundle\Entity\Organisateur:
+    organisateur_{1..15}:
+        username: <username()>
+        enabled: true
+        email: <email()>
+        plainPassword: password
+        nom: <company()>
+        telephone: <phoneNumber()>
+        siteWeb: <domainName()>
+        presentation: <paragraph()>
+        #roles: [ROLE_ORGANISATEUR]
+        #salt: dfdfdf

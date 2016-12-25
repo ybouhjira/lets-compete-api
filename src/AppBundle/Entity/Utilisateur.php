@@ -10,13 +10,15 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity
- * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="_type", type="string")
- * @ORM\DiscriminatorMap({
+ *
+ * ORM\DiscriminatorMap({
  *     "admin" = "Admin",
  *     "organisateur" = "Organisateur",
  *     "participant" = "Participant"
  * })
+ *
  * @ORM\Table(name="utilisateur")
  *
  * @ApiResource(attributes={
@@ -39,18 +41,6 @@ abstract class Utilisateur extends BaseUser
     protected $email;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=false)
-     * @Groups({"user"})
-     */
-    protected $firstName;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=false)
-     * @Groups({"user"})
-     */
-    protected $lastName;
-
-    /**
      * @Groups({"user-write"})
      */
     protected $plainPassword;
@@ -67,36 +57,6 @@ abstract class Utilisateur extends BaseUser
     {
         parent::__construct();
         $this->addRole('ROLE_USER');
-    }
-
-    public function setFirstName($firstName)
-    {
-        $this->firstName = $firstName;
-
-        return $this;
-    }
-
-    public function setLastName($lastName)
-    {
-        $this->lastName = $lastName;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFirstName()
-    {
-        return $this->firstName;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLastName()
-    {
-        return $this->lastName;
     }
 
     public function isUser(UserInterface $user = null)
