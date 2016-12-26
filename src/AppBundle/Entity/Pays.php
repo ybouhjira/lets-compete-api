@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -35,6 +36,32 @@ class Pays
      */
     private $nom;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Ville", mappedBy="pays")
+     */
+    private $villes;
+
+    public function __construct()
+    {
+        $this->villes = new ArrayCollection();
+    }
+
+    public function getVilles()
+    {
+        return $this->villes;
+    }
+
+    public function addVille(Ville $ville)
+    {
+        $this->villes->add($ville);
+        return $this;
+    }
+
+    public function removeVille(Ville $ville)
+    {
+        $this->villes->remove($ville);
+        return $this;
+    }
 
     /**
      * Get id

@@ -1,0 +1,4 @@
+AppBundle\Entity\Ville:
+    ville{1..100}:
+        nom: <city()>
+        pays: '@pays*'

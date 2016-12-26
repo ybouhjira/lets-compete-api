@@ -36,6 +36,34 @@ class Ville
      */
     private $nom;
 
+    /**
+     * @ORM\ManyToOne(
+     *     targetEntity="Pays",
+     *     inversedBy="villes",
+     *     cascade={"persist"}
+     * )
+     * @ORM\JoinColumn(name="pays_id", referencedColumnName="id")
+     * @Groups({"read", "write"})
+     */
+    private $pays;
+
+    /**
+     * @return mixed
+     */
+    public function getPays()
+    {
+        return $this->pays;
+    }
+
+    /**
+     * @param mixed $pays
+     * @return Ville
+     */
+    public function setPays($pays)
+    {
+        $this->pays = $pays;
+        return $this;
+    }
 
     /**
      * Get id
