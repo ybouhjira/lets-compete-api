@@ -1,0 +1,9 @@
+AppBundle\Entity\Competition:
+    competition{1..5}:
+        titre: Competition <sentence(2)>
+        description: <paragraph()>
+        tempsDebut: <dateTime()>
+        tempsFin: <dateTime()>
+        public: true
+        publie: true
+        organisateur: '@organisateur*'

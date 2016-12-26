@@ -1,5 +1,5 @@
 AppBundle\Entity\Organisateur:
-    organisateur_{1..15}:
+    organisateur{1..15}:
         username: <username()>
         enabled: true
         email: <email()>
@@ -8,5 +8,3 @@ AppBundle\Entity\Organisateur:
         telephone: <phoneNumber()>
         siteWeb: <domainName()>
         presentation: <paragraph()>
-        #roles: [ROLE_ORGANISATEUR]
-        #salt: dfdfdf

@@ -8,7 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * Organiser
+ * Organisateur
+ *
  * @ORM\Table(uniqueConstraints={
  *     @ORM\UniqueConstraint(name="uniq_nom", columns={"nom"})
  * })
