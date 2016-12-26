@@ -3,7 +3,6 @@ Feature: Gérer les compétitions
   En temps que visiteur
   Je dois pouvoir lire, ajouter, modifier & supprimer les compétitions
 
-  @createSchema
   Scenario: Lister les compétitions
     When I add "Accept" header equal to "application/ld+json"
     And I send a "GET" request to "/competitions"

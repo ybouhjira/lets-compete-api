@@ -41,7 +41,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     {
         $this->doctrine = $doctrine;
         $this->manager = $doctrine->getManager();
-        $this->schemaTool = new SchemaTool($this->manager);
+        //$this->schemaTool = new SchemaTool($this->manager);
         $this->classes = $this->manager->getMetadataFactory()->getAllMetadata();
     }
 
@@ -50,7 +50,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function createDatabase()
     {
-        $this->schemaTool->createSchema($this->classes);
+        //$this->schemaTool->createSchema($this->classes);
     }
 
     /**
@@ -58,6 +58,6 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function dropDatabase()
     {
-        $this->schemaTool->dropSchema($this->classes);
+        //$this->schemaTool->dropSchema($this->classes);
     }
 }
