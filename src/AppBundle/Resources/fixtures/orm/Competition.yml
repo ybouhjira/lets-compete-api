@@ -1,5 +1,5 @@
 AppBundle\Entity\Competition:
-    competition{1..5}:
+    competition{1..25}:
         titre: Competition <sentence(2)>
         description: <paragraph()>
         tempsDebut: <dateTime()>

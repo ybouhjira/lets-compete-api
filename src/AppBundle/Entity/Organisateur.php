@@ -27,8 +27,9 @@ class Organisateur extends Membre
      *     mappedBy="organisateur",
      *     cascade={"persist"}
      * )
+     * Groups({"read"})
      */
-    private $competitions;
+    protected $competitions;
 
     /**
      * @Groups({"read", "write"})

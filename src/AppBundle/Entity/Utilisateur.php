@@ -22,8 +22,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\Table(name="utilisateur")
  *
  * @ApiResource(attributes={
- *     "normalization_context"={"groups"={"user", "user-read"}},
- *     "denormalization_context"={"groups"={"user", "user-write"}}
+ *     "normalization_context"={"groups"={"user", "read"}},
+ *     "denormalization_context"={"groups"={"user", "write"}}
  * })
  */
 abstract class Utilisateur extends BaseUser
@@ -36,17 +36,17 @@ abstract class Utilisateur extends BaseUser
     protected $id;
 
     /**
-     * @Groups({"user"})
+     * @Groups({"user", "read"})
      */
     protected $email;
 
     /**
-     * @Groups({"user-write"})
+     * @Groups({"write"})
      */
     protected $plainPassword;
 
     /**
-     * @Groups({"user"})
+     * @Groups({"user", "read"})
      */
     protected $username;
 

@@ -42,8 +42,8 @@ abstract class Membre extends Utilisateur
     /**
      * @var string
      *
-     * @Groups({"read", "write"})
      * @ORM\Column(name="siteWeb", type="string", length=255, nullable=true, unique=true)
+     * @Groups({"read", "write"})
      */
     private $siteWeb;
 

@@ -1,5 +1,5 @@
 AppBundle\Entity\Organisateur:
-    organisateur{1..15}:
+    organisateur{1..5}:
         username: <username()>
         enabled: true
         email: <email()>
