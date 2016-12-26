@@ -1,0 +1,5 @@
+AppBundle\Entity\Pays:
+    maroc:
+        nom (unique): Maroc
+    pays{1..10}:
+        nom (unique): <country()>

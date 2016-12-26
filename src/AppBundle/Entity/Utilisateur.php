@@ -13,12 +13,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="_type", type="string")
  *
- * ORM\DiscriminatorMap({
- *     "admin" = "Admin",
- *     "organisateur" = "Organisateur",
- *     "participant" = "Participant"
- * })
- *
  * @ORM\Table(name="utilisateur")
  *
  * @ApiResource(attributes={

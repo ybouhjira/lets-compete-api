@@ -1,4 +1,4 @@
-Feature: Gérer les compétitions
+Feature: Gérer les organisateurs
   Pour gèrer les organisateurs
   En temps que administrateur
   Je dois pouvoir lire, ajouter, modifier & supprimer les organisateurs

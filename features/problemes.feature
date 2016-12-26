@@ -1,4 +1,4 @@
-Feature: Gérer les problème
+Feature: Gérer les problèmes
   Pour créer une compétition
   En temps que organisateur
   Je dois pouvoir lire, ajouter, modifier & supprimer les problèmes
