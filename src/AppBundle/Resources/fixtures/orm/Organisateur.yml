@@ -7,4 +7,5 @@ AppBundle\Entity\Organisateur:
         nom: <company()>
         telephone: <phoneNumber()>
         siteWeb: <domainName()>
+        adresse: <address()>
         presentation: <paragraph()>

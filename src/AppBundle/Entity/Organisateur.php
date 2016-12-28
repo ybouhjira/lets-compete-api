@@ -14,10 +14,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     @ORM\UniqueConstraint(name="uniq_nom", columns={"nom"})
  * })
  * @ORM\Entity(repositoryClass="AppBundle\Repository\OrganiserRepository")
- * @ApiResource(attributes={
- *     "normalization_context"={"groups"={"read"}},
- *     "denormalization_context"={"groups"={"write"}}
- * })
+ * @ApiResource
  */
 class Organisateur extends Membre
 {
@@ -27,15 +24,19 @@ class Organisateur extends Membre
      *     mappedBy="organisateur",
      *     cascade={"persist"}
      * )
-     * Groups({"read"})
      */
     protected $competitions;
 
     /**
-     * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $nom;
+
+    /**
+     * @var string L'adresse de l'organisateur
+     * @ORM\Column(type="string", length=255, nullable=false)
+     */
+    private $adresse;
 
     public function __construct()
     {
@@ -65,6 +66,24 @@ class Organisateur extends Membre
     public function getNomAffiche() : string
     {
         return $this->getNom();
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * @param string $adresse
+     * @return Organisateur
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+        return $this;
     }
 
     /**

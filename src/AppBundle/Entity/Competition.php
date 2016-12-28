@@ -15,10 +15,7 @@ use Symfony\Component\Validator\Constraints\DateTime;
  * @ORM\Table(name="competition")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CompetitionRepository")
  *
- * @ApiResource(attributes={
- *     "normalization_context"={"groups"={"read"}},
- *     "denormalization_context"={"groups"={"write"}}
- * })
+ * @ApiResource
  */
 class Competition
 {
@@ -243,30 +240,6 @@ class Competition
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Competition
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     public function estCommence() : bool

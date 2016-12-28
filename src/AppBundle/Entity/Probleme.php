@@ -11,10 +11,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *
  * @ORM\Table(name="probleme")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProblemeRepository")
- * @ApiResource(attributes={
- *     "normalization_context"={"groups"={"read"}},
- *     "denormalization_context"={"groups"={"write"}}
- * })
+ * @ApiResource
  */
 class Probleme
 {
@@ -35,8 +32,9 @@ class Probleme
     private $enonce;
 
     /**
+     * @var Competition La compétition à laquelle appartient le problème.
      * @ORM\ManyToOne(targetEntity="Competition", inversedBy="problemes")
-     * @ORM\JoinColumn(name="compeititon_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="compeititon_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $competition;
 

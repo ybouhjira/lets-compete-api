@@ -16,16 +16,6 @@ Feature: Gérer les entrée/sortie
     Then the response status code should be 201
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/ld+json; charset=utf-8"
-#    And the JSON should be equal to:
-#    """
-#    {
-#      "@context": "/contexts/Book",
-#      "@id": "/books/1",
-#      "@type": "Book",
-#      "entree": "Hello world!",
-#      "sortie": "Persistence in PHP with the Doctrine ORM",
-#    }
-#    """
 
   Scenario: Lister les entrée/sortie
     When I add "Accept" header equal to "application/ld+json"
