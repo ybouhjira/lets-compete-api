@@ -1,4 +1,30 @@
-The API Platform Framework
+Rest API de la platforme de compétitions
+=======================================
+# Pré-requis
+ - PHP 7
+ - MySQL
+
+# Installation
+```bash
+composer install
+# N'oubliez pas de saisir la configuration du serveur MySQL dans 
+# parameters.yml
+bin/console doctrine:schema:create
+# Si vous voulez chargez les fixtures
+bin/console hautelook:fixtures:load
+```
+# Exécuter 
+Lancer le serveur avec:
+```bash
+bin/console server:run
+```
+Visiter l'adresse `http://127.0.0.1:8000`
+# Lancer les tests
+```bash
+composer test
+```
+
+# The API Platform Framework
 ==========================
 
 [![Join the chat at https://gitter.im/api-platform/api-platform](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/api-platform/api-platform?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
