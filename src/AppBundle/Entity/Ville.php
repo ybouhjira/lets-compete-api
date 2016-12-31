@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -12,10 +13,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\Table(name="ville")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\VilleRepository")
  *
- * @ApiResource(attributes={
- *     "normalization_context"={"groups"={"user", "read"}},
- *     "denormalization_context"={"groups"={"user", "write"}}
- * })
+ * @ApiResource()
  */
 class Ville
 {
@@ -35,6 +33,52 @@ class Ville
      * @ORM\Column(name="nom", type="string", length=255, unique=true)
      */
     private $nom;
+
+    /**
+     * @var ArrayCollection Les membres résidant dans cette ville
+     *
+     * @ORM\OneToMany(
+     *     targetEntity="Membre",
+     *     cascade={"persist"},
+     *     mappedBy="ville",
+     * )
+     */
+    private $membres;
+
+    public function __construct()
+    {
+        $this->membres = new ArrayCollection();
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getMembres()
+    {
+        return $this->membres;
+    }
+
+    /**
+     * @param Membre $membre
+     * @return Ville
+     */
+    public function addMembre(Membre $membre)
+    {
+        $this->membres->add($membre);
+        $membre->setVille($this);
+        return $this;
+    }
+
+    /**
+     * @param Membre $membre
+     * @return $this
+     */
+    public function removeMembre(Membre $membre)
+    {
+        $this->membres->remove($membre);
+        $membre->setVille(null);
+        return $this;
+    }
 
     /**
      * @ORM\ManyToOne(

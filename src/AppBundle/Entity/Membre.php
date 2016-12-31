@@ -15,11 +15,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     "normalization_context"={"groups"={"read"}},
  *     "denormalization_context"={"groups"={"write"}}
  * })
- *
- * ORM\DiscriminatorMap({
- *     "organisateur" = "Organisateur",
- *     "participant" = "Participant"
- * })
  */
 abstract class Membre extends Utilisateur
 {
@@ -33,20 +28,42 @@ abstract class Membre extends Utilisateur
     /**
      * @var string
      *
-     * @ORM\Column(name="telephone", type="string", length=30, nullable=true, unique=true)
-     * @Groups({"read", "write"})
+     * @ORM\Column(
+     *     name="telephone",
+     *     type="string",
+     *     length=30,
+     *     nullable=true,
+     *     unique=true
+     * )
      */
     private $telephone;
 
-
     /**
-     * @var string
+     * @var Ville La ville de résidance
      *
-     * @ORM\Column(name="siteWeb", type="string", length=255, nullable=true, unique=true)
+     * @ORM\ManyToOne(
+     *     targetEntity="Ville",
+     *     inversedBy="membres",
+     *     cascade={"persist"},
+     *     fetch="EAGER"
+     * )
+     * @ORM\JoinColumn(fieldName="ville_id", onDelete="set null", nullable=true)
      * @Groups({"read", "write"})
      */
-    private $siteWeb;
+    private $ville;
 
+    /**
+     * @var string L'adresse de son site web
+     *
+     * @ORM\Column(
+     *     name="siteWeb",
+     *     type="string",
+     *     length=255,
+     *     nullable=true,
+     *     unique=true
+     * )
+     */
+    private $siteWeb;
 
     /**
      * Get id
@@ -127,6 +144,24 @@ abstract class Membre extends Utilisateur
     public function getSiteWeb()
     {
         return $this->siteWeb;
+    }
+
+    /**
+     * @return Ville
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * @param Ville $ville
+     * @return Membre
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+        return $this;
     }
 
     abstract public function getNomAffiche() : string;

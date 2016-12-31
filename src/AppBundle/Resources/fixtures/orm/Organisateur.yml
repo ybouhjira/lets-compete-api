@@ -9,3 +9,4 @@ AppBundle\Entity\Organisateur:
         siteWeb: <domainName()>
         adresse: <address()>
         presentation: <paragraph()>
+        ville: '@ville*'
