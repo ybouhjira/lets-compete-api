@@ -1,0 +1,5 @@
+AppBundle\Entity\TypeEntreeSortie:
+    Test:
+        name: Test
+    Exemple:
+        name: Exemple

@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,6 +40,12 @@ class Solution
     private $tempsExécution;
 
     /**
+     * @var FichierCode Les fichier contenant le code
+     * @ORM\OneToMany(targetEntity="FichierCode", mappedBy="solution")
+     */
+    private $fichiersCode;
+
+    /**
      * @var Participant L'auteur
      *
      * @ORM\ManyToOne(
@@ -63,7 +71,7 @@ class Solution
      *     cascade={"persist"},
      *     inversedBy="solutions"
      * )
-     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
      */
     private $probleme;
 
@@ -184,5 +192,44 @@ class Solution
     {
         return $this->correcte;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->fichiersCode = new ArrayCollection();
+    }
 
+    /**
+     * Add fichiersCode
+     *
+     * @param FichierCode $fichierCode
+     * @return Solution
+     */
+    public function addFichierCode(FichierCode $fichierCode) : self
+    {
+        $this->fichiersCode[] = $fichierCode;
+        return $this;
+    }
+
+    /**
+     * Remove fichiersCode
+     *
+     * @param \AppBundle\Entity\FichierCode $fichierCode
+     * @return Solution $this
+     */
+    public function removeFichierCode(FichierCode $fichierCode) : self
+    {
+        $this->fichiersCode->removeElement($fichierCode);
+        return $this;
+    }
+
+    /**
+     * Get fichiersCode
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFichiersCode() : Collection
+    {
+        return $this->fichiersCode;
+    }
+}

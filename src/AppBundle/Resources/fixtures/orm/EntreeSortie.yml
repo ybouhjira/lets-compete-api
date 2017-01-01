@@ -2,3 +2,4 @@ AppBundle\Entity\EntreeSortie:
     entree_sortie{1..25}:
         entree: <paragraph()>
         sortie: <paragraph()>
+        type: '@Test*'

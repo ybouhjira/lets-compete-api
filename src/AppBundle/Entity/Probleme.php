@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -12,7 +13,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *
  * @ORM\Table(name="probleme")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProblemeRepository")
- * @ApiResource
+ * @ApiResource()
  */
 class Probleme
 {
@@ -49,6 +50,24 @@ class Probleme
      * )
      */
     private $solutions;
+
+    /**
+     * @var EntreeSortie Les d'entrée/sortie tests et exemples
+     * @ORM\OneToMany(
+     *     targetEntity="EntreeSortie",
+     *     cascade={"persist"},
+     *     mappedBy="probleme"
+     * )
+     */
+    private $entreeSorties;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->solutions = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -103,21 +122,13 @@ class Probleme
     }
 
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->solutions = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
      * Add solution
      *
      * @param \AppBundle\Entity\Solution $solution
      *
      * @return Probleme
      */
-    public function addSolution(\AppBundle\Entity\Solution $solution)
+    public function addSolution(Solution $solution)
     {
         $this->solutions[] = $solution;
 
@@ -129,7 +140,7 @@ class Probleme
      *
      * @param \AppBundle\Entity\Solution $solution
      */
-    public function removeSolution(\AppBundle\Entity\Solution $solution)
+    public function removeSolution(Solution $solution)
     {
         $this->solutions->removeElement($solution);
     }
@@ -142,5 +153,38 @@ class Probleme
     public function getSolutions()
     {
         return $this->solutions;
+    }
+
+    /**
+     * Add entreeSortie
+     *
+     * @param \AppBundle\Entity\EntreeSortie $entreeSortie
+     *
+     * @return Probleme
+     */
+    public function addEntreeSorty(EntreeSortie $entreeSortie) : self
+    {
+        $this->entreeSorties[] = $entreeSortie;
+
+        return $this;
+    }
+
+    /**
+     * Remove entreeSortie
+     *
+     * @param \AppBundle\Entity\EntreeSortie $entreeSortie
+     */
+    public function removeEntreeSorty(EntreeSortie $entreeSortie)
+    {
+        $this->entreeSorties->removeElement($entreeSortie);
+    }
+
+    /**
+     * Get entreeSortie
+     * @return Collection
+     */
+    public function getEntreeSorties() : Collection
+    {
+        return $this->entreeSorties;
     }
 }

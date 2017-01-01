@@ -12,8 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\Table(name="entree_sortie")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EntreeSortieRepository")
  * @ApiResource(attributes={
- *     "normalization_context"={"groups"={"read"}},
- *     "denormalization_context"={"groups"={"write"}}
+ *     "normalization_context"={"groups"={"entreeSortie"}}
  * })
  */
 class EntreeSortie
@@ -29,17 +28,35 @@ class EntreeSortie
 
     /**
      * @var string
-     * @Groups({"read", "write"})
+     * @Groups({"entreeSortie"})
      * @ORM\Column(name="entree", type="text")
      */
     private $entree;
 
     /**
      * @var string
-     * @Groups({"read", "write"})
      * @ORM\Column(name="sortie", type="text")
+     * @Groups({"entreeSortie"})
      */
     private $sortie;
+
+    /**
+     * @var TypeEntreeSortie
+     * @ORM\ManyToOne(targetEntity="TypeEntreeSortie")
+     * @ORM\JoinColumn(nullable=false)
+     * @Groups({"entreeSortie"})
+     */
+    private $type;
+
+    /**
+     * @var Probleme Le problème de cet entrée/sortie
+     * @ORM\ManyToOne(
+     *     targetEntity="Probleme",
+     *     cascade={"persist"},
+     *     inversedBy="entreeSorties"
+     * )
+     */
+    private $probleme;
 
     /**
      * Get id
@@ -97,6 +114,42 @@ class EntreeSortie
     public function getSortie()
     {
         return $this->sortie;
+    }
+
+    /**
+     * @return TypeEntreeSortie
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param TypeEntreeSortie $type
+     * @return EntreeSortie
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+        return $this;
+    }
+
+    /**
+     * @return Probleme
+     */
+    public function getProbleme()
+    {
+        return $this->probleme;
+    }
+
+    /**
+     * @param Probleme $probleme
+     * @return EntreeSortie
+     */
+    public function setProbleme($probleme)
+    {
+        $this->probleme = $probleme;
+        return $this;
     }
 }
 

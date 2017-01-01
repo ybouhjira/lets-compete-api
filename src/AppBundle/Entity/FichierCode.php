@@ -30,6 +30,33 @@ class FichierCode
      */
     private $contenu;
 
+    /**
+     * @var Solution la solution
+     * @ORM\ManyToOne(
+     *     targetEntity="Solution",
+     *     inversedBy="fichiersCode",
+     *     cascade={"persist"}
+     * )
+     */
+    private $solution;
+
+    /**
+     * @return Solution
+     */
+    public function getSolution()
+    {
+        return $this->solution;
+    }
+
+    /**
+     * @param Solution $solution
+     * @return FichierCode
+     */
+    public function setSolution($solution)
+    {
+        $this->solution = $solution;
+        return $this;
+    }
 
     /**
      * Get id
