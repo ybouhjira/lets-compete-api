@@ -80,7 +80,6 @@ nelmio_cors:
     paths:
         '^/': ~
 
-
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
@@ -91,3 +90,11 @@ lexik_jwt_authentication:
     public_key_path: "%jwt_public_key_path%"
     pass_phrase: "%jwt_key_pass_phrase%"
     token_ttl: "%jwt_token_ttl%"
+
+vich_uploader:
+    db_driver: orm # or mongodb or propel or phpcr
+    mappings:
+        membre_photo:
+            uri_prefix: /membres/photos
+            upload_destination: '%kernel.root_dir%/../web/uploads/membres/photos'
+            namer: vich_uploader.namer_uniqid

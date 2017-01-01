@@ -14,7 +14,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     @ORM\UniqueConstraint(name="uniq_nom", columns={"nom"})
  * })
  * @ORM\Entity(repositoryClass="AppBundle\Repository\OrganiserRepository")
- * @ApiResource
+ * @ApiResource(attributes={
+ *     "normalization_context"={"groups"={"read", "org"}},
+ *     "denormalization_context"={"groups"={"write"}}
+ * })
  */
 class Organisateur extends Membre
 {

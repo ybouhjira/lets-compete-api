@@ -18,6 +18,9 @@ Feature: Gérer les organisateurs
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/ld+json; charset=utf-8"
     And the response should contain "ville"
+    And the response should contain "adresse"
+    And the response should contain "telephone"
+    And the response should contain "cheminPhoto"
 
   Scenario: Supprimer l'organisateur ayant l'id 1
     When I add "Accept" header equal to "application/ld+json"
