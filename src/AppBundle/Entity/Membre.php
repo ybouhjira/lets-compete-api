@@ -13,10 +13,18 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="_type", type="string")
  *
- * @ApiResource(attributes={
+ * @ApiResource(
+ *   attributes={
  *     "normalization_context"={"groups"={"read"}},
  *     "denormalization_context"={"groups"={"write"}}
- * })
+ *   },
+ *   itemOperations={
+ *     "get"={"method"="GET"},
+ *     "put"={"method"="PUT"},
+ *     "delete"={"method"="DELETE"},
+ *     "membre_put_photo"={"route_name"="membre_put_photo"}
+ *   }
+ * )
  *
  * @Vich\Uploadable()
  */
