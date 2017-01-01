@@ -21,9 +21,31 @@ Feature: Gérer les organisateurs
     And the response should contain "adresse"
     And the response should contain "telephone"
     And the response should contain "cheminPhoto"
+    And the response should contain "nomAffiche"
+    And the response should contain "email"
 
   Scenario: Supprimer l'organisateur ayant l'id 1
     When I add "Accept" header equal to "application/ld+json"
     And I send a "DELETE" request to "/organisateurs/1"
     Then the response status code should be 204
     And the response should be empty
+
+  Scenario: Créer un organisateur
+    When I add "Accept" header equal to "application/ld+json"
+    And I send a "POST" request to "/organisateurs" with body:
+    """
+    {
+      "username": "organisateur1234468",
+      "plainPassword": "password",
+      "presentation": "Bonjour je suis un organisateur",
+      "telephone": "0654871269",
+      "adresse": "Rue de l'organisateur ABCD",
+      "ville": "/villes/1",
+      "nom" : "Organis 123-ABC",
+      "siteWeb": "organisateur-de-test-58469.com",
+      "email": "org123@gmail.com"
+    }
+    """
+    Then the response status code should be 201
+    And the response should be in JSON
+    And the response should contain "Organis 123-ABC"

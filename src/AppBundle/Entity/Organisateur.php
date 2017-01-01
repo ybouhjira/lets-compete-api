@@ -32,6 +32,7 @@ class Organisateur extends Membre
 
     /**
      * @ORM\Column(type="string", length=255, nullable=false)
+     * @Groups({"read", "write"})
      */
     private $nom;
 
@@ -60,6 +61,10 @@ class Organisateur extends Membre
         return $this->competitions;
     }
 
+    /**
+     * @Groups({"read"})
+     * @return string
+     */
     public function getNomAffiche() : string
     {
         return $this->getNom();

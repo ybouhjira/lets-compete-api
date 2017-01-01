@@ -31,7 +31,7 @@ abstract class Utilisateur extends BaseUser
     protected $id;
 
     /**
-     * @Groups({"user", "read"})
+     * @Groups({"user", "read", "write"})
      */
     protected $email;
 
@@ -41,7 +41,7 @@ abstract class Utilisateur extends BaseUser
     protected $plainPassword;
 
     /**
-     * @Groups({"user", "read"})
+     * @Groups({"user", "read", "write"})
      */
     protected $username;
 
