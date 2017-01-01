@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -37,6 +38,17 @@ class Probleme
      * @ORM\JoinColumn(name="compeititon_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $competition;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(
+     *     targetEntity="Solution",
+     *     cascade={"persist"},
+     *     mappedBy="probleme"
+     * )
+     */
+    private $solutions;
 
     /**
      * Get id
@@ -89,5 +101,46 @@ class Probleme
     {
         return $this->enonce;
     }
-}
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->solutions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add solution
+     *
+     * @param \AppBundle\Entity\Solution $solution
+     *
+     * @return Probleme
+     */
+    public function addSolution(\AppBundle\Entity\Solution $solution)
+    {
+        $this->solutions[] = $solution;
+
+        return $this;
+    }
+
+    /**
+     * Remove solution
+     *
+     * @param \AppBundle\Entity\Solution $solution
+     */
+    public function removeSolution(\AppBundle\Entity\Solution $solution)
+    {
+        $this->solutions->removeElement($solution);
+    }
+
+    /**
+     * Get solutions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSolutions()
+    {
+        return $this->solutions;
+    }
+}

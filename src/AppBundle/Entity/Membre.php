@@ -39,6 +39,12 @@ abstract class Membre extends Utilisateur
     private $telephone;
 
     /**
+     * @var string L'adresse de l'organisateur
+     * @ORM\Column(type="string", length=255, nullable=false)
+     */
+    private $adresse;
+
+    /**
      * @var Ville La ville de résidance
      *
      * @ORM\ManyToOne(
@@ -161,6 +167,24 @@ abstract class Membre extends Utilisateur
     public function setVille($ville)
     {
         $this->ville = $ville;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdresse() : string
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * @param string $adresse
+     * @return Membre $this
+     */
+    public function setAdresse($adresse) : self
+    {
+        $this->adresse = $adresse;
         return $this;
     }
 

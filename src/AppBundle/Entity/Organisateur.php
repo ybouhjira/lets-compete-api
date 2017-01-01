@@ -32,12 +32,6 @@ class Organisateur extends Membre
      */
     private $nom;
 
-    /**
-     * @var string L'adresse de l'organisateur
-     * @ORM\Column(type="string", length=255, nullable=false)
-     */
-    private $adresse;
-
     public function __construct()
     {
         parent::__construct();
@@ -66,24 +60,6 @@ class Organisateur extends Membre
     public function getNomAffiche() : string
     {
         return $this->getNom();
-    }
-
-    /**
-     * @return string
-     */
-    public function getAdresse()
-    {
-        return $this->adresse;
-    }
-
-    /**
-     * @param string $adresse
-     * @return Organisateur
-     */
-    public function setAdresse($adresse)
-    {
-        $this->adresse = $adresse;
-        return $this;
     }
 
     /**

@@ -53,7 +53,7 @@
         "doctrine/data-fixtures": "^1.2"
     },
     "scripts": {
-        "test" : "bin/console cache:clear --env=test && vendor/bin/behat --colors",
+        "test" : "bin/console cache:clear --env=test && vendor/bin/behat --colors --stop-on-failure",
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",

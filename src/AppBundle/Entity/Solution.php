@@ -38,12 +38,70 @@ class Solution
     private $tempsExécution;
 
     /**
+     * @var Participant L'auteur
+     *
+     * @ORM\ManyToOne(
+     *     targetEntity="Participant",
+     *     cascade={"persist"},
+     *     inversedBy="solutions"
+     * )
+     * @ORM\JoinColumn(fieldName="participant_id", onDelete="cascade")
+     */
+    private $participant;
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="correcte", type="boolean", nullable=true)
      */
     private $correcte;
 
+    /**
+     * @var Probleme Le problème au quel la solution répond
+     * @ORM\ManyToOne(
+     *     targetEntity="Probleme",
+     *     cascade={"persist"},
+     *     inversedBy="solutions"
+     * )
+     * @ORM\JoinColumn(onDelete="CASCADE")
+     */
+    private $probleme;
+
+    /**
+     * @return Probleme
+     */
+    public function getProbleme() : Probleme
+    {
+        return $this->probleme;
+    }
+
+    /**
+     * @param Probleme $probleme
+     * @return Solution
+     */
+    public function setProbleme($probleme) : self
+    {
+        $this->probleme = $probleme;
+        return $this;
+    }
+
+    /**
+     * @return Participant
+     */
+    public function getParticipant()
+    {
+        return $this->participant;
+    }
+
+    /**
+     * @param Participant $participant
+     * @return Solution
+     */
+    public function setParticipant($participant)
+    {
+        $this->participant = $participant;
+        return $this;
+    }
 
     /**
      * Get id

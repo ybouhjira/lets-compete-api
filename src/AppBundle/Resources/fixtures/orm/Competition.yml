@@ -7,3 +7,4 @@ AppBundle\Entity\Competition:
         public: true
         publie: true
         organisateur: '@organisateur*'
+        #participants: '@participant*'
