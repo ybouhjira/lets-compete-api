@@ -2,6 +2,7 @@
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
+use Behat\Behat\Tester\Exception\PendingException;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Tools\SchemaTool;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
@@ -87,4 +88,13 @@ class FeatureContext implements Context, SnippetAcceptingContext
     {
         $this->schemaTool->dropSchema($this->classes);
     }
+
+    /**
+     * @Then The file :file exists in web folder :folder
+     */
+    public function theFileExistsInWebFolder($file, $folder)
+    {
+        return new PendingException();
+    }
+
 }

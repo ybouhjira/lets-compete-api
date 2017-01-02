@@ -2,22 +2,13 @@
 
 namespace AppBundle\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Organisateur
- *
- * @ORM\Table(uniqueConstraints={
- *     @ORM\UniqueConstraint(name="uniq_nom", columns={"nom"})
- * })
  * @ORM\Entity(repositoryClass="AppBundle\Repository\OrganiserRepository")
- * @ApiResource(attributes={
- *     "normalization_context"={"groups"={"read", "org"}},
- *     "denormalization_context"={"groups"={"write"}}
- * })
  */
 class Organisateur extends Membre
 {
@@ -27,11 +18,12 @@ class Organisateur extends Membre
      *     mappedBy="organisateur",
      *     cascade={"persist"}
      * )
+     * @Groups({"read"})
      */
     protected $competitions;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=false, unique=true)
      * @Groups({"read", "write"})
      */
     private $nom;

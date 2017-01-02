@@ -2,31 +2,29 @@
 
 namespace AppBundle\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Programer
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ParticipantRepository")
- * @ApiResource(attributes={
- *     "normalization_context"={"groups"={"read"}},
- *     "denormalization_context"={"groups"={"write"}}
- * })
  */
 class Participant extends Membre
 {
 
     /**
      * @ORM\Column(type="string", length=255, nullable=false)
+     * @Groups({"read"})
      */
-    private $firstName;
+    private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=false)
+     * @Groups({"read"})
      */
-    private $lastName;
+    private $nom;
 
     /**
      * @var ArrayCollection Les solutions écrite par le participants
@@ -42,36 +40,36 @@ class Participant extends Membre
     /**
      * @return mixed
      */
-    public function getFirstName()
+    public function getPrenom()
     {
-        return $this->firstName;
+        return $this->prenom;
     }
 
     /**
-     * @param mixed $firstName
+     * @param mixed $prenom
      * @return Participant
      */
-    public function setFirstName($firstName)
+    public function setPrenom($prenom)
     {
-        $this->firstName = $firstName;
+        $this->prenom = $prenom;
         return $this;
     }
 
     /**
      * @return mixed
      */
-    public function getLastName()
+    public function getNom()
     {
-        return $this->lastName;
+        return $this->nom;
     }
 
     /**
-     * @param mixed $lastName
+     * @param mixed $nom
      * @return Participant
      */
-    public function setLastName($lastName)
+    public function setNom($nom)
     {
-        $this->lastName = $lastName;
+        $this->nom = $nom;
         return $this;
     }
 
@@ -84,7 +82,7 @@ class Participant extends Membre
 
     public function getNomAffiche() : string
     {
-        return $this->getFirstName() . ' ' . $this->getLastName();
+        return $this->getPrenom() . ' ' . $this->getNom();
     }
 
     /**

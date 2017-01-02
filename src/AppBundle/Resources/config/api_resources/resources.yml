@@ -1,0 +1,31 @@
+
+AppBundle\Entity\Utilisateur:
+    attributes:
+        normalization_context:
+            groups: ['read']
+        denormalization_context:
+            groups: ['write']
+
+AppBundle\Entity\Membre:
+    attributes:
+        normalization_context:
+            groups: ['read']
+        denormalization_context:
+            groups: ['write']
+
+AppBundle\Entity\Organisateur:
+    attributes:
+        normalization_context:
+            groups: ['read', 'org']
+        denormalization_context:
+            groups: ['write']
+
+AppBundle\Entity\Participant:
+    attributes:
+        normalization_context:
+            groups: ['read']
+        denormalization_context:
+            groups: ['write']
+
+
+

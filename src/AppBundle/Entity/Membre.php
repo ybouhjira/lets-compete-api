@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -12,20 +11,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Entity
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="_type", type="string")
- *
- * @ApiResource(
- *   attributes={
- *     "normalization_context"={"groups"={"read"}},
- *     "denormalization_context"={"groups"={"write"}}
- *   },
- *   itemOperations={
- *     "get"={"method"="GET"},
- *     "put"={"method"="PUT"},
- *     "delete"={"method"="DELETE"},
- *     "membre_put_photo"={"route_name"="membre_put_photo"}
- *   }
- * )
- *
  * @Vich\Uploadable()
  */
 abstract class Membre extends Utilisateur
@@ -38,12 +23,12 @@ abstract class Membre extends Utilisateur
     private $presentation;
 
     /**
+     * @var File La photo de profil
      * @Vich\UploadableField(
      *     mapping="membre_photo",
      *     fileNameProperty="cheminPhoto"
      * )
-     *
-     * @var File La photo de profil
+     * @Groups({"write"})
      */
     private $fichierPhoto;
 
@@ -53,7 +38,6 @@ abstract class Membre extends Utilisateur
      * @var \DateTime
      */
     private $updatedAt;
-
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -89,7 +73,6 @@ abstract class Membre extends Utilisateur
      *
      * @ORM\ManyToOne(
      *     targetEntity="Ville",
-     *     inversedBy="membres",
      *     cascade={"persist"},
      *     fetch="EAGER"
      * )

@@ -23,6 +23,7 @@ Feature: Gérer les organisateurs
     And the response should contain "cheminPhoto"
     And the response should contain "nomAffiche"
     And the response should contain "email"
+    And the response should contain "competitions"
 
   Scenario: Supprimer l'organisateur ayant l'id 1
     When I add "Accept" header equal to "application/ld+json"
@@ -49,3 +50,4 @@ Feature: Gérer les organisateurs
     Then the response status code should be 201
     And the response should be in JSON
     And the response should contain "Organis 123-ABC"
+    And The file "test" exists in web folder "test"
