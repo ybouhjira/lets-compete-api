@@ -18,9 +18,16 @@ class Organisateur extends Membre
      *     mappedBy="organisateur",
      *     cascade={"persist"}
      * )
-     * @Groups({"read"})
      */
     protected $competitions;
+
+    /**
+     * @Groups({"read"})
+     * @return string
+     */
+    public function getCompetitionsList() {
+        return '/organisateurs/' . $this->getId() . '/competitions';
+    }
 
     /**
      * @ORM\Column(type="string", length=255, nullable=false, unique=true)

@@ -13,8 +13,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\Entity
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="_type", type="string")
- *
- * @ORM\Table(name="utilisateur")
  */
 abstract class Utilisateur extends BaseUser
 {

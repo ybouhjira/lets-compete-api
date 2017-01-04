@@ -14,8 +14,6 @@ use Symfony\Component\Validator\Constraints\DateTime;
  *
  * @ORM\Table(name="competition")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CompetitionRepository")
- *
- * @ApiResource
  */
 class Competition
 {
@@ -35,7 +33,6 @@ class Competition
 
     /**
      * Competition constructor.
-     * @param $problemes
      */
     public function __construct()
     {

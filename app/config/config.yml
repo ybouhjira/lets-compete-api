@@ -17,6 +17,7 @@ api_platform:
         pagination:
             enabled: true
 
+
 framework:
     #esi:             ~
     #translator:      { fallbacks: ["%locale%"] }

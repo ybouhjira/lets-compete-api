@@ -1,5 +1,5 @@
 AppBundle\Entity\Participant:
-    participant{1..25}:
+    participant{1..50}:
         prenom: <firstName()>
         nom: <lastName()>
 

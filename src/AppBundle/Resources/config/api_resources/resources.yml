@@ -19,6 +19,15 @@ AppBundle\Entity\Organisateur:
             groups: ['read', 'org']
         denormalization_context:
             groups: ['write']
+    itemOperations:
+        get:
+            method: 'GET'
+        put:
+            method: 'PUT'
+        delete:
+            method: 'DELETE'
+        get_competitions:
+            route_name: 'organisateur_get_competitions'
 
 AppBundle\Entity\Participant:
     attributes:
@@ -27,5 +36,5 @@ AppBundle\Entity\Participant:
         denormalization_context:
             groups: ['write']
 
-
+AppBundle\Entity\Competition: {}
 

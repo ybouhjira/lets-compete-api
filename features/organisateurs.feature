@@ -23,7 +23,7 @@ Feature: Gérer les organisateurs
     And the response should contain "cheminPhoto"
     And the response should contain "nomAffiche"
     And the response should contain "email"
-    And the response should contain "competitions"
+    And the response should contain "competitionsList"
 
   Scenario: Supprimer l'organisateur ayant l'id 1
     When I add "Accept" header equal to "application/ld+json"

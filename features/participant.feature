@@ -16,7 +16,6 @@ Feature: Gérer les participants
     And the response should contain "prenom"
     But the response should not contain "competitions"
 
-
   Scenario: Supprimer le participant ayant l'id 15
     When I send a "DELETE" request to "/participants/15"
     Then the response status code should be 204
