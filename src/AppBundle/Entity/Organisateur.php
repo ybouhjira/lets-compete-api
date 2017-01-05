@@ -22,6 +22,7 @@ class Organisateur extends Membre
     protected $competitions;
 
     /**
+     * URL de la liste des compétitions de cet organisateur.
      * @Groups({"read"})
      * @return string
      */
@@ -30,6 +31,7 @@ class Organisateur extends Membre
     }
 
     /**
+     * Le nom de l'entreprise
      * @ORM\Column(type="string", length=255, nullable=false, unique=true)
      * @Groups({"read", "write"})
      */
@@ -61,6 +63,7 @@ class Organisateur extends Membre
     }
 
     /**
+     * Le nom à afficher dans le profil
      * @Groups({"read"})
      * @return string
      */

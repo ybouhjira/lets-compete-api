@@ -2,18 +2,31 @@
 namespace AppBundle\Action\Membre;
 
 use AppBundle\Entity\Membre;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Changer la photo de profil d'un membre
+ */
 class UploadPhoto
 {
-    /**
-     * @ParamConverter("post", class="Membre")
-     * @param Membre $membre
-     * @return Membre
-     */
-    public function __invoke(Membre $membre)
+    public function __construct(EntityManager $em)
     {
-        return new JsonResponse($membre);
+        $this->enityManager = $em;
+    }
+
+    /**
+     * @param Membre $membre le membre à modifier
+     * @param Request $request instance requête
+     * @return Response
+     */
+    public function __invoke(Membre $membre, Request $request)
+    {
+        $membre->setFichierPhoto($request->files->get('photo'));
+        $this->enityManager->persist($membre);
+        $this->enityManager->flush();
+
+        return new Response();
     }
 }

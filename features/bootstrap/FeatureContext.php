@@ -3,18 +3,24 @@
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Behat\Tester\Exception\PendingException;
+use Behat\MinkExtension\Context\RawMinkContext;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Tools\SchemaTool;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\HttpKernel\Kernel;
+use Sanpi\Behatch\HttpCall\Request;
+use Sanpi\Behatch\HttpCall\Request as BehatchRequest;
 
 /**
  * Defines application features from the specific context.
  */
-class FeatureContext implements Context, SnippetAcceptingContext
+class FeatureContext extends RawMinkContext implements Context, SnippetAcceptingContext
 {
+
+    private $request;
+
     /**
      * @var ManagerRegistry
      */
@@ -41,6 +47,16 @@ class FeatureContext implements Context, SnippetAcceptingContext
     private $kernel;
 
     /**
+     * @var \GuzzleHttp\Client
+     */
+    private $client;
+
+    /**
+     * @var array Guzzle options
+     */
+    private $options;
+
+    /**
      * Initializes context.
      *
      * Every scenario gets its own context instance.
@@ -48,9 +64,14 @@ class FeatureContext implements Context, SnippetAcceptingContext
      * context constructor through behat.yml.
      * @param ManagerRegistry $doctrine
      * @param Kernel $kernel
+     * @internal param BehatchRequest $request
      */
-    public function __construct(ManagerRegistry $doctrine, Kernel $kernel)
+    public function __construct(ManagerRegistry $doctrine,
+                                Kernel $kernel)
     {
+        $this->client = new GuzzleHttp\Client();
+        $this->options = [['verify' => false]];
+
         $this->kernel = $kernel;
         $this->doctrine = $doctrine;
         $this->manager = $doctrine->getManager();
@@ -95,6 +116,39 @@ class FeatureContext implements Context, SnippetAcceptingContext
     public function theFileExistsInWebFolder($file, $folder)
     {
         return new PendingException();
+    }
+
+    /**
+     * @When I set the content-type to multipart\/form-data
+     */
+    public function iSetTheContentTypeToMultipartFormData()
+    {
+        $this->options['multipart'] = [
+            [
+                'name'     => 'photo',
+                'contents' => fopen(__DIR__ . '/photo.jpg', 'r')
+            ],
+        ];
+    }
+
+    /**
+     * @When I send a guzzle :arg1 request to :arg2
+     */
+    public function iSendAGuzzleRequestTo($method, $url)
+    {
+        $this->res = $this->client->request(
+            $method,
+            $this->locatePath($url),
+            $this->options
+        );
+    }
+
+    /**
+     * @Then the response return by guzzle status code should be :arg1
+     */
+    public function theResponseReturnByGuzzleStatusCodeShouldBe($status)
+    {
+        return $this->res && $status === $this->res->getStatusCode();
     }
 
 }
