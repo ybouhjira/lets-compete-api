@@ -36,7 +36,8 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "lexik/jwt-authentication-bundle": "^2.0",
         "vich/uploader-bundle": "^1.4",
-        "guzzlehttp/guzzle": "^6.2"
+        "guzzlehttp/guzzle": "^6.2",
+        "phpunit/phpunit": "^5.7"
     },
     "require-dev": {
         "api-platform/schema-generator": "^1.2",
@@ -56,7 +57,7 @@
         "teaandcode/behat-guzzle-extension": "^0.3.9"
     },
     "scripts": {
-        "test" : "bin/console cache:clear --env=test && vendor/bin/behat --colors --stop-on-failure",
+        "test" : "bin/console cache:clear --env=test && vendor/bin/behat --colors --stop-on-failure -v && vendor/bin/phpunit",
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",

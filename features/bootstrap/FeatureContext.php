@@ -16,10 +16,8 @@ use Sanpi\Behatch\HttpCall\Request as BehatchRequest;
 /**
  * Defines application features from the specific context.
  */
-class FeatureContext extends RawMinkContext implements Context, SnippetAcceptingContext
+class FeatureContext implements Context, SnippetAcceptingContext
 {
-
-    private $request;
 
     /**
      * @var ManagerRegistry
@@ -129,26 +127,6 @@ class FeatureContext extends RawMinkContext implements Context, SnippetAccepting
                 'contents' => fopen(__DIR__ . '/photo.jpg', 'r')
             ],
         ];
-    }
-
-    /**
-     * @When I send a guzzle :arg1 request to :arg2
-     */
-    public function iSendAGuzzleRequestTo($method, $url)
-    {
-        $this->res = $this->client->request(
-            $method,
-            $this->locatePath($url),
-            $this->options
-        );
-    }
-
-    /**
-     * @Then the response return by guzzle status code should be :arg1
-     */
-    public function theResponseReturnByGuzzleStatusCodeShouldBe($status)
-    {
-        return $this->res && $status === $this->res->getStatusCode();
     }
 
 }
