@@ -13,6 +13,16 @@ AppBundle\Entity\Membre:
         denormalization_context:
             groups: ['write']
 
+    itemOperations:
+        get:
+            route_name: 'membre_get'
+        put:
+            method: 'PUT'
+        delete:
+            method: 'DELETE'
+        get_competitions:
+            route_name: 'organisateur_get_competitions'
+
 AppBundle\Entity\Organisateur:
     attributes:
         normalization_context:
