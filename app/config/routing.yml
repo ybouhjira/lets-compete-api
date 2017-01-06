@@ -8,3 +8,25 @@ app:
 
 api_login_check:
     path: /api/login_check
+
+membre_upload_photo:
+    path: 'membres/{id}/photo'
+    methods: ['POST']
+    defaults:
+        _controller: 'AppBundle\Action\Membre\UploadPhoto'
+
+organisateur_get_competitions:
+    path: 'organisateurs/{id}/competitions'
+    methods: ['GET']
+    defaults:
+        _api_resource_class: 'AppBundle\Entity\Competition'
+        _api_item_operation_name: 'get_competitions'
+        _controller: 'AppBundle\Action\Organisateur\GetCompetitions'
+
+membre_get:
+    path: 'membres/{id}'
+    methods: ['GET']
+    defaults:
+        _api_resource_class: 'AppBundle\Entity\Membre'
+        _api_item_operation_name: 'membre_get'
+        _controller: 'AppBundle\Action\Membre\Get'

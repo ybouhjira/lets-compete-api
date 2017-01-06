@@ -1,0 +1,50 @@
+
+AppBundle\Entity\Utilisateur:
+    attributes:
+        normalization_context:
+            groups: ['read']
+        denormalization_context:
+            groups: ['write']
+
+AppBundle\Entity\Membre:
+    attributes:
+        normalization_context:
+            groups: ['read']
+        denormalization_context:
+            groups: ['write']
+
+    itemOperations:
+        get:
+            route_name: 'membre_get'
+        put:
+            method: 'PUT'
+        delete:
+            method: 'DELETE'
+        get_competitions:
+            route_name: 'organisateur_get_competitions'
+
+AppBundle\Entity\Organisateur:
+    attributes:
+        normalization_context:
+            groups: ['read', 'org']
+        denormalization_context:
+            groups: ['write']
+    itemOperations:
+        get:
+            method: 'GET'
+        put:
+            method: 'PUT'
+        delete:
+            method: 'DELETE'
+        get_competitions:
+            route_name: 'organisateur_get_competitions'
+
+AppBundle\Entity\Participant:
+    attributes:
+        normalization_context:
+            groups: ['read']
+        denormalization_context:
+            groups: ['write']
+
+AppBundle\Entity\Competition: {}
+

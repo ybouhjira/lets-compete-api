@@ -13,13 +13,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\Entity
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="_type", type="string")
- *
- * @ORM\Table(name="utilisateur")
- *
- * @ApiResource(attributes={
- *     "normalization_context"={"groups"={"user", "read"}},
- *     "denormalization_context"={"groups"={"user", "write"}}
- * })
  */
 abstract class Utilisateur extends BaseUser
 {
@@ -31,7 +24,7 @@ abstract class Utilisateur extends BaseUser
     protected $id;
 
     /**
-     * @Groups({"user", "read"})
+     * @Groups({"read", "write"})
      */
     protected $email;
 
@@ -41,7 +34,7 @@ abstract class Utilisateur extends BaseUser
     protected $plainPassword;
 
     /**
-     * @Groups({"user", "read"})
+     * @Groups({"read", "write"})
      */
     protected $username;
 

@@ -6,7 +6,17 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
+
+api_platform:
+    title: 'Compétition de programmation'
+    description: 'Platforme de compétitions'
+    version: '0.1.0'
+    enable_fos_user: true
+    collection:
+        pagination:
+            enabled: true
+
 
 framework:
     #esi:             ~
@@ -80,7 +90,6 @@ nelmio_cors:
     paths:
         '^/': ~
 
-
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
@@ -91,3 +100,11 @@ lexik_jwt_authentication:
     public_key_path: "%jwt_public_key_path%"
     pass_phrase: "%jwt_key_pass_phrase%"
     token_ttl: "%jwt_token_ttl%"
+
+vich_uploader:
+    db_driver: orm # or mongodb or propel or phpcr
+    mappings:
+        membre_photo:
+            uri_prefix: /membres/photos
+            upload_destination: '%kernel.root_dir%/../web/uploads/membres/photos'
+            namer: vich_uploader.namer_uniqid

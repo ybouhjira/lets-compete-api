@@ -34,7 +34,10 @@
         "nelmio/cors-bundle": "^1.4",
         "phpdocumentor/reflection-docblock": "^3.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "lexik/jwt-authentication-bundle": "^2.0"
+        "lexik/jwt-authentication-bundle": "^2.0",
+        "vich/uploader-bundle": "^1.4",
+        "guzzlehttp/guzzle": "^6.2",
+        "phpunit/phpunit": "^5.7"
     },
     "require-dev": {
         "api-platform/schema-generator": "^1.2",
@@ -50,10 +53,11 @@
         "hautelook/alice-bundle": "^2.0@beta",
         "nelmio/alice": "^3.0@beta",
         "theofidry/alice-data-fixtures": "^1.0@beta",
-        "doctrine/data-fixtures": "^1.2"
+        "doctrine/data-fixtures": "^1.2",
+        "teaandcode/behat-guzzle-extension": "^0.3.9"
     },
     "scripts": {
-        "test" : "bin/console cache:clear --env=test && vendor/bin/behat --colors --stop-on-failure",
+        "test" : "bin/console cache:clear --env=test && vendor/bin/behat --colors --stop-on-failure -v && vendor/bin/phpunit",
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",

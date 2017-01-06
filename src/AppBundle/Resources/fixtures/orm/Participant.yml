@@ -1,7 +1,7 @@
 AppBundle\Entity\Participant:
-    participant{1..25}:
-        firstName: <firstName()>
-        lastName: <lastName()>
+    participant{1..50}:
+        prenom: <firstName()>
+        nom: <lastName()>
 
         username: <username()>
         enabled: true

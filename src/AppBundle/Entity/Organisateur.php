@@ -2,19 +2,13 @@
 
 namespace AppBundle\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Organisateur
- *
- * @ORM\Table(uniqueConstraints={
- *     @ORM\UniqueConstraint(name="uniq_nom", columns={"nom"})
- * })
  * @ORM\Entity(repositoryClass="AppBundle\Repository\OrganiserRepository")
- * @ApiResource
  */
 class Organisateur extends Membre
 {
@@ -28,7 +22,18 @@ class Organisateur extends Membre
     protected $competitions;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * URL de la liste des compétitions de cet organisateur.
+     * @Groups({"read"})
+     * @return string
+     */
+    public function getCompetitionsList() {
+        return '/organisateurs/' . $this->getId() . '/competitions';
+    }
+
+    /**
+     * Le nom de l'entreprise
+     * @ORM\Column(type="string", length=255, nullable=false, unique=true)
+     * @Groups({"read", "write"})
      */
     private $nom;
 
@@ -57,6 +62,11 @@ class Organisateur extends Membre
         return $this->competitions;
     }
 
+    /**
+     * Le nom à afficher dans le profil
+     * @Groups({"read"})
+     * @return string
+     */
     public function getNomAffiche() : string
     {
         return $this->getNom();
