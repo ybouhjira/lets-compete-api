@@ -54,7 +54,12 @@ AppBundle\Entity\Participant:
         get_solutions:
             route_name: 'participant_get_solutions'
 
-AppBundle\Entity\Langage: {}
+AppBundle\Entity\Langage:
+    attributes:
+        normalization_context:
+            groups: ['read']
+        denormalization_context:
+            groups: ['write']
 
 AppBundle\Entity\Competition:
     attributes:

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Langage
@@ -25,6 +26,7 @@ class Langage
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255, unique=true)
+     * @Groups({"read", "write"})
      */
     private $nom;
 
