@@ -24,7 +24,7 @@ abstract class Utilisateur extends BaseUser
     protected $id;
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"read", "write", "invit-read"})
      */
     protected $email;
 

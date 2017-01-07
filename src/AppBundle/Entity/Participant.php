@@ -16,13 +16,13 @@ class Participant extends Membre
 
     /**
      * @ORM\Column(type="string", length=255, nullable=false)
-     * @Groups({"read"})
+     * @Groups({"read", "invit-read"})
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=false)
-     * @Groups({"read"})
+     * @Groups({"read", "invit-read"})
      */
     private $nom;
 
@@ -36,6 +36,17 @@ class Participant extends Membre
      * )
      */
     private $solutions;
+
+    /**
+     * Les invitations à participer
+     * @var ArrayCollection
+     * @ORM\OneToMany(
+     *     targetEntity="InvitParticipation",
+     *     cascade={"persist"},
+     *     mappedBy="participant"
+     * )
+     */
+    private $invitParticipations;
 
     /**
      * @Groups({"read"})
@@ -95,6 +106,15 @@ class Participant extends Membre
     }
 
     /**
+     * @Groups({"read"})
+     * @return string
+     */
+    public function getInvitParticipationsList() : string
+    {
+        return '/participants/' . $this->getId() . '/invit_participations';
+    }
+
+    /**
      * Les solutions du participants
      */
     public function getSolutions() : ArrayCollection
@@ -124,5 +144,39 @@ class Participant extends Membre
     public function removeSolution(\AppBundle\Entity\Solution $solution)
     {
         $this->solutions->removeElement($solution);
+    }
+
+    /**
+     * Add invitParticipation
+     *
+     * @param \AppBundle\Entity\InvitParticipation $invitParticipation
+     *
+     * @return Participant
+     */
+    public function addInvitParticipation(\AppBundle\Entity\InvitParticipation $invitParticipation)
+    {
+        $this->invitParticipations[] = $invitParticipation;
+
+        return $this;
+    }
+
+    /**
+     * Remove invitParticipation
+     *
+     * @param \AppBundle\Entity\InvitParticipation $invitParticipation
+     */
+    public function removeInvitParticipation(\AppBundle\Entity\InvitParticipation $invitParticipation)
+    {
+        $this->invitParticipations->removeElement($invitParticipation);
+    }
+
+    /**
+     * Get invitParticipations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getInvitParticipations()
+    {
+        return $this->invitParticipations;
     }
 }

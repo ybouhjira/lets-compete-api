@@ -41,7 +41,7 @@ AppBundle\Entity\Organisateur:
 AppBundle\Entity\Participant:
     attributes:
         normalization_context:
-            groups: ['read']
+            groups: ['read', 'particip-invit-read']
         denormalization_context:
             groups: ['write']
     itemOperations:
@@ -53,6 +53,8 @@ AppBundle\Entity\Participant:
             method: 'DELETE'
         get_solutions:
             route_name: 'participant_get_solutions'
+        get_invit_pariticipations:
+            route_name: 'participant_get_invit_pariticipations'
 
 AppBundle\Entity\Langage:
     attributes:
@@ -68,7 +70,19 @@ AppBundle\Entity\Competition:
         denormalization_context:
             groups: ['write']
 
-AppBundle\Entity\Solution: {}
+AppBundle\Entity\Solution:
+    attributes:
+        normalization_context:
+            groups: ['read']
+        denormalization_context:
+            groups: ['write']
+
+AppBundle\Entity\InvitParticipation:
+    attributes:
+        normalization_context:
+            groups: ['invit-read']
+        denormalization_context:
+            groups: ['write']
 
 
 

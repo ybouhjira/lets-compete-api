@@ -52,6 +52,12 @@ class Probleme
     private $solutions;
 
     /**
+     * @var string
+     * @ORM\Column(type="string", length=255)
+     */
+    private $titre;
+
+    /**
      * @var EntreeSortie Les d'entrée/sortie tests et exemples
      * @ORM\OneToMany(
      *     targetEntity="EntreeSortie",
@@ -187,4 +193,24 @@ class Probleme
     {
         return $this->entreeSorties;
     }
+
+    /**
+     * @return string
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * @param string $titre
+     * @return Probleme
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+        return $this;
+    }
+
+
 }

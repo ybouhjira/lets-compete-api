@@ -31,6 +31,14 @@ participant_get_solutions:
         _api_item_operation_name: 'get_solutions'
         _controller: 'AppBundle\Action\Participant\GetSolutions'
 
+participant_get_invit_pariticipations:
+    path: 'participants/{id}/invit_participations'
+    methods: ['GET']
+    defaults:
+        _api_resource_class: 'AppBundle\Entity\InvitParticipation'
+        _api_item_operation_name: 'get_invit_pariticipations'
+        _controller: 'AppBundle\Action\Participant\GetInvitParticipation'
+
 membre_get:
     path: 'membres/{id}'
     methods: ['GET']

@@ -1,4 +1,5 @@
 AppBundle\Entity\Probleme:
     probleme{1..50}:
+        titre: 'Probleme <sentence(2)>'
         enonce: <paragraph()>
         competition: '@competition*'

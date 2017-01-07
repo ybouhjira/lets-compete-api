@@ -41,37 +41,20 @@ class Competition
     private $langages;
 
     /**
-     * Competition constructor.
+     * Les invitations à participer
+     * @var ArrayCollection
+     * @ORM\OneToMany(
+     *     targetEntity="InvitParticipation",
+     *     cascade={"persist"},
+     *     mappedBy="competition"
+     * )
      */
-    public function __construct()
-    {
-        $this->problemes = new ArrayCollection();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProblemes()
-    {
-        return $this->problemes;
-    }
-
-    public function addProbleme(Probleme $probleme)
-    {
-        $this->problemes->add($probleme);
-        return $this;
-    }
-
-    public function removeProbleme(Probleme $probleme)
-    {
-        $this->problemes->remove($probleme);
-        return $this;
-    }
+    private $invitParticipations;
 
     /**
      * @var string
      *
-     * @Groups({"read", "write"})
+     * @Groups({"read", "write", "invit-read"})
      * @ORM\Column(type="string", length=255)
      */
     private $titre;
@@ -107,6 +90,34 @@ class Competition
      * @Groups({"read", "write"})
      */
     private $publie;
+
+    /**
+     * Competition constructor.
+     */
+    public function __construct()
+    {
+        $this->problemes = new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProblemes()
+    {
+        return $this->problemes;
+    }
+
+    public function addProbleme(Probleme $probleme)
+    {
+        $this->problemes->add($probleme);
+        return $this;
+    }
+
+    public function removeProbleme(Probleme $probleme)
+    {
+        $this->problemes->remove($probleme);
+        return $this;
+    }
 
     /**
      * @return mixed
@@ -218,7 +229,7 @@ class Competition
 
     /**
      * @var Organisateur
-     * Groups({"read", "write"})
+     * @Groups({"read", "write"})
      * @ORM\JoinColumn(name="organiser_id", referencedColumnName="id", nullable=false)
      * @ORM\ManyToOne(targetEntity="Organisateur", inversedBy="competitions")
      */
@@ -296,5 +307,39 @@ class Competition
     public function getLangages()
     {
         return $this->langages;
+    }
+
+    /**
+     * Add invitParticipation
+     *
+     * @param \AppBundle\Entity\InvitParticipation $invitParticipation
+     *
+     * @return Competition
+     */
+    public function addInvitParticipation(\AppBundle\Entity\InvitParticipation $invitParticipation)
+    {
+        $this->invitParticipations[] = $invitParticipation;
+
+        return $this;
+    }
+
+    /**
+     * Remove invitParticipation
+     *
+     * @param \AppBundle\Entity\InvitParticipation $invitParticipation
+     */
+    public function removeInvitParticipation(\AppBundle\Entity\InvitParticipation $invitParticipation)
+    {
+        $this->invitParticipations->removeElement($invitParticipation);
+    }
+
+    /**
+     * Get invitParticipations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getInvitParticipations()
+    {
+        return $this->invitParticipations;
     }
 }

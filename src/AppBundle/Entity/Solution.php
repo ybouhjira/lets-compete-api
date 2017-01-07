@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Solution
@@ -25,27 +26,29 @@ class Solution
 
     /**
      * @var \DateTime
-     *
+     * @Groups({"read", "write"})
      * @ORM\Column(name="tempsEnvoie", type="datetime")
      */
     private $tempsEnvoie;
 
     /**
      * @var int
-     *
+     * @Groups({"read", "write"})
      * @ORM\Column(name="tempsExécution", type="integer", nullable=true)
      */
     private $tempsExécution;
 
     /**
      * @var FichierCode Les fichier contenant le code
+     * @Groups({"read", "write"})
      * @ORM\OneToMany(targetEntity="FichierCode", mappedBy="solution")
      */
     private $fichiersCode;
 
     /**
-     * @var Participant L'auteur
-     *
+     * L'auteur
+     * @var Participant
+     * @Groups({"read", "write"})
      * @ORM\ManyToOne(
      *     targetEntity="Participant",
      *     cascade={"persist"},
@@ -57,7 +60,7 @@ class Solution
 
     /**
      * @var bool
-     *
+     * @Groups({"read", "write"})
      * @ORM\Column(name="correcte", type="boolean", nullable=true)
      */
     private $correcte;
@@ -70,6 +73,7 @@ class Solution
      *     inversedBy="solutions"
      * )
      * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
+     * @Groups({"read", "write"})
      */
     private $probleme;
 

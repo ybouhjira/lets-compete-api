@@ -1,0 +1,4 @@
+AppBundle\Entity\InvitParticipation:
+    invit_participation{1..10}:
+        competition: '@competition*'
+        participant: '@participant*'
