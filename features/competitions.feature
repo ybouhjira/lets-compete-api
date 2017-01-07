@@ -22,9 +22,10 @@ Feature: Gérer les compétitions
 
   Scenario: Récuperer les compétitions de l'organisateur ayant l'id 2
     When I add "Accept" header equal to "application/ld+json"
-    And I send a "GET" request to "/competitions/2"
+    And I send a "GET" request to "organisateurs/2/competitions"
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/ld+json; charset=utf-8"
     And the response should contain "tempsDebut"
     And the response should contain "tempsFin"
+    And the response should contain "hydra:view"
