@@ -28,6 +28,16 @@ class Langage
      */
     private $nom;
 
+    /**
+     * @var
+     * @ORM\ManyToMany(
+     *     inversedBy="langages",
+     *     targetEntity="Competition",
+     *     cascade={"persist"}
+     * )
+     */
+    private $competitions;
+
 
     /**
      * Get id
@@ -62,5 +72,45 @@ class Langage
     {
         return $this->nom;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->competitions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add competition
+     *
+     * @param \AppBundle\Entity\Competition $competition
+     *
+     * @return Langage
+     */
+    public function addCompetition(\AppBundle\Entity\Competition $competition)
+    {
+        $this->competitions[] = $competition;
+
+        return $this;
+    }
+
+    /**
+     * Remove competition
+     *
+     * @param \AppBundle\Entity\Competition $competition
+     */
+    public function removeCompetition(\AppBundle\Entity\Competition $competition)
+    {
+        $this->competitions->removeElement($competition);
+    }
+
+    /**
+     * Get competitions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCompetitions()
+    {
+        return $this->competitions;
+    }
+}

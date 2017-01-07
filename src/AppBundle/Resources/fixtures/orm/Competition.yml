@@ -7,4 +7,4 @@ AppBundle\Entity\Competition:
         public: true
         publie: true
         organisateur: '@organisateur*'
-        #participants: '@participant*'
+        langages: ['@langage2', '@langage3', '@langage6']

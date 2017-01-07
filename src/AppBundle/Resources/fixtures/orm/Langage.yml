@@ -1,0 +1,13 @@
+AppBundle\Entity\Langage:
+    langage1: { nom : 'C++'}
+    langage2: { nom : 'Java'}
+    langage3: { nom : 'C'}
+    langage4: { nom : 'PHP'}
+    langage5: { nom : 'Ruby'}
+    langage6: { nom : 'Python'}
+    langage7: { nom : 'Haskell'}
+    langage8: { nom : 'C#'}
+    langage9: { nom : 'JavaScript'}
+    langage10: { nom : 'Scala'}
+    langage10: { nom : 'Go'}
+    langage10: { nom : 'Dart'}

@@ -12,7 +12,6 @@ AppBundle\Entity\Membre:
             groups: ['read']
         denormalization_context:
             groups: ['write']
-
     itemOperations:
         get:
             route_name: 'membre_get'
@@ -46,15 +45,25 @@ AppBundle\Entity\Participant:
         denormalization_context:
             groups: ['write']
     itemOperations:
-            get:
-                method: 'GET'
-            put:
-                method: 'PUT'
-            delete:
-                method: 'DELETE'
-            get_solutions:
-                route_name: 'participant_get_solutions'
+        get:
+            method: 'GET'
+        put:
+            method: 'PUT'
+        delete:
+            method: 'DELETE'
+        get_solutions:
+            route_name: 'participant_get_solutions'
 
-AppBundle\Entity\Competition: {}
+AppBundle\Entity\Langage: {}
+
+AppBundle\Entity\Competition:
+    attributes:
+        normalization_context:
+            groups: ['read']
+        denormalization_context:
+            groups: ['write']
+
 AppBundle\Entity\Solution: {}
+
+
 

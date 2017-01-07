@@ -2,11 +2,9 @@
 
 namespace AppBundle\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
@@ -27,9 +25,20 @@ class Competition
     protected $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Probleme", mappedBy="competition")
+     * @ORM\OneToMany(targetEntity="Probleme", mappedBy="competition", cascade={"persist"})
      */
     private $problemes;
+
+    /**
+     * @var
+     * @Groups({"read"})
+     * @ORM\ManyToMany(
+     *     targetEntity="Langage",
+     *     cascade={"persist"},
+     *     inversedBy="competitions"
+     * )
+     */
+    private $langages;
 
     /**
      * Competition constructor.
@@ -254,5 +263,38 @@ class Competition
         $now = new DateTime();
         return $this->tempsDebut >=  $now && $this->tempsFin < $now;
     }
-}
 
+    /**
+     * Add langage
+     *
+     * @param \AppBundle\Entity\Langage $langage
+     *
+     * @return Competition
+     */
+    public function addLangage(\AppBundle\Entity\Langage $langage)
+    {
+        $this->langages[] = $langage;
+
+        return $this;
+    }
+
+    /**
+     * Remove langage
+     *
+     * @param \AppBundle\Entity\Langage $langage
+     */
+    public function removeLangage(\AppBundle\Entity\Langage $langage)
+    {
+        $this->langages->removeElement($langage);
+    }
+
+    /**
+     * Get langages
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLangages()
+    {
+        return $this->langages;
+    }
+}
