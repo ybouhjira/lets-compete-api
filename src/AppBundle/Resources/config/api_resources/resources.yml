@@ -45,6 +45,16 @@ AppBundle\Entity\Participant:
             groups: ['read']
         denormalization_context:
             groups: ['write']
+    itemOperations:
+            get:
+                method: 'GET'
+            put:
+                method: 'PUT'
+            delete:
+                method: 'DELETE'
+            get_solutions:
+                route_name: 'participant_get_solutions'
 
 AppBundle\Entity\Competition: {}
+AppBundle\Entity\Solution: {}
 

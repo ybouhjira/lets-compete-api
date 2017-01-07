@@ -38,6 +38,15 @@ class Participant extends Membre
     private $solutions;
 
     /**
+     * @Groups({"read"})
+     * @return string
+     */
+    public function getSolutionsList()
+    {
+        return 'participants/' . $this->getId() . '/solutions';
+    }
+
+    /**
      * @return mixed
      */
     public function getPrenom()

@@ -7,7 +7,7 @@ Feature: Gérer les participants
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/ld+json; charset=utf-8"
 
-  Scenario: Récuperer le participant ayant l'id 1
+  Scenario: Récuperer le participant ayant l'id 10
     When I send a "GET" request to "/participants/10"
     Then the response status code should be 200
     And the response should be in JSON

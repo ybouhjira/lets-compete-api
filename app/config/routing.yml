@@ -23,6 +23,14 @@ organisateur_get_competitions:
         _api_item_operation_name: 'get_competitions'
         _controller: 'AppBundle\Action\Organisateur\GetCompetitions'
 
+participant_get_solutions:
+    path: 'participants/{id}/solutions'
+    methods: ['GET']
+    defaults:
+        _api_resource_class: 'AppBundle\Entity\Solution'
+        _api_item_operation_name: 'get_solutions'
+        _controller: 'AppBundle\Action\Participant\GetSolutions'
+
 membre_get:
     path: 'membres/{id}'
     methods: ['GET']
