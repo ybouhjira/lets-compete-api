@@ -73,7 +73,7 @@ AppBundle\Entity\Competition:
 AppBundle\Entity\Solution:
     attributes:
         normalization_context:
-            groups: ['read']
+            groups: ['sol-read', 'brief']
         denormalization_context:
             groups: ['write']
 

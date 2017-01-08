@@ -59,6 +59,15 @@ class Solution
     private $participant;
 
     /**
+     * Le langage de la solution
+     * @var Langage
+     * @ORM\ManyToOne(targetEntity="Langage", inversedBy="solutions")
+     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @Groups({"sol-read", "write"})
+     */
+    private $langage;
+
+    /**
      * @var bool
      * @Groups({"read", "write"})
      * @ORM\Column(name="correcte", type="boolean", nullable=true)
@@ -233,5 +242,23 @@ class Solution
     public function getFichiersCode() : Collection
     {
         return $this->fichiersCode;
+    }
+
+    /**
+     * @return Langage
+     */
+    public function getLangage()
+    {
+        return $this->langage;
+    }
+
+    /**
+     * @param Langage $langage
+     * @return Solution
+     */
+    public function setLangage($langage)
+    {
+        $this->langage = $langage;
+        return $this;
     }
 }

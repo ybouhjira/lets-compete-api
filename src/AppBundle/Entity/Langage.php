@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -26,9 +27,20 @@ class Langage
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255, unique=true)
-     * @Groups({"read", "write"})
+     * @Groups({"read", "write", "brief"})
      */
     private $nom;
+
+    /**
+     * Les solutions écrite avec ce langage
+     * @var ArrayCollection
+     * @ORM\OneToMany(
+     *     targetEntity="Solution",
+     *     cascade={"persist"},
+     *     mappedBy="langage"
+     * )
+     */
+    private $solutions;
 
     /**
      * @var
@@ -114,5 +126,39 @@ class Langage
     public function getCompetitions()
     {
         return $this->competitions;
+    }
+
+    /**
+     * Add solution
+     *
+     * @param \AppBundle\Entity\Solution $solution
+     *
+     * @return Langage
+     */
+    public function addSolution(\AppBundle\Entity\Solution $solution)
+    {
+        $this->solutions[] = $solution;
+
+        return $this;
+    }
+
+    /**
+     * Remove solution
+     *
+     * @param \AppBundle\Entity\Solution $solution
+     */
+    public function removeSolution(\AppBundle\Entity\Solution $solution)
+    {
+        $this->solutions->removeElement($solution);
+    }
+
+    /**
+     * Get solutions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSolutions()
+    {
+        return $this->solutions;
     }
 }

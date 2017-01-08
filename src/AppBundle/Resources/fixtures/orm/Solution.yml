@@ -3,3 +3,4 @@ AppBundle\Entity\Solution:
         tempsEnvoie: <datetime()>
         participant: '@participant*'
         probleme: '@probleme*'
+        langage: '@langage*'
