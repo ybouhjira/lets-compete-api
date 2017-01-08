@@ -16,13 +16,13 @@ class Participant extends Membre
 
     /**
      * @ORM\Column(type="string", length=255, nullable=false)
-     * @Groups({"read", "write", "invit-read"})
+     * @Groups({"read", "write", "invit-read", "brief"})
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=false)
-     * @Groups({"read", "write", "invit-read"})
+     * @Groups({"read", "write", "invit-read", "brief"})
      */
     private $nom;
 
@@ -47,6 +47,17 @@ class Participant extends Membre
      * )
      */
     private $invitParticipations;
+
+    /**
+     * Les demandes de participation
+     * @var ArrayCollection
+     * @ORM\OneToMany(
+     *     targetEntity="DemandeParticipation",
+     *     cascade={"persist"},
+     *     mappedBy="participant"
+     * )
+     */
+    private $demandeParticipations;
 
     /**
      * @Groups({"read"})
@@ -178,5 +189,39 @@ class Participant extends Membre
     public function getInvitParticipations()
     {
         return $this->invitParticipations;
+    }
+
+    /**
+     * Add demandeParticipation
+     *
+     * @param \AppBundle\Entity\DemandeParticipation $demandeParticipation
+     *
+     * @return Participant
+     */
+    public function addDemandeParticipation(\AppBundle\Entity\DemandeParticipation $demandeParticipation)
+    {
+        $this->demandeParticipations[] = $demandeParticipation;
+
+        return $this;
+    }
+
+    /**
+     * Remove demandeParticipation
+     *
+     * @param \AppBundle\Entity\DemandeParticipation $demandeParticipation
+     */
+    public function removeDemandeParticipation(\AppBundle\Entity\DemandeParticipation $demandeParticipation)
+    {
+        $this->demandeParticipations->removeElement($demandeParticipation);
+    }
+
+    /**
+     * Get demandeParticipations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDemandeParticipations()
+    {
+        return $this->demandeParticipations;
     }
 }

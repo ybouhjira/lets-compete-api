@@ -41,6 +41,17 @@ class Competition
     private $langages;
 
     /**
+     * Les demandes de participation
+     * @var ArrayCollection
+     * @ORM\OneToMany(
+     *     targetEntity="DemandeParticipation",
+     *     cascade={"persist"},
+     *     mappedBy="participant"
+     * )
+     */
+    private $demandeParticipations;
+
+    /**
      * Les invitations à participer
      * @var ArrayCollection
      * @ORM\OneToMany(
@@ -54,7 +65,7 @@ class Competition
     /**
      * @var string
      *
-     * @Groups({"read", "write", "invit-read"})
+     * @Groups({"read", "write", "invit-read", "brief"})
      * @ORM\Column(type="string", length=255)
      */
     private $titre;
@@ -341,5 +352,39 @@ class Competition
     public function getInvitParticipations()
     {
         return $this->invitParticipations;
+    }
+
+    /**
+     * Add demandeParticipation
+     *
+     * @param \AppBundle\Entity\DemandeParticipation $demandeParticipation
+     *
+     * @return Participant
+     */
+    public function addDemandeParticipation(\AppBundle\Entity\DemandeParticipation $demandeParticipation)
+    {
+        $this->demandeParticipations[] = $demandeParticipation;
+
+        return $this;
+    }
+
+    /**
+     * Remove demandeParticipation
+     *
+     * @param \AppBundle\Entity\DemandeParticipation $demandeParticipation
+     */
+    public function removeDemandeParticipation(\AppBundle\Entity\DemandeParticipation $demandeParticipation)
+    {
+        $this->demandeParticipations->removeElement($demandeParticipation);
+    }
+
+    /**
+     * Get demandeParticipations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDemandeParticipations()
+    {
+        return $this->demandeParticipations;
     }
 }

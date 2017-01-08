@@ -84,5 +84,12 @@ AppBundle\Entity\InvitParticipation:
         denormalization_context:
             groups: ['write']
 
+AppBundle\Entity\DemandeParticipation:
+    attributes:
+        normalization_context:
+            groups: ['demande-read', 'brief']
+        denormalization_context:
+            groups: ['write']
+
 
 

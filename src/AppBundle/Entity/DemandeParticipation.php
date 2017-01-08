@@ -2,15 +2,14 @@
 
 namespace AppBundle\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * DemandeParticipation
  *
  * @ORM\Table(name="demande_participation")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\DemandeParticipationRepository")
- * @ApiResource()
  */
 class DemandeParticipation
 {
@@ -27,16 +26,49 @@ class DemandeParticipation
      * @var bool
      *
      * @ORM\Column(name="accepte", type="boolean", nullable=true)
+     * @Groups({"demande-read", "write", "brief"})
      */
     private $accepte;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(type="datetime")
+     * @Groups({"demande-read", "write", "brief"})
      */
     private $date;
 
+    /**
+     * @var Competition
+     * @ORM\ManyToOne(
+     *     targetEntity="Competition",
+     *     cascade={"persist"},
+     *     inversedBy="demandeParticipations"
+     * )
+     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @Groups({"demande-read", "write"})
+     */
+    private $competition;
+
+    /**
+     * @var Participant
+     * @ORM\ManyToOne(
+     *     targetEntity="Participant",
+     *     inversedBy="demandeParticipations",
+     *     cascade={"persist"}
+     * )
+     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @Groups({"demande-read", "write"})
+     */
+    private $participant;
+
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->date = new \DateTime('now');
+    }
 
     /**
      * Get id
@@ -94,6 +126,42 @@ class DemandeParticipation
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * @return Participant
+     */
+    public function getParticipant()
+    {
+        return $this->participant;
+    }
+
+    /**
+     * @param Participant $participant
+     * @return DemandeParticipation
+     */
+    public function setParticipant($participant)
+    {
+        $this->participant = $participant;
+        return $this;
+    }
+
+    /**
+     * @return Competition
+     */
+    public function getCompetition()
+    {
+        return $this->competition;
+    }
+
+    /**
+     * @param Competition $competition
+     * @return DemandeParticipation
+     */
+    public function setCompetition($competition)
+    {
+        $this->competition = $competition;
+        return $this;
     }
 }
 
