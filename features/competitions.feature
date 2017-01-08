@@ -29,3 +29,4 @@ Feature: Gérer les compétitions
     And the response should contain "tempsDebut"
     And the response should contain "tempsFin"
     And the response should contain "hydra:view"
+    And the JSON should be valid according to the schema "features/schemas/get-competition.schema.json"

@@ -1,0 +1,26 @@
+{
+  "properties" : {
+    "@id": {"type" : "string"},
+    "titre": {"type" : "string"},
+    "description": {"type" : "string"},
+    "tempsDebut": {"type" : "string"},
+    "tempsFin": {"type" : "string"},
+    "public": {"type" : "boolean"},
+    "publie": {"type" : "boolean"},
+    "organisateur" : {
+      "properties" : {
+        "@id": {"type" : "string"}
+      }
+    },
+    "langages": {
+      "type": "array",
+      "items": {
+        "properties" : {
+          "@id": {"type" : "string"},
+          "@type" : "Langage",
+          "nom": {"type" : "string"}
+        }
+      }
+    }
+  }
+}
