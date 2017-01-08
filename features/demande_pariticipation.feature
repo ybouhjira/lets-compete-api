@@ -57,3 +57,15 @@ Feature: Gérer les demandes
       }
     }
     """
+
+  Scenario: Créer une demande
+    When I add "content-type" header equal to "application/json"
+    And I send a "POST" request to "/demande_participations" with body:
+    """
+    {
+      "competition": "/competitions/81",
+      "participant": "/participants/56"
+    }
+    """
+    Then the response status code should be 201
+    And the response should be in JSON
