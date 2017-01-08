@@ -16,13 +16,13 @@ class Participant extends Membre
 
     /**
      * @ORM\Column(type="string", length=255, nullable=false)
-     * @Groups({"read", "invit-read"})
+     * @Groups({"read", "write", "invit-read"})
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=false)
-     * @Groups({"read", "invit-read"})
+     * @Groups({"read", "write", "invit-read"})
      */
     private $nom;
 

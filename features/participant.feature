@@ -19,3 +19,22 @@ Feature: Gérer les participants
     When I send a "DELETE" request to "/participants/15"
     Then the response status code should be 204
     And the response should be empty
+
+  Scenario: Créer un participant
+    When I send a "POST" request to "/participants" with body:
+    """
+    {
+      "prenom": "Kiara",
+      "nom": "Ondricka",
+      "email": "sdfmskfg@hotmail.com",
+      "plainPassword": "helloWorld",
+      "username": "dqfdsfsdf",
+      "presentation": "Distinctio quos praesentium mollitia rem repellat impedit eos. Commodi et ex et et vel. Architecto perferendis eligendi rerum aut.",
+      "telephone": "+1 (987) 86536-9125",
+      "adresse": "578 Modesto Islands\nNew Erick, VT 40272",
+      "ville": "/villes/42",
+      "siteWeb": "hello.com"
+    }
+    """
+    Then the response status code should be 201
+    And the response should be in JSON
