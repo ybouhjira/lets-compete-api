@@ -64,7 +64,7 @@ abstract class Membre extends Utilisateur
     /**
      * L'adresse de l'organisateur
      * @var string
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"read", "write"})
      */
     private $adresse;
