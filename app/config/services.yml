@@ -25,8 +25,17 @@ services:
         tags: [ { name: 'api_platform.filter', id: 'competition.tempsFin' } ]
 
     utilisateur.username_filter:
-            parent: 'api_platform.doctrine.orm.search_filter'
-            arguments: [ { username: 'exact' } ]
-            tags:
-                - name: 'api_platform.filter'
-                  id: 'utilisateur.username_filter'
+        parent: 'api_platform.doctrine.orm.search_filter'
+        arguments: [ { username: 'exact' } ]
+        tags:
+            - name: 'api_platform.filter'
+              id: 'utilisateur.username_filter'
+
+    app.event_listeners.jwt_response_changer_listener:
+        class: AppBundle\EventListener\JWTResponseChangerListener
+        arguments: [ '@doctrine.orm.entity_manager', '@api_platform.serializer' ]
+        tags:
+            - name: kernel.event_listener
+              event: kernel.response
+              priority: 65
+

@@ -22,3 +22,14 @@ AppBundle\Entity\Organisateur:
         adresse: <address()>
         presentation: <paragraph()>
         ville: '@ville*'
+    organisateurJWT:
+        username: 'jwttest'
+        enabled: true
+        email: <email()>
+        plainPassword: 'password'
+        nom: <company()>
+        telephone: <phoneNumber()>
+        siteWeb: 'jwt-org.com'
+        adresse: <address()>
+        presentation: <paragraph()>
+        ville: '@ville*'

@@ -13,7 +13,7 @@ class JWTAuthTest extends WebTestCase
         $client->request(
             'POST',
             '/api/login_check', [
-                '_username' => 'foo', // from fixtures
+                '_username' => 'jwttest', // from fixtures
                 '_password' => 'password',
             ]
         );
@@ -24,5 +24,6 @@ class JWTAuthTest extends WebTestCase
 
         $this->assertEquals(200, $res->getStatusCode(), $c);
         $this->assertObjectHasAttribute("token", $data, $c);
+        $this->assertObjectHasAttribute("utilisateur", $data, $c);
     }
 }
