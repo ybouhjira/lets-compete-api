@@ -74,6 +74,8 @@ AppBundle\Entity\Competition:
         filters:
             - "competition.public"
             - "competition.publie"
+            - "competition.tempsDebut"
+            - "competition.tempsFin"
 
 AppBundle\Entity\Solution:
     attributes:

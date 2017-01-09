@@ -5,11 +5,21 @@ parameters:
 
 services:
     competition.public_filter:
-        parent:    'api_platform.doctrine.orm.boolean_filter'
+        parent: 'api_platform.doctrine.orm.boolean_filter'
         arguments: [ { public: ~ } ]
-        tags:      [ { name: 'api_platform.filter', id: 'competition.public' } ]
+        tags: [ { name: 'api_platform.filter', id: 'competition.public' } ]
 
     competition.publie_filter:
-            parent:    'api_platform.doctrine.orm.boolean_filter'
-            arguments: [ { publie: ~ } ]
-            tags:      [ { name: 'api_platform.filter', id: 'competition.publie' } ]
+        parent: 'api_platform.doctrine.orm.boolean_filter'
+        arguments: [ { publie: ~ } ]
+        tags: [ { name: 'api_platform.filter', id: 'competition.publie' } ]
+
+    competition.tempsDebut_filter:
+        parent: 'api_platform.doctrine.orm.date_filter'
+        arguments: [ { tempsDebut: ~ } ]
+        tags: [ { name: 'api_platform.filter', id: 'competition.tempsDebut' } ]
+
+    competition.tempsFin_filter:
+        parent: 'api_platform.doctrine.orm.date_filter'
+        arguments: [ { tempsFin: ~ } ]
+        tags: [ { name: 'api_platform.filter', id: 'competition.tempsFin' } ]
