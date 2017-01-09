@@ -4,7 +4,12 @@ parameters:
 #    parameter_name: value
 
 services:
-    competition.search_filter:
+    competition.public_filter:
         parent:    'api_platform.doctrine.orm.boolean_filter'
         arguments: [ { public: ~ } ]
         tags:      [ { name: 'api_platform.filter', id: 'competition.public' } ]
+
+    competition.publie_filter:
+            parent:    'api_platform.doctrine.orm.boolean_filter'
+            arguments: [ { publie: ~ } ]
+            tags:      [ { name: 'api_platform.filter', id: 'competition.publie' } ]

@@ -64,6 +64,7 @@ AppBundle\Entity\Competition:
             groups: ['write']
         filters:
             - "competition.public"
+            - "competition.publie"
 
 AppBundle\Entity\Solution:
     attributes:
