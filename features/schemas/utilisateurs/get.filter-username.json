@@ -1,0 +1,11 @@
+{
+  "properties": {
+    "hydra:member": {
+      "items": {
+        "username": {
+          "constant": "foo"
+        }
+      }
+    }
+  }
+}

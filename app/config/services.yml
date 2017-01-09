@@ -23,3 +23,10 @@ services:
         parent: 'api_platform.doctrine.orm.date_filter'
         arguments: [ { tempsFin: ~ } ]
         tags: [ { name: 'api_platform.filter', id: 'competition.tempsFin' } ]
+
+    utilisateur.username_filter:
+            parent: 'api_platform.doctrine.orm.search_filter'
+            arguments: [ { username: 'exact' } ]
+            tags:
+                - name: 'api_platform.filter'
+                  id: 'utilisateur.username_filter'

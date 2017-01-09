@@ -1,76 +1,54 @@
-
 AppBundle\Entity\Utilisateur:
     attributes:
-        normalization_context:
-            groups: ['read']
-        denormalization_context:
-            groups: ['write']
+        normalization_context: { groups: ['read'] }
+        denormalization_context: { groups: ['write'] }
+        filters: ['utilisateur.username_filter']
 
 AppBundle\Entity\Pays:
     attributes:
-        normalization_context:
-            groups: ['read']
-        denormalization_context:
-            groups: ['write']
-    itemOperations:
-
+        normalization_context: { groups: ['read'] }
+        denormalization_context: {  groups: ['write'] }
 
 AppBundle\Entity\Membre:
     attributes:
-        normalization_context:
-            groups: ['read']
-        denormalization_context:
-            groups: ['write']
+        normalization_context: { groups: ['read'] }
+        denormalization_context: { groups: ['write'] }
     itemOperations:
-        get:
-            route_name: 'membre_get'
-        put:
-            method: 'PUT'
-        delete:
-            method: 'DELETE'
+        put: { method: 'PUT' }
+        delete: { method: 'DELETE' }
+        get: { route_name: 'membre_get' }
         get_competitions:
             route_name: 'organisateur_get_competitions'
 
 AppBundle\Entity\Organisateur:
     attributes:
-        normalization_context:
-            groups: ['read', 'org']
-        denormalization_context:
-            groups: ['write']
+       normalization_context: { groups: ['read', 'org'] }
+       denormalization_context: { groups: ['write'] }
     itemOperations:
-        get:
-            method: 'GET'
-        put:
-            method: 'PUT'
-        delete:
-            method: 'DELETE'
+        get: { method: 'GET' }
+        put: { method: 'PUT' }
+        delete: { method: 'DELETE' }
         get_competitions:
             route_name: 'organisateur_get_competitions'
 
 AppBundle\Entity\Participant:
     attributes:
-        normalization_context:
-            groups: ['read', 'particip-invit-read']
-        denormalization_context:
-            groups: ['write']
+        normalization_context: { groups: ['read', 'particip-invit-read'] }
+        denormalization_context: {  groups: ['write'] }
     itemOperations:
-        get:
-            method: 'GET'
-        put:
-            method: 'PUT'
-        delete:
-            method: 'DELETE'
+        get: { method: 'GET' }
+        put: { method: 'PUT' }
+        delete: { method: 'DELETE' }
         get_solutions:
             route_name: 'participant_get_solutions'
         get_invit_pariticipations:
             route_name: 'participant_get_invit_pariticipations'
 
+
 AppBundle\Entity\Competition:
     attributes:
-        normalization_context:
-            groups: ['brief', 'comp-read']
-        denormalization_context:
-            groups: ['write']
+        normalization_context: { groups: ['brief', 'comp-read'] }
+        denormalization_context: { groups: ['write'] }
         filters:
             - "competition.public"
             - "competition.publie"
@@ -79,31 +57,24 @@ AppBundle\Entity\Competition:
 
 AppBundle\Entity\Solution:
     attributes:
-        normalization_context:
-            groups: ['sol-read', 'brief']
-        denormalization_context:
-            groups: ['write']
+        normalization_context: { groups: ['sol-read', 'brief'] }
+        denormalization_context: { groups: ['write'] }
 
 AppBundle\Entity\InvitParticipation:
     attributes:
-        normalization_context:
-            groups: ['invit-read']
-        denormalization_context:
-            groups: ['write']
+        normalization_context: { groups: ['invit-read'] }
+        denormalization_context: { groups: ['write'] }
 
 AppBundle\Entity\DemandeParticipation:
     attributes:
-        normalization_context:
-            groups: ['demande-read', 'brief']
-        denormalization_context:
-            groups: ['write']
+        normalization_context: { groups: ['demande-read', 'brief'] }
+        denormalization_context: { groups: ['write'] }
 
 AppBundle\Entity\Langage:
     attributes:
-        normalization_context:
-            groups: ['read', 'brief']
-        denormalization_context:
-            groups: ['write']
+        normalization_context: { groups: ['read', 'brief'] }
+        denormalization_context: { groups: ['write'] }
+
 
 
 
