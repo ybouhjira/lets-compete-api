@@ -2,14 +2,20 @@
 
 namespace AppBundle\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * InvitPariticipation
  *
- * @ORM\Entity(repositoryClass="AppBundle\Repository\InvitPariticipationRepository")
+ * @ORM\Table(
+ *     uniqueConstraints={
+ *       @ORM\UniqueConstraint(columns={"participant_id", "competition_id"})
+ *     }
+ * )
+ * @ORM\Entity(
+ *     repositoryClass="AppBundle\Repository\InvitPariticipationRepository"
+ * )
  */
 class InvitParticipation
 {
@@ -25,7 +31,7 @@ class InvitParticipation
     /**
      * @var bool
      *
-     * @Groups({"read", "write"})
+     * @Groups({"read", "write", "brief"})
      * @ORM\Column(name="accepte", type="boolean", nullable=true)
      */
     private $accepte;
@@ -33,7 +39,7 @@ class InvitParticipation
     /**
      * @var \DateTime
      *
-     * @Groups({"read", "write"})
+     * @Groups({"read", "write", "brief"})
      * @ORM\Column(type="datetime")
      */
     private $dateTime;
@@ -41,12 +47,12 @@ class InvitParticipation
     /**
      * La compétition concernée
      * @var Competition
+     * @Groups({"read", "write", "invit-read"})
      * @ORM\ManyToOne(
      *     targetEntity="Competition",
      *     inversedBy="invitParticipations"
      * )
      * @ORM\JoinColumn(onDelete="CASCADE")
-     * @Groups({"read", "write", "invit-read"})
      */
     private $competition;
 

@@ -2,13 +2,12 @@ AppBundle\Entity\Participant:
     participant{1..50}:
         prenom: <firstName()>
         nom: <lastName()>
-
         username: <username()>
         enabled: true
         email: <email()>
         plainPassword: password
         telephone: <phoneNumber()>
-        siteWeb: <domainName()>
+        siteWeb (unique): <domainName()>
         adresse: <address()>
         presentation: <paragraph()>
         ville: '@ville*'

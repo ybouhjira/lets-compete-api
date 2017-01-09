@@ -33,7 +33,7 @@ class Organisateur extends Membre
     /**
      * Le nom de l'entreprise
      * @ORM\Column(type="string", length=255, nullable=false, unique=true)
-     * @Groups({"read", "write"})
+     * @Groups({"read", "write", "brief"})
      */
     private $nom;
 
@@ -64,7 +64,7 @@ class Organisateur extends Membre
 
     /**
      * Le nom à afficher dans le profil
-     * @Groups({"read"})
+     * @Groups({"read", "brief"})
      * @return string
      */
     public function getNomAffiche() : string

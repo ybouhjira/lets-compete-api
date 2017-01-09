@@ -56,19 +56,14 @@ AppBundle\Entity\Participant:
         get_invit_pariticipations:
             route_name: 'participant_get_invit_pariticipations'
 
-AppBundle\Entity\Langage:
-    attributes:
-        normalization_context:
-            groups: ['read']
-        denormalization_context:
-            groups: ['write']
-
 AppBundle\Entity\Competition:
     attributes:
         normalization_context:
-            groups: ['read']
+            groups: ['brief', 'comp-read']
         denormalization_context:
             groups: ['write']
+        filters:
+            - "competition.public"
 
 AppBundle\Entity\Solution:
     attributes:
@@ -88,6 +83,13 @@ AppBundle\Entity\DemandeParticipation:
     attributes:
         normalization_context:
             groups: ['demande-read', 'brief']
+        denormalization_context:
+            groups: ['write']
+
+AppBundle\Entity\Langage:
+    attributes:
+        normalization_context:
+            groups: ['read', 'brief']
         denormalization_context:
             groups: ['write']
 

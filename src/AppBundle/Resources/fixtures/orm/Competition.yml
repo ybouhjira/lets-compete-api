@@ -4,7 +4,7 @@ AppBundle\Entity\Competition:
         description: <paragraph()>
         tempsDebut: <dateTime()>
         tempsFin: <dateTime()>
-        public: true
-        publie: true
+        public: '<boolean()>'
+        publie: '<boolean()>'
         organisateur: '@organisateur*'
         langages: ['@langage2', '@langage3', '@langage6']

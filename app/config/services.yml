@@ -4,6 +4,7 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    competition.search_filter:
+        parent:    'api_platform.doctrine.orm.boolean_filter'
+        arguments: [ { public: ~ } ]
+        tags:      [ { name: 'api_platform.filter', id: 'competition.public' } ]

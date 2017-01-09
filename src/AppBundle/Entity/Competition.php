@@ -31,7 +31,7 @@ class Competition
 
     /**
      * @var
-     * @Groups({"read"})
+     * @Groups({"comp-read"})
      * @ORM\ManyToMany(
      *     targetEntity="Langage",
      *     cascade={"persist"},
@@ -43,10 +43,11 @@ class Competition
     /**
      * Les demandes de participation
      * @var ArrayCollection
+     * @Groups({"comp-read"})
      * @ORM\OneToMany(
      *     targetEntity="DemandeParticipation",
      *     cascade={"persist"},
-     *     mappedBy="participant"
+     *     mappedBy="competition"
      * )
      */
     private $demandeParticipations;
@@ -54,6 +55,7 @@ class Competition
     /**
      * Les invitations à participer
      * @var ArrayCollection
+     * @Groups({"comp-read"})
      * @ORM\OneToMany(
      *     targetEntity="InvitParticipation",
      *     cascade={"persist"},
@@ -65,14 +67,14 @@ class Competition
     /**
      * @var string
      *
-     * @Groups({"read", "write", "invit-read", "brief"})
+     * @Groups({"comp-read", "write", "invit-read", "brief"})
      * @ORM\Column(type="string", length=255)
      */
     private $titre;
 
     /**
      * @var string
-     * @Groups({"read", "write"})
+     * @Groups({"comp-read", "write"})
      * @ORM\Column(type="text")
      */
     private $description;
@@ -80,25 +82,34 @@ class Competition
 
     /**
      * @ORM\Column(type="datetime", nullable=false)
-     * @Groups({"read", "write"})
+     * @Groups({"comp-read", "write"})
      */
     private $tempsDebut;
 
     /**
+     * @var Organisateur
+     * @Groups({"comp-read", "write"
+     * })
+     * @ORM\JoinColumn(name="organiser_id", referencedColumnName="id", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Organisateur", inversedBy="competitions")
+     */
+    private $organisateur;
+
+    /**
      * @ORM\Column(type="datetime", nullable=false)
-     * @Groups({"read", "write"})
+     * @Groups({"comp-read", "write"})
      */
     private $tempsFin;
 
     /**
      * @ORM\Column(type="boolean")
-     * @Groups({"read", "write"})
+     * @Groups({"comp-read", "write"})
      */
     private $public;
 
     /**
      * @ORM\Column(type="boolean")
-     * @Groups({"read", "write"})
+     * @Groups({"comp-read", "write"})
      */
     private $publie;
 
@@ -238,13 +249,6 @@ class Competition
         return $this;
     }
 
-    /**
-     * @var Organisateur
-     * @Groups({"read", "write"})
-     * @ORM\JoinColumn(name="organiser_id", referencedColumnName="id", nullable=false)
-     * @ORM\ManyToOne(targetEntity="Organisateur", inversedBy="competitions")
-     */
-    private $organisateur;
 
     public function setOrganisateur(Organisateur $organisateur)
     {

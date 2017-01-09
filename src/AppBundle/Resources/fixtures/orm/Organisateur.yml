@@ -7,19 +7,18 @@ AppBundle\Entity\Organisateur:
         plainPassword: password
         nom: <company()>
         telephone: <phoneNumber()>
-        siteWeb: <domainName()>
+        siteWeb (unique): <domainName()>
         adresse: <address()>
         presentation: <paragraph()>
         ville: '@ville*'
-
-    oraganisateurFoo:
-        username: 'foo'
+    organisateurFoo:
+        username: 'Foo'
         enabled: true
-        email: 'foo@gmail.com'
-        plainPassword: password
+        email: <email()>
+        plainPassword: 'password'
         nom: <company()>
         telephone: <phoneNumber()>
-        siteWeb: <domainName()>
+        siteWeb: 'foo-org.com'
         adresse: <address()>
         presentation: <paragraph()>
         ville: '@ville*'

@@ -7,8 +7,11 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * DemandeParticipation
- *
- * @ORM\Table(name="demande_participation")
+ * @ORM\Table(
+ *     uniqueConstraints={
+ *       @ORM\UniqueConstraint(columns={"participant_id", "competition_id"})
+ *     }
+ * )
  * @ORM\Entity(repositoryClass="AppBundle\Repository\DemandeParticipationRepository")
  */
 class DemandeParticipation

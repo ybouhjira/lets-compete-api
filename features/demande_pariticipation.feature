@@ -63,8 +63,8 @@ Feature: Gérer les demandes
     And I send a "POST" request to "/demande_participations" with body:
     """
     {
-      "competition": "/competitions/81",
-      "participant": "/participants/56"
+      "competition": "/competitions/1",
+      "participant": "/participants/10"
     }
     """
     Then the response status code should be 201

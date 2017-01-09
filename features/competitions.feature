@@ -10,13 +10,10 @@ Feature: Gérer les compétitions
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/ld+json; charset=utf-8"
-    And the response should contain "hydra:member"
-    And the response should contain "tempsDebut"
-    And the response should contain "tempsFin"
-    And the response should contain "organisateur"
+    And the JSON should be valid according to the schema "features/schemas/competitions/getall.json"
 
   Scenario: Supprimer une compétition
-    When I send a "DELETE" request to "/competitions/1"
+    When I send a "DELETE" request to "/competitions/5"
     Then the response status code should be 204
     And the response should be empty
 
@@ -29,4 +26,4 @@ Feature: Gérer les compétitions
     And the response should contain "tempsDebut"
     And the response should contain "tempsFin"
     And the response should contain "hydra:view"
-    And the JSON should be valid according to the schema "features/schemas/get-competition.schema.json"
+    And the JSON should be valid according to the schema "features/schemas/competitions/get.json"
