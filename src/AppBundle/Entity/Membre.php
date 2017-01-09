@@ -157,7 +157,8 @@ abstract class Membre extends Utilisateur
         $this->cheminPhoto = $cheminPhoto;
         return $this;
     }
-
+    
+    
     /**
      * @return \DateTime
      */
@@ -268,7 +269,7 @@ abstract class Membre extends Utilisateur
     /**
      * @return string
      */
-    public function getAdresse() : string
+    public function getAdresse()
     {
         return $this->adresse;
     }

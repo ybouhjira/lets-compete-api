@@ -6,6 +6,15 @@ AppBundle\Entity\Utilisateur:
         denormalization_context:
             groups: ['write']
 
+AppBundle\Entity\Pays:
+    attributes:
+        normalization_context:
+            groups: ['read']
+        denormalization_context:
+            groups: ['write']
+    itemOperations:
+
+
 AppBundle\Entity\Membre:
     attributes:
         normalization_context:

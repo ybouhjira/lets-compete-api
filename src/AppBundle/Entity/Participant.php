@@ -26,6 +26,14 @@ class Participant extends Membre
      */
     private $nom;
 
+
+    /**
+     * @var
+     * @ORM\Column(name="job", type="string", length=30, nullable=true)
+     * @Groups({"read", "write"})
+     */
+    private $job;
+    
     /**
      * @var ArrayCollection Les solutions écrite par le participants
      *
@@ -223,5 +231,24 @@ class Participant extends Membre
     public function getDemandeParticipations()
     {
         return $this->demandeParticipations;
+    }
+
+    /*
+     * @return mixed
+     */
+    public function getJob()
+    {
+        return $this->job;
+    }
+
+    /**
+     * @param mixed $job
+     * @return Participant
+     */
+    public function setJob($job) : self
+    {
+        $this->job = $job;
+
+        return $this;
     }
 }

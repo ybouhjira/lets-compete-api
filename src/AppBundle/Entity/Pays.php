@@ -38,6 +38,7 @@ class Pays
 
     /**
      * @ORM\OneToMany(targetEntity="Ville", mappedBy="pays")
+     *
      */
     private $villes;
 
@@ -49,6 +50,14 @@ class Pays
     public function getVilles()
     {
         return $this->villes;
+    }
+
+    /**
+     * @return string
+     * @Groups({"read"})
+     */
+    public function getVillesList() {
+        return 'pays/' . $this->getId() . '/villes';
     }
 
     public function addVille(Ville $ville)
