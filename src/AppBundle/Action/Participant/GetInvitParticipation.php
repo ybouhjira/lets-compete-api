@@ -2,26 +2,15 @@
 namespace AppBundle\Action\Participant;
 
 use AppBundle\Entity\Participant;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Paginator;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Tools\Pagination\Paginator as DoctrineOrmPaginator;
+use AppBundle\Rest\SubResourcesList;
 
+/**
+ * Action: Récuperer les invitations de participation d'un participant
+ */
 class GetInvitParticipation
 {
-    public function __construct(EntityManager $entityManager)
+    public function __invoke(Participant $p)
     {
-        $this->entityManager = $entityManager;
-    }
-
-    public function __invoke(Participant $participant)
-    {
-        $query = $this->entityManager
-            ->getRepository('AppBundle:InvitParticipation')
-            ->createQueryBuilder('s')
-            ->where('s.participant = :id')
-            ->setParameter('id', $participant->getId())
-            ->setMaxResults(10);
-
-        return new Paginator(new DoctrineOrmPaginator($query));
+        return new SubResourcesList('InvitParticipation', 'participant', $p);
     }
 }

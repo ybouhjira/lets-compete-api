@@ -2,26 +2,15 @@
 namespace AppBundle\Action\Participant;
 
 use AppBundle\Entity\Participant;
-use Doctrine\ORM\EntityManager;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Paginator;
-use Doctrine\ORM\Tools\Pagination\Paginator as DoctrineOrmPaginator;
+use AppBundle\Rest\SubResourcesList;
 
+/**
+ * Action: Récuperer toutes les solutions d'un participants
+ */
 class GetSolutions
 {
-    public function __construct(EntityManager $entityManager)
+    public function __invoke(Participant $p)
     {
-        $this->entityManager = $entityManager;
-    }
-
-    public function __invoke(Participant $participant)
-    {
-        $query = $this->entityManager
-            ->getRepository('AppBundle:Solution')
-            ->createQueryBuilder('s')
-            ->where('s.participant = :id')
-            ->setParameter('id', $participant->getId())
-            ->setMaxResults(10);
-
-        return new Paginator(new DoctrineOrmPaginator($query));
+        return new SubResourcesList('InvitParticipation', 'participant', $p);
     }
 }

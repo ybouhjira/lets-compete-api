@@ -1,4 +1,13 @@
 AppBundle\Entity\Ville:
+    essaouira:
+        nom: 'Essaouira'
+        pays: '@maroc'
+    casablanca:
+        nom: 'Casabalanca'
+        pays: '@maroc'
+    rabat:
+        nom: 'Rabat'
+        pays: '@maroc'
     ville{1..100}:
         nom: <city()>
         pays: '@pays*'

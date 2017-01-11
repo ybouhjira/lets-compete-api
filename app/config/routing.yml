@@ -29,7 +29,7 @@ pays_get_villes:
     defaults:
       _api_resource_class: 'AppBundle\Entity\Ville'
       _api_item_operation_name: 'get_villes'
-      _controller: 'AppBundle\Action\Ville\GetVilles'
+      _controller: 'AppBundle\Action\Pays\GetVilles'
 
 participant_get_solutions:
     path: 'participants/{id}/solutions'
