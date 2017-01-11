@@ -69,3 +69,14 @@ Feature: Gérer les demandes
     """
     Then the response status code should be 201
     And the response should be in JSON
+
+  Scenario: Annuler la demande 5
+    When I add "content-type" header equal to "application/json"
+    And I send a "PUT" request to "/demande_participations/5" with body:
+    """
+    {
+	  "accepte" : false
+    }
+    """
+    Then the response status code should be 200
+    And the response should be in JSON
