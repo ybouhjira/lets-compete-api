@@ -136,7 +136,7 @@ class Participant extends Membre
     /**
      * Les solutions du participants
      */
-    public function getSolutions() : ArrayCollection
+    public function getSolutions()
     {
         return $this->solutions;
     }

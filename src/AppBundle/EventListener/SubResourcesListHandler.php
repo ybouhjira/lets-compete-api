@@ -8,6 +8,9 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Doctrine\ORM\Tools\Pagination\Paginator as DoctrineOrmPaginator;
 
+/**
+ * Transforms a SubResourcesList to a Response
+ */
 class SubResourcesListHandler
 {
     public function __construct(EntityManager $entityManager)

@@ -1,6 +1,11 @@
 <?php
 namespace AppBundle\Rest;
 
+/**
+ * Represents a list of sub resources (like: albums/{id}/photos)
+ * return it from an action/controller to get a paginated list.
+ * @package AppBundle\Rest
+ */
 class SubResourcesList
 {
     /**
@@ -18,6 +23,13 @@ class SubResourcesList
      */
     private $parent;
 
+    /**
+     * SubResourcesList constructor.
+     * @param string $subResourceClass The class name of the sub resource
+     * @param string $associationName The name of the doctrine association that
+     *   references the parent resource.
+     * @param Object $parent the parent model object
+     */
     public function __construct(string $subResourceClass,
                                 string $associationName,
                                 $parent)

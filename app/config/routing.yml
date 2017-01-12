@@ -19,33 +19,37 @@ organisateur_get_competitions:
     path: 'organisateurs/{id}/competitions'
     methods: ['GET']
     defaults:
+        _parent_entity: 'AppBundle:Organisateur'
         _api_resource_class: 'AppBundle\Entity\Competition'
         _api_item_operation_name: 'get_competitions'
-        _controller: 'AppBundle\Action\Organisateur\GetCompetitions'
+        _controller: 'AppBundle\Action\GetSubResourcesAction'
 
 pays_get_villes:
     path: 'pays/{id}/villes'
     methods: ['GET']
     defaults:
-      _api_resource_class: 'AppBundle\Entity\Ville'
-      _api_item_operation_name: 'get_villes'
-      _controller: 'AppBundle\Action\Pays\GetVilles'
+        _parent_entity: 'AppBundle:Pays'
+        _api_resource_class: 'AppBundle\Entity\Ville'
+        _api_item_operation_name: 'get_villes'
+        _controller: 'AppBundle\Action\GetSubResourcesAction'
 
 participant_get_solutions:
     path: 'participants/{id}/solutions'
     methods: ['GET']
     defaults:
+        _parent_entity: 'AppBundle:Participant'
         _api_resource_class: 'AppBundle\Entity\Solution'
         _api_item_operation_name: 'get_solutions'
-        _controller: 'AppBundle\Action\Participant\GetSolutions'
+        _controller: 'AppBundle\Action\GetSubResourcesAction'
 
 participant_get_invit_pariticipations:
     path: 'participants/{id}/invit_participations'
     methods: ['GET']
     defaults:
+        _parent_entity: 'AppBundle:Participant'
         _api_resource_class: 'AppBundle\Entity\InvitParticipation'
         _api_item_operation_name: 'get_invit_pariticipations'
-        _controller: 'AppBundle\Action\Participant\GetInvitParticipation'
+        _controller: 'AppBundle\Action\GetSubResourcesAction'
 
 membre_get:
     path: 'membres/{id}'

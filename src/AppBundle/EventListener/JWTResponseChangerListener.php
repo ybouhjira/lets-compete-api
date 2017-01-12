@@ -11,6 +11,9 @@ use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Serializer\Serializer;
 
+/**
+ * Ajoute l'id de l'utilisateur au token JWT
+ */
 class JWTResponseChangerListener
 {
 
@@ -43,7 +46,7 @@ class JWTResponseChangerListener
         );
     }
 
-    private function routeIsLoginRoute($event)
+    private function routeIsLoginRoute(FilterResponseEvent $event)
     {
         return $event->getRequest()->get('_route') === 'api_login_check';
     }

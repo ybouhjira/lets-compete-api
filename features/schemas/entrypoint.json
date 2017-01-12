@@ -1,0 +1,50 @@
+{
+  "typeEntreeSortie": {
+    "constant": "/type_entree_sorties"
+  },
+  "fichierCode": {
+    "constant": "/fichier_codes"
+  },
+  "probleme": {
+    "constant": "/problemes"
+  },
+  "pays": {
+    "constant": "/pays"
+  },
+  "entreeSortie": {
+    "constant": "/entree_sorties"
+  },
+  "admin": {
+    "constant": "/admins"
+  },
+  "ville": {
+    "constant": "/villes"
+  },
+  "utilisateur": {
+    "constant": "/utilisateurs"
+  },
+  "membre": {
+    "constant": "/membres"
+  },
+  "organisateur": {
+    "constant": "/organisateurs"
+  },
+  "participant": {
+    "constant": "/participants"
+  },
+  "competition": {
+    "constant": "/competitions"
+  },
+  "solution": {
+    "constant": "/solutions"
+  },
+  "invitParticipation": {
+    "constant": "/invit_participations"
+  },
+  "demandeParticipation": {
+    "constant": "/demande_participations"
+  },
+  "langage": {
+    "constant": "/langages"
+  }
+}
