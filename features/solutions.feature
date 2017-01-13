@@ -23,6 +23,10 @@ Feature: Gérer les solutions
             "properties" : {
                 "properties" : {
                   "@id": {"type" : "string"},
+                  "fichier_codes": {
+                    "type": "string",
+                    "pattern": "^/solutions/\\d+/fichier_codes$"
+                  },
                   "langage": {
                     "properties" : {
                       "@id": "/langages/2",

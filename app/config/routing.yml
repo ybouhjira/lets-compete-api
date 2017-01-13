@@ -42,22 +42,31 @@ participant_get_solutions:
         _api_item_operation_name: 'get_solutions'
         _controller: 'AppBundle\Action\GetSubResourcesAction'
 
-participant_get_invit_pariticipations:
+participant_get_invit_participations:
     path: 'participants/{id}/invit_participations'
     methods: ['GET']
     defaults:
         _parent_entity: 'AppBundle:Participant'
         _api_resource_class: 'AppBundle\Entity\InvitParticipation'
-        _api_item_operation_name: 'get_invit_pariticipations'
+        _api_item_operation_name: 'get_invit_participations'
         _controller: 'AppBundle\Action\GetSubResourcesAction'
         
-participant_get_demande_pariticipations:
+participant_get_demande_participations:
     path: 'participants/{id}/demande_participations'
     methods: ['GET']
     defaults:
         _parent_entity: 'AppBundle:Participant'
         _api_resource_class: 'AppBundle\Entity\DemandeParticipation'
-        _api_item_operation_name: 'get_demande_pariticipations'
+        _api_item_operation_name: 'get_demande_participations'
+        _controller: 'AppBundle\Action\GetSubResourcesAction'
+
+solution_get_fichier_codes:
+    path: 'solutions/{id}/fichier_codes'
+    methods: ['GET']
+    defaults:
+        _parent_entity: 'AppBundle:Solution'
+        _api_resource_class: 'AppBundle\Entity\FichierCode'
+        _api_item_operation_name: 'get_fichier_codes'
         _controller: 'AppBundle\Action\GetSubResourcesAction'
 
 membre_get:
