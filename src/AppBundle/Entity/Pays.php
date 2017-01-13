@@ -52,14 +52,6 @@ class Pays
         return $this->villes;
     }
 
-    /**
-     * @return string
-     * @Groups({"read"})
-     */
-    public function getVillesList() {
-        return 'pays/' . $this->getId() . '/villes';
-    }
-
     public function addVille(Ville $ville)
     {
         $this->villes->add($ville);

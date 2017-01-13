@@ -1,0 +1,25 @@
+{
+  "properties": {
+    "ville": {
+      "type": "object"
+    },
+    "adresse": {
+      "type": "string"
+    },
+    "telephone": {
+      "type": "string"
+    },
+    "cheminPhoto": {
+      "type": ["string", "null"]
+    },
+    "nomAffiche": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "competitions": {
+      "type": "string"
+    }
+  }
+}

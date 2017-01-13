@@ -26,7 +26,6 @@ class Participant extends Membre
      */
     private $nom;
 
-
     /**
      * @var
      * @ORM\Column(name="job", type="string", length=30, nullable=true)
@@ -66,15 +65,6 @@ class Participant extends Membre
      * )
      */
     private $demandeParticipations;
-
-    /**
-     * @Groups({"read"})
-     * @return string
-     */
-    public function getSolutionsList()
-    {
-        return 'participants/' . $this->getId() . '/solutions';
-    }
 
     /**
      * @return mixed
@@ -122,15 +112,6 @@ class Participant extends Membre
     public function getNomAffiche() : string
     {
         return $this->getPrenom() . ' ' . $this->getNom();
-    }
-
-    /**
-     * @Groups({"read"})
-     * @return string
-     */
-    public function getInvitParticipationsList() : string
-    {
-        return '/participants/' . $this->getId() . '/invit_participations';
     }
 
     /**

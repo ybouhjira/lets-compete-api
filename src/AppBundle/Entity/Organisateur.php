@@ -22,15 +22,6 @@ class Organisateur extends Membre
     protected $competitions;
 
     /**
-     * URL de la liste des compétitions de cet organisateur.
-     * @Groups({"read"})
-     * @return string
-     */
-    public function getCompetitionsList() {
-        return '/organisateurs/' . $this->getId() . '/competitions';
-    }
-
-    /**
      * Le nom de l'entreprise
      * @ORM\Column(type="string", length=255, nullable=false, unique=true)
      * @Groups({"read", "write", "brief"})

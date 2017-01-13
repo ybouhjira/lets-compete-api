@@ -17,13 +17,7 @@ Feature: Gérer les organisateurs
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/ld+json; charset=utf-8"
-    And the response should contain "ville"
-    And the response should contain "adresse"
-    And the response should contain "telephone"
-    And the response should contain "cheminPhoto"
-    And the response should contain "nomAffiche"
-    And the response should contain "email"
-    And the response should contain "competitionsList"
+    And the JSON should be valid according to the schema "features/schemas/organisateurs/get.json"
 
   Scenario: Supprimer l'organisateur ayant l'id 1
     When I add "Accept" header equal to "application/ld+json"

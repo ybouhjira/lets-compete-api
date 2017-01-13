@@ -1,0 +1,22 @@
+{
+  "properties": {
+    "hydra:membre": {
+      "items": {
+        "properties" : {
+          "@id": {
+            "type": "string"
+          },
+          "@type": {
+            "constant": "Ville"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "nom": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

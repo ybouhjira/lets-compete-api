@@ -38,11 +38,23 @@ services:
             - name: kernel.event_listener
               event: kernel.response
               priority: 65
+
     app.event_listeners.sub_resources_list_handler:
-            class: AppBundle\EventListener\SubResourcesListHandler
-            arguments: [ '@doctrine.orm.entity_manager' ]
-            tags:
-                - name: kernel.event_listener
-                  event: kernel.view
-                  priority: 65
+        class: AppBundle\EventListener\SubResourcesListHandler
+        arguments: [ '@doctrine.orm.entity_manager' ]
+        tags:
+            - name: kernel.event_listener
+              event: kernel.view
+              priority: 65
+
+    app.resource_normalizer:
+        class: AppBundle\Service\Normalizer\ResourceNormalizer
+        public: false
+        arguments:
+            - '@api_platform.jsonld.normalizer.item'
+            - '@router'
+        tags:
+            - name: serializer.normalizer
+              priority: 99
+
 
