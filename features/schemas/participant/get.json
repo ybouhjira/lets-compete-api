@@ -1,0 +1,21 @@
+{
+  "properties": {
+    "@id": {
+      "type": "string"
+    },
+    "nom": {
+      "type": "string"
+    },
+    "prenom": {
+      "type": "string"
+    },
+    "competitions": {
+      "type": "string",
+      "pattern": "^/participants/\\d+/competitions$"
+    },
+    "solutions": {
+      "type": "string",
+      "pattern": "^/participants/\\d+/solutions$"
+    }
+  }
+}

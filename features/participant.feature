@@ -11,9 +11,8 @@ Feature: Gérer les participants
     When I send a "GET" request to "/participants/10"
     Then the response status code should be 200
     And the response should be in JSON
-    And the response should contain "nom"
-    And the response should contain "prenom"
-    But the response should not contain "competitions"
+    And print last JSON response
+    And the JSON should be valid according to the schema "features/schemas/participant/get.json"
 
   Scenario: Supprimer le participant ayant l'id 15
     When I send a "DELETE" request to "/participants/15"

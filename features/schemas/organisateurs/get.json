@@ -19,7 +19,8 @@
       "type": "string"
     },
     "competitions": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^/organisateurs/\\d+/competitions$"
     }
   }
 }
