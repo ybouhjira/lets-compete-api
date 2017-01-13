@@ -43,6 +43,8 @@ AppBundle\Entity\Participant:
             route_name: 'participant_get_solutions'
         get_invit_pariticipations:
             route_name: 'participant_get_invit_pariticipations'
+        get_demande_pariticipations:
+            route_name: 'participant_get_demande_pariticipations'
 
 
 AppBundle\Entity\Competition:

@@ -50,6 +50,15 @@ participant_get_invit_pariticipations:
         _api_resource_class: 'AppBundle\Entity\InvitParticipation'
         _api_item_operation_name: 'get_invit_pariticipations'
         _controller: 'AppBundle\Action\GetSubResourcesAction'
+        
+participant_get_demande_pariticipations:
+    path: 'participants/{id}/demande_participations'
+    methods: ['GET']
+    defaults:
+        _parent_entity: 'AppBundle:Participant'
+        _api_resource_class: 'AppBundle\Entity\DemandeParticipation'
+        _api_item_operation_name: 'get_demande_pariticipations'
+        _controller: 'AppBundle\Action\GetSubResourcesAction'
 
 membre_get:
     path: 'membres/{id}'

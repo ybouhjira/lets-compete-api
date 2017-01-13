@@ -16,6 +16,14 @@
     "solutions": {
       "type": "string",
       "pattern": "^/participants/\\d+/solutions$"
+    },
+    "invit_participations": {
+      "type": "string",
+      "pattern": "^/participants/\\d+/invit_participations"
+    },
+    "demande_participations": {
+      "type": "string",
+      "pattern": "^/participants/\\d+/demande_participations"
     }
   }
 }
