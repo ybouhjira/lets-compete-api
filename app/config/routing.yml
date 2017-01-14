@@ -9,6 +9,36 @@ app:
 api_login_check:
     path: /api/login_check
 
+participant_get_solutions:
+    path: participants/{id}/solutions
+    methods: ['GET']
+    defaults:
+        _parent_entity: participant
+        _api_resource_class: AppBundle\Entity\Solution
+        _api_collection_operation_name: 'get_solutions'
+        _controller: ApiPlatform\Core\Action\PlaceholderAction
+        _sub_resource: ~
+
+participant_get_invit_participations:
+    path: participants/{id}/invit_participations
+    methods: ['GET']
+    defaults:
+        _parent_entity: participant
+        _api_resource_class: AppBundle\Entity\InvitParticipation
+        _api_collection_operation_name: get_invit_participations
+        _controller: ApiPlatform\Core\Action\PlaceholderAction
+        _sub_resource: ~
+
+participant_get_demande_participations:
+    path: participants/{id}/demande_participations
+    methods: ['GET']
+    defaults:
+        _parent_entity: participant
+        _api_resource_class: AppBundle\Entity\DemandeParticipation
+        _api_collection_operation_name: get_demande_participations
+        _controller: ApiPlatform\Core\Action\PlaceholderAction
+        _sub_resource: ~
+
 membre_upload_photo:
     path: 'membres/{id}/photo'
     methods: ['POST']
@@ -16,13 +46,14 @@ membre_upload_photo:
         _controller: 'AppBundle\Action\Membre\UploadPhoto'
 
 organisateur_get_competitions:
-    path: 'organisateurs/{id}/competitions'
+    path: organisateurs/{id}/competitions
     methods: ['GET']
     defaults:
-        _parent_entity: 'AppBundle:Organisateur'
-        _api_resource_class: 'AppBundle\Entity\Competition'
-        _api_item_operation_name: 'get_competitions'
-        _controller: 'AppBundle\Action\GetSubResourcesAction'
+        _parent_entity: organisateur
+        _api_resource_class: AppBundle\Entity\Competition
+        _api_collection_operation_name: get_competitions
+        _controller: ApiPlatform\Core\Action\PlaceholderAction
+        _sub_resource: ~
 
 pays_get_villes:
     path: 'pays/{id}/villes'
@@ -31,33 +62,6 @@ pays_get_villes:
         _parent_entity: 'AppBundle:Pays'
         _api_resource_class: 'AppBundle\Entity\Ville'
         _api_item_operation_name: 'get_villes'
-        _controller: 'AppBundle\Action\GetSubResourcesAction'
-
-participant_get_solutions:
-    path: 'participants/{id}/solutions'
-    methods: ['GET']
-    defaults:
-        _parent_entity: 'AppBundle:Participant'
-        _api_resource_class: 'AppBundle\Entity\Solution'
-        _api_item_operation_name: 'get_solutions'
-        _controller: 'AppBundle\Action\GetSubResourcesAction'
-
-participant_get_invit_participations:
-    path: 'participants/{id}/invit_participations'
-    methods: ['GET']
-    defaults:
-        _parent_entity: 'AppBundle:Participant'
-        _api_resource_class: 'AppBundle\Entity\InvitParticipation'
-        _api_item_operation_name: 'get_invit_participations'
-        _controller: 'AppBundle\Action\GetSubResourcesAction'
-        
-participant_get_demande_participations:
-    path: 'participants/{id}/demande_participations'
-    methods: ['GET']
-    defaults:
-        _parent_entity: 'AppBundle:Participant'
-        _api_resource_class: 'AppBundle\Entity\DemandeParticipation'
-        _api_item_operation_name: 'get_demande_participations'
         _controller: 'AppBundle\Action\GetSubResourcesAction'
 
 solution_get_fichier_codes:

@@ -57,4 +57,11 @@ services:
             - name: serializer.normalizer
               priority: 99
 
-
+    app.parent_extension:
+        class: AppBundle\Service\Extension\ParentExtension
+        public: false
+        arguments:
+            - '@request_stack'
+        tags:
+            - { name: api_platform.doctrine.orm.query_extension.collection, priority: 9 }
+            #- { name: api_platform.doctrine.orm.query_extension.item }

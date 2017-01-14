@@ -37,6 +37,7 @@ class FichierCode
      *     inversedBy="fichiersCode",
      *     cascade={"persist"}
      * )
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $solution;
 

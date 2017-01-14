@@ -2,10 +2,12 @@
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
+use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Behat\Tester\Exception\PendingException;
-use Behat\MinkExtension\Context\RawMinkContext;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Tools\SchemaTool;
+use Sanpi\Behatch\Context\JsonContext;
+use Sanpi\Behatch\HttpCall\HttpCallResultPool;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
@@ -55,6 +57,16 @@ class FeatureContext implements Context, SnippetAcceptingContext
     private $options;
 
     /**
+     * @var BehatchRequest
+     */
+    private $request;
+
+    /**
+     * @var HttpCallResultPool
+     */
+    private $httpCallResultPool;
+
+    /**
      * Initializes context.
      *
      * Every scenario gets its own context instance.
@@ -65,10 +77,12 @@ class FeatureContext implements Context, SnippetAcceptingContext
      * @internal param BehatchRequest $request
      */
     public function __construct(ManagerRegistry $doctrine,
-                                Kernel $kernel)
+                                Kernel $kernel,
+                                BehatchRequest $request)
     {
         $this->client = new GuzzleHttp\Client();
         $this->options = [['verify' => false]];
+        $this->request = $request;
 
         $this->kernel = $kernel;
         $this->doctrine = $doctrine;
@@ -127,6 +141,25 @@ class FeatureContext implements Context, SnippetAcceptingContext
                 'contents' => fopen(__DIR__ . '/photo.jpg', 'r')
             ],
         ];
+    }
+
+    /**
+     * @Then I do a GET request on on his :subresources
+     */
+    public function iDoAGetRequestOnOnHis($subresources)
+    {
+        $matches = [];
+        preg_match(
+            "/\\d+/",
+            $this->request->getContent(),
+            $matches
+        );
+        $id = $matches[0];
+
+        return $this->request->send(
+            'GET',
+            "/organisateurs/$id/$subresources"
+        );
     }
 
 }

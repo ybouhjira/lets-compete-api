@@ -77,7 +77,7 @@ abstract class Membre extends Utilisateur
      *     cascade={"persist"},
      *     fetch="EAGER"
      * )
-     * @ORM\JoinColumn(fieldName="ville_id", onDelete="set null", nullable=true)
+     * @ORM\JoinColumn(onDelete="set null", nullable=true)
      * @Groups({"read", "write"})
      */
     private $ville;

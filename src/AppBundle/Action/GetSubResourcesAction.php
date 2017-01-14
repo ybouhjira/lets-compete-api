@@ -3,6 +3,7 @@ namespace AppBundle\Action;
 
 use AppBundle\Rest\SubResourcesList;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Action: Récuperer toutes les solutions d'un participants
@@ -32,6 +33,13 @@ class GetSubResourcesAction
                              string $_api_resource_class,
                              string $_association = null)
     {
+        $parent = $this->entityManager
+            ->getRepository($_parent_entity)
+            ->find($id);
+
+        if (!$parent)
+            throw new NotFoundHttpException('Parent resource not found');
+
         if (!$_association) {
             $_association = strtolower(
                 preg_replace('/.*:/', '', $_parent_entity)
@@ -39,11 +47,6 @@ class GetSubResourcesAction
         }
 
         $resShortClass = preg_replace('/.*\\\\/', '', $_api_resource_class);
-
-        $parent = $this->entityManager
-            ->getRepository($_parent_entity)
-            ->find($id);
-
         return new SubResourcesList($resShortClass, $_association, $parent);
     }
 }

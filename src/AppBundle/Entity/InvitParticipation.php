@@ -14,7 +14,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     }
  * )
  * @ORM\Entity(
- *     repositoryClass="AppBundle\Repository\InvitPariticipationRepository"
+ *     repositoryClass="AppBundle\Repository\InvitParticipationRepository"
  * )
  */
 class InvitParticipation
@@ -64,12 +64,13 @@ class InvitParticipation
     /**
      * Le participant
      * @var Participant
+     * @Groups({"write", "invit-read"})
      * @ORM\ManyToOne(
      *     targetEntity="Participant",
+     *     cascade={"persist"},
      *     inversedBy="invitParticipations"
      * )
      * @ORM\JoinColumn(onDelete="CASCADE")
-     * @Groups({"invit-read"})
      */
     private $participant;
 

@@ -25,7 +25,6 @@ Feature: Gérer les compétitions
     And the header "Content-Type" should be equal to "application/ld+json; charset=utf-8"
     And the response should contain "tempsDebut"
     And the response should contain "tempsFin"
-    And the response should contain "hydra:view"
     And the JSON should be valid according to the schema "features/schemas/competitions/get.json"
 
   Scenario: Récuperer les compétitions privées seulement

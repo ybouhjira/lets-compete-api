@@ -10,7 +10,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * Solution
  *
- * @ORM\Table(name="solution")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SolutionRepository")
  */
 class Solution
@@ -54,7 +53,7 @@ class Solution
      *     cascade={"persist"},
      *     inversedBy="solutions"
      * )
-     * @ORM\JoinColumn(fieldName="participant_id", onDelete="cascade")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $participant;
 
@@ -81,7 +80,7 @@ class Solution
      *     cascade={"persist"},
      *     inversedBy="solutions"
      * )
-     * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
+     * @ORM\JoinColumn(onDelete="CASCADE")
      * @Groups({"read", "write"})
      */
     private $probleme;

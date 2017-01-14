@@ -24,27 +24,11 @@ AppBundle\Entity\Organisateur:
     attributes:
        normalization_context: { groups: ['read', 'org'] }
        denormalization_context: { groups: ['write'] }
-    itemOperations:
-        get: { method: 'GET' }
-        put: { method: 'PUT' }
-        delete: { method: 'DELETE' }
-        get_competitions:
-            route_name: 'organisateur_get_competitions'
 
 AppBundle\Entity\Participant:
     attributes:
         normalization_context: { groups: ['read', 'particip-invit-read'] }
         denormalization_context: {  groups: ['write'] }
-    itemOperations:
-        get: { method: 'GET' }
-        put: { method: 'PUT' }
-        delete: { method: 'DELETE' }
-        get_solutions:
-            route_name: 'participant_get_solutions'
-        get_invit_pariticipations:
-            route_name: 'participant_get_invit_participations'
-        get_demande_pariticipations:
-            route_name: 'participant_get_demande_participations'
 
 AppBundle\Entity\Competition:
     attributes:
@@ -69,7 +53,7 @@ AppBundle\Entity\Solution:
 
 AppBundle\Entity\InvitParticipation:
     attributes:
-        normalization_context: { groups: ['invit-read'] }
+        normalization_context: { groups: ['invit-read', 'brief'] }
         denormalization_context: { groups: ['write'] }
 
 AppBundle\Entity\DemandeParticipation:
@@ -82,6 +66,8 @@ AppBundle\Entity\Langage:
         normalization_context: { groups: ['read', 'brief'] }
         denormalization_context: { groups: ['write'] }
 
-
-
+AppBundle\Entity\Probleme:
+    attributes:
+        normalization_context: { groups: ['read', 'brief'] }
+        denormalization_context: { groups: ['write'] }
 

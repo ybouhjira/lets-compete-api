@@ -1,0 +1,22 @@
+{
+  "properties": {
+    "hydra:member": {
+      "type": "array",
+      "items": {
+        "properties": {
+          "@id": {
+            "type": "string",
+            "pattern": "^/"
+          }
+        }
+      }
+    },
+    "hydra:totalItems": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "hydra:member",
+    "hydra:totalItems"
+  ]
+}

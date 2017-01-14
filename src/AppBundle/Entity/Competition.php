@@ -10,7 +10,6 @@ use Symfony\Component\Validator\Constraints\DateTime;
 /**
  * Competition
  *
- * @ORM\Table(name="competition")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CompetitionRepository")
  */
 class Competition
@@ -25,7 +24,11 @@ class Competition
     protected $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Probleme", mappedBy="competition", cascade={"persist"})
+     * @ORM\OneToMany(
+     *     targetEntity="Probleme",
+     *     mappedBy="competition",
+     *     cascade={"persist"}
+     * )
      */
     private $problemes;
 
@@ -79,7 +82,6 @@ class Competition
      */
     private $description;
 
-
     /**
      * @ORM\Column(type="datetime", nullable=false)
      * @Groups({"comp-read", "write"})
@@ -88,9 +90,8 @@ class Competition
 
     /**
      * @var Organisateur
-     * @Groups({"comp-read", "write"
-     * })
-     * @ORM\JoinColumn(name="organiser_id", referencedColumnName="id", nullable=false)
+     * @Groups({"comp-read", "write"})
+     * @ORM\JoinColumn(onDelete="CASCADE")
      * @ORM\ManyToOne(targetEntity="Organisateur", inversedBy="competitions")
      */
     private $organisateur;
