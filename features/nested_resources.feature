@@ -1,5 +1,21 @@
 Feature: Sous resources
 
+  Scenario: Récuperer les compétitions de l'organisateur 4
+    When I send a "GET" request to "/organisateurs/4/competitions"
+    And the response status code should be 200
+    And the response should be in JSON
+    And the JSON should be valid according to the schema "features/schemas/has-pagination.json"
+    And the JSON should be valid according to this schema:
+    """
+    {
+      "properties": {
+        "hydra:totalItems": {
+          "constant": 115
+        }
+      }
+    }
+    """
+
   Scenario: Récuperer les solutions d'un participant
     When I send a "GET" request to "/participants/15"
     Then the response status code should be 200

@@ -1,0 +1,31 @@
+{
+  "required": [
+    "hydra:view",
+    "hydra:totalItems"
+  ],
+  "properties": {
+    "hydra:totalItems": {
+      "type": "integer"
+    },
+    "hydra:view": {
+      "required": [
+        "hydra:first",
+        "hydra:last"
+      ],
+      "properties": {
+        "hydra:first": {
+          "type": "string",
+          "pattern": "\\?page=\\d+"
+        },
+        "hydra:last": {
+          "type": "string",
+          "pattern": "\\?page=\\d+"
+        },
+        "hydra:next": {
+          "type": "string",
+          "pattern": "\\?page=\\d+"
+        }
+      }
+    }
+  }
+}

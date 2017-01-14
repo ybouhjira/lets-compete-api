@@ -8,3 +8,13 @@ AppBundle\Entity\Competition:
         publie: '<boolean()>'
         organisateur: '@organisateur*'
         langages: ['@langage2', '@langage3', '@langage6']
+
+    competition{101..200}:
+        titre: Competition <sentence(2)>
+        description: <paragraph()>
+        tempsDebut: <dateTime()>
+        tempsFin: <dateTime()>
+        public: '<boolean()>'
+        publie: '<boolean()>'
+        organisateur: '@organisateur4'
+        langages: ['@langage2', '@langage3', '@langage6']
