@@ -31,14 +31,6 @@ services:
             - name: 'api_platform.filter'
               id: 'utilisateur.username_filter'
 
-    app.event_listeners.jwt_response_changer_listener:
-        class: AppBundle\EventListener\JWTResponseChangerListener
-        arguments: [ '@doctrine.orm.entity_manager', '@api_platform.serializer' ]
-        tags:
-            - name: kernel.event_listener
-              event: kernel.response
-              priority: 65
-
     app.event_listeners.sub_resources_list_handler:
         class: AppBundle\EventListener\SubResourcesListHandler
         arguments: [ '@doctrine.orm.entity_manager' ]
@@ -65,3 +57,9 @@ services:
         tags:
             - { name: api_platform.doctrine.orm.query_extension.collection, priority: 9 }
             #- { name: api_platform.doctrine.orm.query_extension.item }
+
+    acme_api.event.jwt_created_listener:
+            class: AppBundle\EventListener\JWTCreatedListener
+            arguments: [ '@doctrine.orm.entity_manager' ]
+            tags:
+                - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }
