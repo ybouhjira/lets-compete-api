@@ -91,7 +91,7 @@ class Competition
     /**
      * @var Organisateur
      * @Groups({"comp-read", "write"})
-     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
      * @ORM\ManyToOne(targetEntity="Organisateur", inversedBy="competitions")
      */
     private $organisateur;
@@ -294,11 +294,11 @@ class Competition
     /**
      * Add langage
      *
-     * @param \AppBundle\Entity\Langage $langage
+     * @param Langage $langage
      *
      * @return Competition
      */
-    public function addLangage(\AppBundle\Entity\Langage $langage)
+    public function addLangage(Langage $langage)
     {
         $this->langages[] = $langage;
 
@@ -308,9 +308,9 @@ class Competition
     /**
      * Remove langage
      *
-     * @param \AppBundle\Entity\Langage $langage
+     * @param Langage $langage
      */
-    public function removeLangage(\AppBundle\Entity\Langage $langage)
+    public function removeLangage(Langage $langage)
     {
         $this->langages->removeElement($langage);
     }
@@ -328,11 +328,11 @@ class Competition
     /**
      * Add invitParticipation
      *
-     * @param \AppBundle\Entity\InvitParticipation $invitParticipation
+     * @param InvitParticipation $invitParticipation
      *
      * @return Competition
      */
-    public function addInvitParticipation(\AppBundle\Entity\InvitParticipation $invitParticipation)
+    public function addInvitParticipation(InvitParticipation $invitParticipation)
     {
         $this->invitParticipations[] = $invitParticipation;
 
@@ -342,9 +342,9 @@ class Competition
     /**
      * Remove invitParticipation
      *
-     * @param \AppBundle\Entity\InvitParticipation $invitParticipation
+     * @param InvitParticipation $invitParticipation
      */
-    public function removeInvitParticipation(\AppBundle\Entity\InvitParticipation $invitParticipation)
+    public function removeInvitParticipation(InvitParticipation $invitParticipation)
     {
         $this->invitParticipations->removeElement($invitParticipation);
     }
@@ -362,11 +362,11 @@ class Competition
     /**
      * Add demandeParticipation
      *
-     * @param \AppBundle\Entity\DemandeParticipation $demandeParticipation
+     * @param DemandeParticipation $demandeParticipation
      *
      * @return Participant
      */
-    public function addDemandeParticipation(\AppBundle\Entity\DemandeParticipation $demandeParticipation)
+    public function addDemandeParticipation(DemandeParticipation $demandeParticipation)
     {
         $this->demandeParticipations[] = $demandeParticipation;
 
@@ -376,9 +376,9 @@ class Competition
     /**
      * Remove demandeParticipation
      *
-     * @param \AppBundle\Entity\DemandeParticipation $demandeParticipation
+     * @param DemandeParticipation $demandeParticipation
      */
-    public function removeDemandeParticipation(\AppBundle\Entity\DemandeParticipation $demandeParticipation)
+    public function removeDemandeParticipation(DemandeParticipation $demandeParticipation)
     {
         $this->demandeParticipations->removeElement($demandeParticipation);
     }
