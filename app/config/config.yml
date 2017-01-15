@@ -16,7 +16,12 @@ api_platform:
     collection:
         pagination:
             enabled: true
-
+            client_enabled: false
+            client_items_per_page: true
+            items_per_page: 10
+            maximum_items_per_page: 30
+            page_parameter_name: 'page'
+            items_per_page_parameter_name: 'itemsPerPage'
 
 framework:
     #esi:             ~
