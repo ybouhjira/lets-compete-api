@@ -39,10 +39,12 @@ Feature: Gérer les invitations
     """
 
   Scenario: Supprimer l'invitation ayant l'id 1
-    And I send a "DELETE" request to "/invit_participations/1"
+    When I send a "GET" request to "/invit_participations/1"
+    Then the JSON should be valid according to the schema "features/schemas/invit_participations/get.json"
+    When I send a "DELETE" request to "/invit_participations/1"
     Then the response status code should be 204
     And the response should be empty
-    And I send a "GET" request to "/invit_participations/1"
+    When I send a "GET" request to "/invit_participations/1"
     Then the response status code should be 404
 
   Scenario: Lister les invitations

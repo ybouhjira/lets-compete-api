@@ -84,7 +84,7 @@ class Competition
 
     /**
      * @ORM\Column(type="datetime", nullable=false)
-     * @Groups({"comp-read", "write"})
+     * @Groups({"comp-read", "write", "brief"})
      */
     private $tempsDebut;
 
@@ -98,7 +98,7 @@ class Competition
 
     /**
      * @ORM\Column(type="datetime", nullable=false)
-     * @Groups({"comp-read", "write"})
+     * @Groups({"comp-read", "write", "brief"})
      */
     private $tempsFin;
 
