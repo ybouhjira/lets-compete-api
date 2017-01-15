@@ -46,7 +46,7 @@ Feature: Gérer les invitations
     And the response should be empty
     When I send a "GET" request to "/invit_participations/1"
     Then the response status code should be 404
-
+    
   Scenario: Lister les invitations
     When I add "Accept" header equal to "application/ld+json"
     And I send a "GET" request to "/invit_participations"

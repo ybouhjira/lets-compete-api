@@ -4,6 +4,13 @@ parameters:
 #    parameter_name: value
 
 services:
+    invit_participation.accepte_filter:
+        parent: 'api_platform.doctrine.orm.boolean_filter'
+        arguments: [ { accepte: ~ } ]
+        tags:
+            - name: 'api_platform.filter'
+              id: 'invit_participation.accepte'
+
     competition.public_filter:
         parent: 'api_platform.doctrine.orm.boolean_filter'
         arguments: [ { public: ~ } ]
