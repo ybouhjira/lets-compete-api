@@ -1,4 +1,5 @@
 AppBundle\Entity\DemandeParticipation:
-    demande_participation{1..10}:
+    demande_participation{1..50}:
+        accepte: '40%? <boolean()>'
         competition: '@competition*'
         participant: '@participant*'

@@ -63,6 +63,8 @@ AppBundle\Entity\DemandeParticipation:
     attributes:
         normalization_context: { groups: ['demande-read', 'brief'] }
         denormalization_context: { groups: ['write'] }
+        filters:
+            - 'invit_participation.accepte'
 
 AppBundle\Entity\Langage:
     attributes:
