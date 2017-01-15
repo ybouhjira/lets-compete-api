@@ -57,7 +57,7 @@
         "teaandcode/behat-guzzle-extension": "^0.3.9"
     },
     "scripts": {
-        "test" : "vendor/bin/behat --colors --stop-on-failure -vv && vendor/bin/phpunit --colors",
+        "test" : "cp -f var/cache/test/db.sqlite.copy var/cache/test/db.sqlite && vendor/bin/behat --colors --stop-on-failure -vv && vendor/bin/phpunit --colors",
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",

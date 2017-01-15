@@ -78,3 +78,19 @@ Feature: Sous resources
     And The file "test" exists in web folder "test"
     And I do a GET request on on his "competitions"
     Then the response status code should be 200
+
+  Scenario: Récuperer les compétitions d'un langage
+    When I send a "GET" request to "/langages/2"
+    Then the JSON should be valid according to this schema:
+    """
+    {
+      "required": ["competitions"],
+      "properties": {
+        "competitions": {"type": "string", "pattern": "^/"}
+      }
+    }
+    """
+    When I send a "GET" request to "/langages/2/competitions"
+    And the response status code should be 200
+    And the response should be in JSON
+    And the JSON should be valid according to the schema "features/schemas/list.json"
