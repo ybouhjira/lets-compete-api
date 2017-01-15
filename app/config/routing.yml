@@ -55,6 +55,16 @@ organisateur_get_competitions:
         _controller: ApiPlatform\Core\Action\PlaceholderAction
         _sub_resource: ~
 
+competition_get_problemes:
+    path: competitions/{id}/problemes
+    methods: ['GET']
+    defaults:
+        _parent_entity: competition
+        _api_resource_class: AppBundle\Entity\Probleme
+        _api_collection_operation_name: get_problemes
+        _controller: ApiPlatform\Core\Action\PlaceholderAction
+        _sub_resource: ~
+
 pays_get_villes:
     path: 'pays/{id}/villes'
     methods: ['GET']
