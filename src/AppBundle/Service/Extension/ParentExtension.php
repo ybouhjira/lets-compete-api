@@ -38,8 +38,15 @@ class ParentExtension implements QueryCollectionExtensionInterface
         $id = $attrs->get('_route_params')['id'];
         $parent = $attrs->get('_parent_entity');
 
-        $queryBuilder
-            ->where("o.$parent = :id")
-            ->setParameter('id', $id);
+        if (!$attrs->has('_parent_entity')) {
+            $queryBuilder
+                ->join('o.' . $attrs->get('_related_entity'), 'rel')
+                ->where('rel.id = :id')
+                ->setParameter('id', $id);
+        } else {
+            $queryBuilder
+                ->where("o.$parent = :id")
+                ->setParameter('id', $id);
+        }
     }
 }

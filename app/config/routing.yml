@@ -9,6 +9,16 @@ app:
 api_login_check:
     path: /api/login_check
 
+langage_get_competitions:
+    path: langages/{id}/competitions
+    methods: ['GET']
+    defaults:
+        _related_entity: langages
+        _api_resource_class: AppBundle\Entity\Competition
+        _api_collection_operation_name: 'get_competitions'
+        _controller: ApiPlatform\Core\Action\PlaceholderAction
+        _sub_resource: ~
+
 participant_get_solutions:
     path: participants/{id}/solutions
     methods: ['GET']
