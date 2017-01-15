@@ -5,6 +5,7 @@ use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Behat\Tester\Exception\PendingException;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\SchemaTool;
 use Sanpi\Behatch\Context\JsonContext;
 use Sanpi\Behatch\HttpCall\HttpCallResultPool;
@@ -62,6 +63,11 @@ class FeatureContext implements Context, SnippetAcceptingContext
     private $request;
 
     /**
+     * @var EntityManager
+     */
+    private $em;
+
+    /**
      * @var HttpCallResultPool
      */
     private $httpCallResultPool;
@@ -78,7 +84,8 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function __construct(ManagerRegistry $doctrine,
                                 Kernel $kernel,
-                                BehatchRequest $request)
+                                BehatchRequest $request,
+                                EntityManager $entityManager)
     {
         $this->client = new GuzzleHttp\Client();
         $this->options = [['verify' => false]];
@@ -87,8 +94,17 @@ class FeatureContext implements Context, SnippetAcceptingContext
         $this->kernel = $kernel;
         $this->doctrine = $doctrine;
         $this->manager = $doctrine->getManager();
+        $this->em = $entityManager;
         $this->schemaTool = new SchemaTool($this->manager);
         $this->classes = $this->manager->getMetadataFactory()->getAllMetadata();
+    }
+
+    /**
+     * @BeforeScenario
+     */
+    public function beginTransaction()
+    {
+        $this->em->getConnection()->beginTransaction();
     }
 
     /**

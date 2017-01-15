@@ -7,6 +7,7 @@ default:
         - FeatureContext:
             doctrine: "@doctrine"
             kernel: '@kernel'
+            entityManager: '@doctrine.orm.entity_manager'
         - Behat\MinkExtension\Context\MinkContext
         - Sanpi\Behatch\Context\RestContext
         - Sanpi\Behatch\Context\JsonContext

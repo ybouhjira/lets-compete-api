@@ -39,6 +39,7 @@ AppBundle\Entity\Competition:
             - "competition.publie"
             - "competition.tempsDebut"
             - "competition.tempsFin"
+            - "competition.titre_filter"
 
 AppBundle\Entity\Solution:
     attributes:

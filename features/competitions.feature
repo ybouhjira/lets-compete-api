@@ -3,7 +3,6 @@ Feature: Gérer les compétitions
   En temps que visiteur
   Je dois pouvoir lire, ajouter, modifier & supprimer les compétitions
 
-  @createSchema
   Scenario: Lister les compétitions
     When I add "Accept" header equal to "application/ld+json"
     And I send a "GET" request to "/competitions"
@@ -108,6 +107,31 @@ Feature: Gérer les compétitions
           "items": {
             "properties" : {
               "publie": {"constant": false}
+            }
+          }
+        }
+      }
+    }
+    """
+  Scenario: Filtrer les compétitions par titre
+    When I add "Accept" header equal to "application/ld+json"
+    And I send a "GET" request to "/competitions?titre=ad"
+    Then the response status code should be 200
+    And the response should be in JSON
+    And the header "Content-Type" should be equal to "application/ld+json; charset=utf-8"
+    And print last JSON response
+    And the JSON should be valid according to this schema:
+    """
+    {
+      "properties" : {
+        "hydra:member": {
+          "type": "array",
+          "items": {
+            "properties" : {
+              "titre": {
+                "type": "string",
+                "pattern": "[Aa][Dd]"
+              }
             }
           }
         }

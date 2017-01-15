@@ -57,7 +57,7 @@
         "teaandcode/behat-guzzle-extension": "^0.3.9"
     },
     "scripts": {
-        "test" : "bin/console cache:clear --env=test && vendor/bin/behat --colors --stop-on-failure -vv && vendor/bin/phpunit",
+        "test" : "vendor/bin/behat --colors --stop-on-failure -vv && vendor/bin/phpunit --colors",
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
