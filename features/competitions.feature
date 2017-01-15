@@ -138,3 +138,24 @@ Feature: Gérer les compétitions
       }
     }
     """
+
+  Scenario: Créer une compétition
+    When I add "content-type" header equal to "application/json"
+    And I send a "POST" request to "/competitions" with body:
+    """
+    {
+      "langages": [
+        "/langages/2",
+        "/langages/3",
+        "/langages/4"
+      ],
+      "titre": "Competition A aut.",
+      "description": "Vel impedit vitae eum ut quod libero. Eaque etibus vel quibusdam harum cumque minima a.",
+      "tempsDebut": "1997-12-14T02:04:36+01:00",
+      "organisateur": "/organisateurs/7",
+      "tempsFin": "1972-06-26T22:13:13+01:00",
+      "public": true,
+      "publie": false
+    }
+    """
+    Then the response status code should be 201

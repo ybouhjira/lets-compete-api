@@ -2,35 +2,23 @@
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
-use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Behat\Tester\Exception\PendingException;
+use Behat\Symfony2Extension\Context\KernelAwareContext;
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\SchemaTool;
-use Sanpi\Behatch\Context\JsonContext;
-use Sanpi\Behatch\HttpCall\HttpCallResultPool;
+use Sanpi\Behatch\HttpCall\Request;
+use Sanpi\Behatch\HttpCall\Request as BehatchRequest;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\HttpKernel\Kernel;
-use Sanpi\Behatch\HttpCall\Request;
-use Sanpi\Behatch\HttpCall\Request as BehatchRequest;
+use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
  * Defines application features from the specific context.
  */
-class FeatureContext implements Context, SnippetAcceptingContext
+class FeatureContext implements Context, SnippetAcceptingContext, KernelAwareContext
 {
-
-    /**
-     * @var ManagerRegistry
-     */
-    private $doctrine;
-
-    /**
-     * @var \Doctrine\Common\Persistence\ObjectManager
-     */
-    private $manager;
 
     /**
      * @var SchemaTool
@@ -48,11 +36,6 @@ class FeatureContext implements Context, SnippetAcceptingContext
     private $kernel;
 
     /**
-     * @var \GuzzleHttp\Client
-     */
-    private $client;
-
-    /**
      * @var array Guzzle options
      */
     private $options;
@@ -63,40 +46,19 @@ class FeatureContext implements Context, SnippetAcceptingContext
     private $request;
 
     /**
-     * @var EntityManager
-     */
-    private $em;
-
-    /**
-     * @var HttpCallResultPool
-     */
-    private $httpCallResultPool;
-
-    /**
      * Initializes context.
      *
      * Every scenario gets its own context instance.
      * You can also pass arbitrary arguments to the
      * context constructor through behat.yml.
-     * @param ManagerRegistry $doctrine
-     * @param Kernel $kernel
+     * @param BehatchRequest $request
+     * @internal param ManagerRegistry $doctrine
+     * @internal param Kernel $kernel
      * @internal param BehatchRequest $request
      */
-    public function __construct(ManagerRegistry $doctrine,
-                                Kernel $kernel,
-                                BehatchRequest $request,
-                                EntityManager $entityManager)
+    public function __construct(BehatchRequest $request)
     {
-        $this->client = new GuzzleHttp\Client();
-        $this->options = [['verify' => false]];
         $this->request = $request;
-
-        $this->kernel = $kernel;
-        $this->doctrine = $doctrine;
-        $this->manager = $doctrine->getManager();
-        $this->em = $entityManager;
-        $this->schemaTool = new SchemaTool($this->manager);
-        $this->classes = $this->manager->getMetadataFactory()->getAllMetadata();
     }
 
     /**
@@ -104,8 +66,22 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function beginTransaction()
     {
-        $this->em->getConnection()->beginTransaction();
+        $this->conn = $this->kernel->getContainer()
+            ->get('doctrine.orm.entity_manager')
+            ->getConnection();
+
+        $this->conn->beginTransaction();
+        $this->conn->setAutoCommit(false);
     }
+
+    /**
+     * @AfterScenario
+     */
+    public function rollback()
+    {
+        $this->conn->rollBack();
+    }
+
 
     /**
      * @BeforeScenario @createSchema
@@ -178,4 +154,13 @@ class FeatureContext implements Context, SnippetAcceptingContext
         );
     }
 
+    /**
+     * Sets Kernel instance.
+     *
+     * @param KernelInterface $kernel
+     */
+    public function setKernel(KernelInterface $kernel)
+    {
+        $this->kernel = $kernel;
+    }
 }
