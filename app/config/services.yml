@@ -11,8 +11,14 @@ services:
             - name: 'api_platform.filter'
               id: 'invit_participation.accepte'
 
+#    competition.public_filter:
+#        parent: 'api_platform.doctrine.orm.boolean_filter'
+#        arguments: [ { public: ~ } ]
+#        tags: [ { name: 'api_platform.filter', id: 'competition.public' } ]
+
     competition.public_filter:
         parent: 'api_platform.doctrine.orm.boolean_filter'
+        class: AppBundle\Service\Filter\BooleanFilter
         arguments: [ { public: ~ } ]
         tags: [ { name: 'api_platform.filter', id: 'competition.public' } ]
 
@@ -37,6 +43,15 @@ services:
         tags:
             - name: 'api_platform.filter'
               id: 'competition.titre_filter'
+
+    competition.langages_filter:
+        class: AppBundle\Service\Filter\RelatedIdsFilter
+        arguments:
+            - '@request_stack'
+            - 'langages'
+        tags:
+            - name: 'api_platform.filter'
+              id: 'competition.langages_filter'
 
     utilisateur.username_filter:
         parent: 'api_platform.doctrine.orm.search_filter'

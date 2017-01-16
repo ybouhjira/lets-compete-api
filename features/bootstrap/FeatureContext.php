@@ -6,6 +6,7 @@ use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Symfony2Extension\Context\KernelAwareContext;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Tools\SchemaTool;
+use Sanpi\Behatch\Context\BaseContext;
 use Sanpi\Behatch\HttpCall\Request;
 use Sanpi\Behatch\HttpCall\Request as BehatchRequest;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
@@ -17,7 +18,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
 /**
  * Defines application features from the specific context.
  */
-class FeatureContext implements Context, SnippetAcceptingContext, KernelAwareContext
+class FeatureContext extends BaseContext implements Context, SnippetAcceptingContext, KernelAwareContext
 {
 
     /**
@@ -151,6 +152,29 @@ class FeatureContext implements Context, SnippetAcceptingContext, KernelAwareCon
         return $this->request->send(
             'GET',
             "/organisateurs/$id/$subresources"
+        );
+    }
+
+    /**
+     * @Then toutes les compétitions retournées contient le langage :id
+     */
+    public function toutesLesCompetitionsRetourneesContientLeLangage($id)
+    {
+        $data = json_decode($this->request->getContent());
+        $competitions = $data->{"hydra:member"};
+
+        $isTargetLang = function($langage) use($id) {
+            return $langage->{"@id"} ==  $id;
+        };
+
+        $hasTargetLang = function($competition) use ($id, $isTargetLang) {
+            $targetLang = array_filter($competition->langages, $isTargetLang);
+            return count($targetLang) !== 0;
+        };
+
+        return $this->assertEquals(
+            count(array_filter($competitions, $hasTargetLang)),
+            count($competitions)
         );
     }
 

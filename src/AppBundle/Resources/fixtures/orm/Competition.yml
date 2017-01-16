@@ -9,7 +9,7 @@ AppBundle\Entity\Competition:
         organisateur: '@organisateur*'
         langages: ['@langage2', '@langage3', '@langage6']
 
-    competition{101..200}:
+    competition{101..150}:
         titre: Competition <sentence(2)>
         description: <paragraph()>
         tempsDebut: <dateTime()>
@@ -17,4 +17,14 @@ AppBundle\Entity\Competition:
         public: '<boolean()>'
         publie: '<boolean()>'
         organisateur: '@organisateur4'
-        langages: ['@langage2', '@langage3', '@langage6']
+        langages: ['@langage1', '@langage2', '@langage7']
+
+    competition{151..200}:
+        titre: Competition <sentence(2)>
+        description: <paragraph()>
+        tempsDebut: <dateTime()>
+        tempsFin: <dateTime()>
+        public: '<boolean()>'
+        publie: '<boolean()>'
+        organisateur: '@organisateur4'
+        langages: ['@langage8', '@langage9', '@langage10']

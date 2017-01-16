@@ -159,3 +159,13 @@ Feature: Gérer les compétitions
     }
     """
     Then the response status code should be 201
+
+
+  Scenario: Filtrer les compétitions par langages
+    When I send a "GET" request to "/competitions?langages=1"
+    Then the response status code should be 200
+    And toutes les compétitions retournées contient le langage "1"
+
+  Scenario: Filtrer les compétitions de l'oraganisateur 1
+    When I send a "GET" request to "organisateurs/4/competitions?langages=1,2&publie=false&public=false&dateDebut[after]=now"
+    Then the response status code should be 200

@@ -40,6 +40,7 @@ AppBundle\Entity\Competition:
             - "competition.tempsDebut"
             - "competition.tempsFin"
             - "competition.titre_filter"
+            - "competition.langages_filter"
 
 AppBundle\Entity\Solution:
     attributes:
