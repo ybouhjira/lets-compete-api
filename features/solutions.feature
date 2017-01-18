@@ -1,6 +1,16 @@
 Feature: Gérer les solutions
-  En temps que visiteur
-  Je dois pouvoir visualiser les solutions
+
+  Scenario: Envoyer une solution
+    When I add "content-type" header equal to "application/json"
+    And I send a "POST" request to "/solutions" with body:
+    """
+    {
+      "langage": "/langages/1",
+      "probleme": "/problemes/9",
+      "participant": "/participants/8"
+    }
+    """
+    Then the response status code should be 201
 
   Scenario: Lister les toutes les solutions
     When I add "Accept" header equal to "application/ld+json"
