@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\EventListener;
+namespace AppBundle\Service\EventListener;
 
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Paginator;
 use AppBundle\Rest\SubResourcesList;

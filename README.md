@@ -1,5 +1,7 @@
 Rest API de la platforme de compétitions
 =======================================
+[![forthebadge](http://forthebadge.com/images/badges/uses-git.svg)](http://forthebadge.com)
+[![forthebadge](http://forthebadge.com/images/badges/gluten-free.svg)](http://forthebadge.com)
 # Pré-requis
  - PHP 7
  - MySQL

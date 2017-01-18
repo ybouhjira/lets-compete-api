@@ -34,21 +34,22 @@ class Ville
      */
     private $nom;
 
-    public function __construct()
-    {
-        $this->membres = new ArrayCollection();
-    }
-
     /**
      * @ORM\ManyToOne(
      *     targetEntity="Pays",
      *     inversedBy="villes",
      *     cascade={"persist"}
      * )
-     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
      * @Groups({"read", "write"})
      */
     private $pays;
+
+
+    public function __construct()
+    {
+        $this->membres = new ArrayCollection();
+    }
 
     /**
      * @return mixed

@@ -1,18 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Wadii
- * Date: 10/01/2017
- * Time: 00:22
- */
 
-namespace AppBundle\EventListener;
-
+namespace AppBundle\Service\EventListener;
 
 use AppBundle\Entity\Utilisateur;
 use Doctrine\ORM\EntityManager;
 use Lexik\Bundle\JWTAuthenticationBundle\Event\JWTCreatedEvent;
 
+/**
+ * Event listener that populates the JWT token with user data
+ */
 class JWTCreatedListener
 {
     /**
@@ -41,9 +37,12 @@ class JWTCreatedListener
             ->getRepository('AppBundle:Utilisateur')
             ->findOneBy(['username' => $payload['username']]);
 
-        $payload['role'] = strtolower(preg_replace('#.*\\\\#', '', get_class($user)));
+        $payload['role'] = strtolower(
+            preg_replace('#.*\\\\#', '', get_class($user))
+        );
+
         $payload['id'] = $user->getId();
-        
+
         $event->setData($payload);
     }
 }

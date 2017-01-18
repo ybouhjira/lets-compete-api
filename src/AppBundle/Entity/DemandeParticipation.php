@@ -48,7 +48,7 @@ class DemandeParticipation
      *     cascade={"persist"},
      *     inversedBy="demandeParticipations"
      * )
-     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
      * @Groups({"demande-read", "write"})
      */
     private $competition;
@@ -60,7 +60,7 @@ class DemandeParticipation
      *     inversedBy="demandeParticipations",
      *     cascade={"persist"}
      * )
-     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
      * @Groups({"demande-read", "write"})
      */
     private $participant;

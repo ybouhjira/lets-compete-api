@@ -35,7 +35,7 @@ class Probleme
     /**
      * @var Competition La compétition à laquelle appartient le problème.
      * @ORM\ManyToOne(targetEntity="Competition", inversedBy="problemes")
-     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
      */
     private $competition;
 

@@ -113,3 +113,23 @@ vich_uploader:
             uri_prefix: /membres/photos
             upload_destination: '%kernel.root_dir%/../web/uploads/membres/photos'
             namer: vich_uploader.namer_uniqid
+
+# RabbbitMQ
+old_sound_rabbit_mq:
+    connections:
+        default:
+            host: '%rabbitmq_host%'
+            port: '%rabbitmq_port%'
+            user: '%rabbitmq_user%'
+            password: '%rabbitmq_pass%'
+            vhost: '/'
+            lazy: false
+            connection_timeout: 3
+            read_write_timeout: 3
+            keepalive: false  # requires php-amqplib v2.4.1+ and PHP5.4+
+            heartbeat: 0      # requires php-amqplib v2.4.1+
+            use_socket: true  # default false #requires php_sockets.dll
+    producers:
+        send_solution:
+            connection: default
+            exchange_options: {name: 'send-solution', type: 'direct'}

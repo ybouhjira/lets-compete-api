@@ -1,6 +1,5 @@
 AppBundle\Entity\Solution:
     solution{1..100}:
-        tempsEnvoie: <datetime()>
         participant: '@participant*'
         probleme: '@probleme*'
         langage: '@langage*'

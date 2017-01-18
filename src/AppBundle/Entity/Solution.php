@@ -53,7 +53,7 @@ class Solution
      *     cascade={"persist"},
      *     inversedBy="solutions"
      * )
-     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
      */
     private $participant;
 
@@ -61,7 +61,7 @@ class Solution
      * Le langage de la solution
      * @var Langage
      * @ORM\ManyToOne(targetEntity="Langage", inversedBy="solutions")
-     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
      * @Groups({"sol-read", "write"})
      */
     private $langage;
@@ -80,7 +80,7 @@ class Solution
      *     cascade={"persist"},
      *     inversedBy="solutions"
      * )
-     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
      * @Groups({"read", "write"})
      */
     private $probleme;
@@ -129,20 +129,6 @@ class Solution
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set tempsEnvoie
-     *
-     * @param \DateTime $tempsEnvoie
-     *
-     * @return Solution
-     */
-    public function setTempsEnvoie($tempsEnvoie)
-    {
-        $this->tempsEnvoie = $tempsEnvoie;
-
-        return $this;
     }
 
     /**
@@ -208,6 +194,7 @@ class Solution
     public function __construct()
     {
         $this->fichiersCode = new ArrayCollection();
+        $this->tempsEnvoie = new \DateTime('now');
     }
 
     /**

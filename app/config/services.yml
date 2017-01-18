@@ -4,42 +4,52 @@ parameters:
 #    parameter_name: value
 
 services:
+    # Filters ==================================================================
     invit_participation.accepte_filter:
         parent: 'api_platform.doctrine.orm.boolean_filter'
-        arguments: [ { accepte: ~ } ]
+        arguments:
+            - accepte: ~
         tags:
             - name: 'api_platform.filter'
               id: 'invit_participation.accepte'
 
-#    competition.public_filter:
-#        parent: 'api_platform.doctrine.orm.boolean_filter'
-#        arguments: [ { public: ~ } ]
-#        tags: [ { name: 'api_platform.filter', id: 'competition.public' } ]
-
     competition.public_filter:
         parent: 'api_platform.doctrine.orm.boolean_filter'
         class: AppBundle\Service\Filter\BooleanFilter
-        arguments: [ { public: ~ } ]
-        tags: [ { name: 'api_platform.filter', id: 'competition.public' } ]
+        arguments:
+            - public: ~
+        tags:
+            - name: 'api_platform.filter'
+              id: 'competition.public'
 
     competition.publie_filter:
         parent: 'api_platform.doctrine.orm.boolean_filter'
-        arguments: [ { publie: ~ } ]
-        tags: [ { name: 'api_platform.filter', id: 'competition.publie' } ]
+        arguments:
+            - publie: ~
+        tags:
+            - name: 'api_platform.filter'
+              id: 'competition.publie'
 
     competition.tempsDebut_filter:
         parent: 'api_platform.doctrine.orm.date_filter'
-        arguments: [ { tempsDebut: ~ } ]
-        tags: [ { name: 'api_platform.filter', id: 'competition.tempsDebut' } ]
+        arguments:
+            - tempsDebut: ~
+        tags:
+            - name: 'api_platform.filter'
+              id: 'competition.tempsDebut'
 
     competition.tempsFin_filter:
         parent: 'api_platform.doctrine.orm.date_filter'
-        arguments: [ { tempsFin: ~ } ]
-        tags: [ { name: 'api_platform.filter', id: 'competition.tempsFin' } ]
+        arguments:
+            - tempsFin: ~
+        tags:
+            - name: 'api_platform.filter'
+              id: 'competition.tempsFin'
 
     competition.titre_filter:
         parent: 'api_platform.doctrine.orm.search_filter'
-        arguments: [ { titre: 'partial' } ]
+        arguments:
+            - titre: 'partial'
         tags:
             - name: 'api_platform.filter'
               id: 'competition.titre_filter'
@@ -55,19 +65,13 @@ services:
 
     utilisateur.username_filter:
         parent: 'api_platform.doctrine.orm.search_filter'
-        arguments: [ { username: 'exact' } ]
+        arguments:
+            - username: 'exact'
         tags:
             - name: 'api_platform.filter'
               id: 'utilisateur.username_filter'
 
-    app.event_listeners.sub_resources_list_handler:
-        class: AppBundle\EventListener\SubResourcesListHandler
-        arguments: [ '@doctrine.orm.entity_manager' ]
-        tags:
-            - name: kernel.event_listener
-              event: kernel.view
-              priority: 65
-
+    # Normalizers ==============================================================
     app.resource_normalizer:
         class: AppBundle\Service\Normalizer\ResourceNormalizer
         public: false
@@ -78,17 +82,38 @@ services:
             - name: serializer.normalizer
               priority: 99
 
+    # Extensions ===============================================================
     app.parent_extension:
         class: AppBundle\Service\Extension\ParentExtension
         public: false
         arguments:
             - '@request_stack'
         tags:
-            - { name: api_platform.doctrine.orm.query_extension.collection, priority: 9 }
-            #- { name: api_platform.doctrine.orm.query_extension.item }
+            - name: api_platform.doctrine.orm.query_extension.collection
+              priority: 9
 
+    # Listeners ================================================================
     acme_api.event.jwt_created_listener:
-            class: AppBundle\EventListener\JWTCreatedListener
-            arguments: [ '@doctrine.orm.entity_manager' ]
-            tags:
-                - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }
+        class: AppBundle\Service\EventListener\JWTCreatedListener
+        arguments:
+            - '@doctrine.orm.entity_manager'
+        tags:
+            - name: kernel.event_listener
+              event: lexik_jwt_authentication.on_jwt_created
+              method: onJWTCreated
+
+    app.event_listener.solution_event_subscriber:
+        class: AppBundle\Service\EventListener\SolutionEventSubscriber
+        arguments:
+            - '@old_sound_rabbit_mq.send_solution_producer'
+        tags:
+            - name: doctrine.event_subscriber
+
+    app.event_listeners.sub_resources_list_handler:
+        class: AppBundle\Service\EventListener\SubResourcesListHandler
+        arguments:
+            - '@doctrine.orm.entity_manager'
+        tags:
+            - name: kernel.event_listener
+              event: kernel.view
+              priority: 65

@@ -52,7 +52,7 @@ class InvitParticipation
      *     targetEntity="Competition",
      *     inversedBy="invitParticipations"
      * )
-     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
      */
     private $competition;
 
@@ -70,7 +70,7 @@ class InvitParticipation
      *     cascade={"persist"},
      *     inversedBy="invitParticipations"
      * )
-     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
      */
     private $participant;
 
