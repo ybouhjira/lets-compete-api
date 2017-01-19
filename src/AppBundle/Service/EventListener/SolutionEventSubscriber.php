@@ -3,7 +3,10 @@
 namespace AppBundle\Service\EventListener;
 
 use Doctrine\Common\EventSubscriber;
+use Doctrine\ORM\Event\LifecycleEventArgs;
 use OldSound\RabbitMqBundle\RabbitMq\ProducerInterface;
+use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * Event listener for Solutions
@@ -16,17 +19,29 @@ class SolutionEventSubscriber implements EventSubscriber
     private $producer;
 
     /**
+     * @var Serializer
+     */
+    private $container;
+
+    /**
      * SolutionEventListener constructor.
      * @param ProducerInterface $producer
+     * @param Kernel $kernel
+     * @internal param Serializer $serializer
      */
-    public function __construct(ProducerInterface $producer)
+    public function __construct(ProducerInterface $producer,
+                                Kernel $kernel)
     {
         $this->producer = $producer;
+        $this->container = $kernel->getContainer();
     }
 
-    public function prePersist()
+    public function prePersist(LifecycleEventArgs $args)
     {
-        $this->producer->publish('Hello', 'key');
+        $entity = $args->getEntity();
+        $serializer = $this->container->get('serializer');
+        $json = $serializer->serialize($entity, 'json');
+        $this->producer->publish($json);
     }
 
     /**

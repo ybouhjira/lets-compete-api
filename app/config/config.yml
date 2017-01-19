@@ -64,13 +64,6 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
-        # if using pdo_sqlite as your database driver:
-        #   1. add the path in parameters.yml
-        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
-        #   2. Uncomment database_path in parameters.yml.dist
-        #   3. Uncomment next line:
-        #     path:     "%database_path%"
-
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
@@ -123,7 +116,7 @@ old_sound_rabbit_mq:
             user: '%rabbitmq_user%'
             password: '%rabbitmq_pass%'
             vhost: '/'
-            lazy: false
+            lazy: true
             connection_timeout: 3
             read_write_timeout: 3
             keepalive: false  # requires php-amqplib v2.4.1+ and PHP5.4+
@@ -132,4 +125,9 @@ old_sound_rabbit_mq:
     producers:
         send_solution:
             connection: default
-            exchange_options: {name: 'send-solution', type: 'direct'}
+            queue_options:
+                name: 'submit-solutions'
+            exchange_options:
+                name: 'submit-solutions'
+                type: 'direct'
+            service_alias: app.solution_producer

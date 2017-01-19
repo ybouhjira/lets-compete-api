@@ -106,6 +106,7 @@ services:
         class: AppBundle\Service\EventListener\SolutionEventSubscriber
         arguments:
             - '@old_sound_rabbit_mq.send_solution_producer'
+            - '@kernel'
         tags:
             - name: doctrine.event_subscriber
 
