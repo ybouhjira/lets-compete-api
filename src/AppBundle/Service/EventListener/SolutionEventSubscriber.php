@@ -38,6 +38,8 @@ class SolutionEventSubscriber implements EventSubscriber
 
     public function prePersist(LifecycleEventArgs $args)
     {
+        if (php_sapi_name() === 'cli') return;
+
         $entity = $args->getEntity();
         $serializer = $this->container->get('serializer');
         $json = $serializer->serialize($entity, 'json');
