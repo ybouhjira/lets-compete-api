@@ -2,15 +2,12 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * @ORM\Entity
- * @ORM\InheritanceType("JOINED")
- * @ORM\DiscriminatorColumn(name="_type", type="string")
  * @Vich\Uploadable()
  */
 abstract class Membre extends Utilisateur
@@ -18,7 +15,7 @@ abstract class Membre extends Utilisateur
     /**
      * @var string
      * @Groups({"read", "write"})
-     * @ORM\Column(type="text", nullable=true)
+     *
      */
     private $presentation;
 
@@ -33,14 +30,14 @@ abstract class Membre extends Utilisateur
     private $fichierPhoto;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     *
      *
      * @var \DateTime
      */
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     *
      *
      * @var string Le chemin de la photo de profil
      * @Groups({"read"})
@@ -50,13 +47,7 @@ abstract class Membre extends Utilisateur
     /**
      * @var string
      *
-     * @ORM\Column(
-     *     name="telephone",
-     *     type="string",
-     *     length=30,
-     *     nullable=true,
-     *     unique=true
-     * )
+     *
      * @Groups({"read", "write"})
      */
     private $telephone;
@@ -64,7 +55,7 @@ abstract class Membre extends Utilisateur
     /**
      * L'adresse de l'organisateur
      * @var string
-     * @ORM\Column(type="string", length=255, nullable=true)
+     *
      * @Groups({"read", "write"})
      */
     private $adresse;
@@ -72,12 +63,8 @@ abstract class Membre extends Utilisateur
     /**
      * @var Ville La ville de résidance
      *
-     * @ORM\ManyToOne(
-     *     targetEntity="Ville",
-     *     cascade={"persist"},
-     *     fetch="EAGER"
-     * )
-     * @ORM\JoinColumn(onDelete="set null", nullable=true)
+     *
+     *
      * @Groups({"read", "write"})
      */
     private $ville;
@@ -85,13 +72,7 @@ abstract class Membre extends Utilisateur
     /**
      * @var string L'adresse de son site web
      *
-     * @ORM\Column(
-     *     name="siteWeb",
-     *     type="string",
-     *     length=255,
-     *     nullable=true,
-     *     unique=true
-     * )
+     *
      * @Groups({"read", "write"})
      */
     private $siteWeb;

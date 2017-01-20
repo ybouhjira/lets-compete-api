@@ -2,33 +2,26 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * DemandeParticipation
- * @ORM\Table(
- *     uniqueConstraints={
- *       @ORM\UniqueConstraint(columns={"participant_id", "competition_id"})
- *     }
- * )
- * @ORM\Entity(repositoryClass="AppBundle\Repository\DemandeParticipationRepository")
  */
 class DemandeParticipation
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     *
      */
     private $id;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="accepte", type="boolean", nullable=true)
+     *
      * @Groups({"demande-read", "write", "brief"})
      */
     private $accepte;
@@ -36,31 +29,23 @@ class DemandeParticipation
     /**
      * @var \DateTime
      *
-     * @ORM\Column(type="datetime")
+     *
      * @Groups({"demande-read", "write", "brief"})
      */
     private $date;
 
     /**
      * @var Competition
-     * @ORM\ManyToOne(
-     *     targetEntity="Competition",
-     *     cascade={"persist"},
-     *     inversedBy="demandeParticipations"
-     * )
-     * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
+     *
+     *
      * @Groups({"demande-read", "write"})
      */
     private $competition;
 
     /**
      * @var Participant
-     * @ORM\ManyToOne(
-     *     targetEntity="Participant",
-     *     inversedBy="demandeParticipations",
-     *     cascade={"persist"}
-     * )
-     * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
+     *
+     *
      * @Groups({"demande-read", "write"})
      */
     private $participant;

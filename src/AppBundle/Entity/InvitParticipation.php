@@ -2,29 +2,19 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * InvitParticipation
- *
- * @ORM\Table(
- *     uniqueConstraints={
- *       @ORM\UniqueConstraint(columns={"participant_id", "competition_id"})
- *     }
- * )
- * @ORM\Entity(
- *     repositoryClass="AppBundle\Repository\InvitParticipationRepository"
- * )
  */
 class InvitParticipation
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     *
      */
     private $id;
 
@@ -32,7 +22,7 @@ class InvitParticipation
      * @var bool
      *
      * @Groups({"read", "write", "brief"})
-     * @ORM\Column(name="accepte", type="boolean", nullable=true)
+     *
      */
     private $accepte;
 
@@ -40,7 +30,7 @@ class InvitParticipation
      * @var \DateTime
      *
      * @Groups({"read", "write", "brief"})
-     * @ORM\Column(type="datetime")
+     *
      */
     private $dateTime;
 
@@ -48,11 +38,8 @@ class InvitParticipation
      * La compétition concernée
      * @var Competition
      * @Groups({"read", "write", "invit-read"})
-     * @ORM\ManyToOne(
-     *     targetEntity="Competition",
-     *     inversedBy="invitParticipations"
-     * )
-     * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
+     *
+     *
      */
     private $competition;
 
@@ -65,12 +52,6 @@ class InvitParticipation
      * Le participant
      * @var Participant
      * @Groups({"write", "invit-read"})
-     * @ORM\ManyToOne(
-     *     targetEntity="Participant",
-     *     cascade={"persist"},
-     *     inversedBy="invitParticipations"
-     * )
-     * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
      */
     private $participant;
 

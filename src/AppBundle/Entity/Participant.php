@@ -3,32 +3,32 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping as ORM;
+
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Programer
  *
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ParticipantRepository")
+ *
  */
 class Participant extends Membre
 {
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=false)
+     *
      * @Groups({"read", "write", "invit-read", "brief"})
      */
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=false)
+     *
      * @Groups({"read", "write", "invit-read", "brief"})
      */
     private $nom;
 
     /**
      * @var
-     * @ORM\Column(name="job", type="string", length=30, nullable=true)
+     *
      * @Groups({"read", "write"})
      */
     private $job;
@@ -36,33 +36,21 @@ class Participant extends Membre
     /**
      * @var ArrayCollection Les solutions écrite par le participants
      *
-     * @ORM\OneToMany(
-     *     targetEntity="Solution",
-     *     mappedBy="participant",
-     *     cascade={"persist"}
-     * )
+     *
      */
     private $solutions;
 
     /**
      * Les invitations à participer
      * @var ArrayCollection
-     * @ORM\OneToMany(
-     *     targetEntity="InvitParticipation",
-     *     cascade={"persist"},
-     *     mappedBy="participant"
-     * )
+     *
      */
     private $invitParticipations;
 
     /**
      * Les demandes de participation
      * @var ArrayCollection
-     * @ORM\OneToMany(
-     *     targetEntity="DemandeParticipation",
-     *     cascade={"persist"},
-     *     mappedBy="participant"
-     * )
+     *
      */
     private $demandeParticipations;
 

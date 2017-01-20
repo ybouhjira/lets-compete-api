@@ -3,43 +3,34 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping as ORM;
+
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Competition
  *
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CompetitionRepository")
+ *
  */
 class Competition
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     *
      */
     protected $id;
 
     /**
-     * @ORM\OneToMany(
-     *     targetEntity="Probleme",
-     *     mappedBy="competition",
-     *     cascade={"persist"}
-     * )
+     *
      */
     private $problemes;
 
     /**
      * @var
      * @Groups({"comp-read"})
-     * @ORM\ManyToMany(
-     *     targetEntity="Langage",
-     *     cascade={"persist"},
-     *     inversedBy="competitions"
-     * )
+     *
      */
     private $langages;
 
@@ -47,11 +38,7 @@ class Competition
      * Les demandes de participation
      * @var ArrayCollection
      * @Groups({"comp-read"})
-     * @ORM\OneToMany(
-     *     targetEntity="DemandeParticipation",
-     *     cascade={"persist"},
-     *     mappedBy="competition"
-     * )
+     *
      */
     private $demandeParticipations;
 
@@ -59,11 +46,7 @@ class Competition
      * Les invitations à participer
      * @var ArrayCollection
      * @Groups({"comp-read"})
-     * @ORM\OneToMany(
-     *     targetEntity="InvitParticipation",
-     *     cascade={"persist"},
-     *     mappedBy="competition"
-     * )
+     *
      */
     private $invitParticipations;
 
@@ -71,19 +54,19 @@ class Competition
      * @var string
      *
      * @Groups({"comp-read", "write", "invit-read", "brief"})
-     * @ORM\Column(type="string", length=255)
+     *
      */
     private $titre;
 
     /**
      * @var string
      * @Groups({"comp-read", "write"})
-     * @ORM\Column(type="text")
+     *
      */
     private $description;
 
     /**
-     * @ORM\Column(type="datetime", nullable=false)
+     *
      * @Groups({"comp-read", "write", "brief"})
      */
     private $tempsDebut;
@@ -91,25 +74,25 @@ class Competition
     /**
      * @var Organisateur
      * @Groups({"comp-read", "write"})
-     * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
-     * @ORM\ManyToOne(targetEntity="Organisateur", inversedBy="competitions")
+     *
+     *
      */
     private $organisateur;
 
     /**
-     * @ORM\Column(type="datetime", nullable=false)
+     *
      * @Groups({"comp-read", "write", "brief"})
      */
     private $tempsFin;
 
     /**
-     * @ORM\Column(type="boolean")
+     *
      * @Groups({"comp-read", "write"})
      */
     private $public;
 
     /**
-     * @ORM\Column(type="boolean")
+     *
      * @Groups({"comp-read", "write"})
      */
     private $publie;

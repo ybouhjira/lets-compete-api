@@ -3,27 +3,23 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping as ORM;
+
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Organisateur
- * @ORM\Entity(repositoryClass="AppBundle\Repository\OrganiserRepository")
+ *
  */
 class Organisateur extends Membre
 {
     /**
-     * @ORM\OneToMany(
-     *     targetEntity="Competition",
-     *     mappedBy="organisateur",
-     *     cascade={"persist"}
-     * )
+     *
      */
     protected $competitions;
 
     /**
      * Le nom de l'entreprise
-     * @ORM\Column(type="string", length=255, nullable=false, unique=true)
+     *
      * @Groups({"read", "write", "brief"})
      */
     private $nom;

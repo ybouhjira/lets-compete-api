@@ -1,0 +1,63 @@
+AppBundle\Entity\DemandeParticipation:
+    type: entity
+    table: demande_participation
+    repositoryClass: AppBundle\Repository\DemandeParticipationRepository
+    uniqueConstraints:
+        -
+            columns:
+                - participant_id
+                - competition_id
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        accepte:
+            type: boolean
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+        date:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+    manyToOne:
+        competition:
+            targetEntity: AppBundle\Entity\Competition
+            cascade:
+                - persist
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: demandeParticipations
+            joinColumns:
+                competition_id:
+
+                    onDelete: CASCADE
+                    nullable: false
+            orphanRemoval: false
+        participant:
+            targetEntity: AppBundle\Entity\Participant
+            cascade:
+                - persist
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: demandeParticipations
+            joinColumns:
+                participant_id:
+
+                    onDelete: CASCADE
+                    nullable: false
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

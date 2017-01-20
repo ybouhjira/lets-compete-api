@@ -4,14 +4,14 @@ namespace AppBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping as ORM;
+
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Ville
  *
- * @ORM\Table(name="ville")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\VilleRepository")
+ *
+ *
  *
  * @ApiResource()
  */
@@ -20,9 +20,8 @@ class Ville
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     *
      */
     private $id;
 
@@ -30,17 +29,13 @@ class Ville
      * @var string
      *
      * @Groups({"read", "write"})
-     * @ORM\Column(name="nom", type="string", length=255, unique=true)
+     *
      */
     private $nom;
 
     /**
-     * @ORM\ManyToOne(
-     *     targetEntity="Pays",
-     *     inversedBy="villes",
-     *     cascade={"persist"}
-     * )
-     * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
+     *
+     *
      * @Groups({"read", "write"})
      */
     private $pays;

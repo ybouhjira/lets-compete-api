@@ -1,0 +1,5 @@
+AppBundle\Entity\Admin:
+    type: entity
+    table: admin
+    repositoryClass: AppBundle\Repository\AdminRepository
+    lifecycleCallbacks: {  }

@@ -5,64 +5,55 @@ namespace AppBundle\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
+
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Un problème un compétition
  *
- * @ORM\Table(name="probleme")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ProblemeRepository")
+ *
+ *
  */
 class Probleme
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     *
      */
     private $id;
 
     /**
      * @var string
      * @Groups({"read", "write"})
-     * @ORM\Column(name="enonce", type="text")
+     *
      */
     private $enonce;
 
     /**
      * @var Competition La compétition à laquelle appartient le problème.
-     * @ORM\ManyToOne(targetEntity="Competition", inversedBy="problemes")
-     * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
+     *
+     *
      */
     private $competition;
 
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(
-     *     targetEntity="Solution",
-     *     cascade={"persist"},
-     *     mappedBy="probleme"
-     * )
+     *
      */
     private $solutions;
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=255)
+     *
      */
     private $titre;
 
     /**
      * @var EntreeSortie Les d'entrée/sortie tests et exemples
-     * @ORM\OneToMany(
-     *     targetEntity="EntreeSortie",
-     *     cascade={"persist"},
-     *     mappedBy="probleme"
-     * )
+     *
      */
     private $entreeSorties;
 

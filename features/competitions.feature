@@ -160,10 +160,10 @@ Feature: Gérer les compétitions
     """
     Then the response status code should be 201
 
-
   Scenario: Filtrer les compétitions par langages
     When I send a "GET" request to "/competitions?langages=1"
     Then the response status code should be 200
+    And print last JSON response
     And toutes les compétitions retournées contient le langage "1"
 
   Scenario: Filtrer les compétitions de l'oraganisateur 1

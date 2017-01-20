@@ -3,30 +3,29 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping as ORM;
+
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Langage
  *
- * @ORM\Table(name="langage")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\LangageRepository")
+ *
+ *
  */
 class Langage
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     *
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255, unique=true)
+     *
      * @Groups({"read", "write", "brief"})
      */
     private $nom;
@@ -34,21 +33,13 @@ class Langage
     /**
      * Les solutions écrite avec ce langage
      * @var ArrayCollection
-     * @ORM\OneToMany(
-     *     targetEntity="Solution",
-     *     cascade={"persist"},
-     *     mappedBy="langage"
-     * )
+     *
      */
     private $solutions;
 
     /**
      * @var
-     * @ORM\ManyToMany(
-     *     inversedBy="langages",
-     *     targetEntity="Competition",
-     *     cascade={"persist"}
-     * )
+     *
      */
     private $competitions;
 

@@ -157,6 +157,7 @@ class FeatureContext extends BaseContext implements Context, SnippetAcceptingCon
 
     /**
      * @Then toutes les compétitions retournées contient le langage :id
+     * @param $id integer id du langage
      */
     public function toutesLesCompetitionsRetourneesContientLeLangage($id)
     {
@@ -164,7 +165,7 @@ class FeatureContext extends BaseContext implements Context, SnippetAcceptingCon
         $competitions = $data->{"hydra:member"};
 
         $isTargetLang = function($langage) use($id) {
-            return $langage->{"@id"} ==  $id;
+            return $langage->{"@id"} === "/langages/$id";
         };
 
         $hasTargetLang = function($competition) use ($id, $isTargetLang) {
@@ -172,7 +173,7 @@ class FeatureContext extends BaseContext implements Context, SnippetAcceptingCon
             return count($targetLang) !== 0;
         };
 
-        return $this->assertEquals(
+        $this->assertEquals(
             count(array_filter($competitions, $hasTargetLang)),
             count($competitions)
         );

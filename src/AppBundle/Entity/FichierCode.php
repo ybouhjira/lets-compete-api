@@ -3,13 +3,13 @@
 namespace AppBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use Doctrine\ORM\Mapping as ORM;
+
 
 /**
  * FichierCode
  *
- * @ORM\Table(name="fichier_code")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\FichierCodeRepository")
+ *
+ *
  * @ApiResource()
  */
 class FichierCode
@@ -17,27 +17,22 @@ class FichierCode
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     *
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="contenu", type="text")
+     *
      */
     private $contenu;
 
     /**
      * @var Solution la solution
-     * @ORM\ManyToOne(
-     *     targetEntity="Solution",
-     *     inversedBy="fichiersCode",
-     *     cascade={"persist"}
-     * )
-     * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
+     *
+     *
      */
     private $solution;
 

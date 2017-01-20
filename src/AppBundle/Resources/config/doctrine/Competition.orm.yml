@@ -1,0 +1,110 @@
+AppBundle\Entity\Competition:
+    type: entity
+    table: competition
+    repositoryClass: AppBundle\Repository\CompetitionRepository
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        titre:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: false
+            precision: 0
+        description:
+            type: text
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        tempsDebut:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            column: temps_debut
+        tempsFin:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            column: temps_fin
+        public:
+            type: boolean
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        publie:
+            type: boolean
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+    oneToMany:
+        problemes:
+            targetEntity: AppBundle\Entity\Probleme
+            cascade:
+                - persist
+            fetch: LAZY
+            mappedBy: competition
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+        demandeParticipations:
+            targetEntity: AppBundle\Entity\DemandeParticipation
+            cascade:
+                - persist
+            fetch: LAZY
+            mappedBy: competition
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+        invitParticipations:
+            targetEntity: AppBundle\Entity\InvitParticipation
+            cascade:
+                - persist
+            fetch: LAZY
+            mappedBy: competition
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+    manyToMany:
+        langages:
+            targetEntity: AppBundle\Entity\Langage
+            cascade:
+                - persist
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: competitions
+            orderBy: null
+    manyToOne:
+        organisateur:
+            targetEntity: AppBundle\Entity\Organisateur
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: competitions
+            joinColumns:
+                organisateur_id:
+                    onDelete: CASCADE
+                    nullable: false
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

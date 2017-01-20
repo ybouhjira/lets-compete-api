@@ -1,0 +1,62 @@
+AppBundle\Entity\Probleme:
+    type: entity
+    table: probleme
+    repositoryClass: AppBundle\Repository\ProblemeRepository
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        enonce:
+            type: text
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        titre:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: false
+            precision: 0
+    manyToOne:
+        competition:
+            targetEntity: AppBundle\Entity\Competition
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: problemes
+            joinColumns:
+                competition_id:
+                    nullable: false
+                    onDelete: CASCADE
+            orphanRemoval: false
+    oneToMany:
+        solutions:
+            targetEntity: AppBundle\Entity\Solution
+            cascade:
+                - persist
+            fetch: LAZY
+            mappedBy: probleme
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+        entreeSorties:
+            targetEntity: AppBundle\Entity\EntreeSortie
+            cascade:
+                - persist
+            fetch: LAZY
+            mappedBy: probleme
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+    lifecycleCallbacks: {  }

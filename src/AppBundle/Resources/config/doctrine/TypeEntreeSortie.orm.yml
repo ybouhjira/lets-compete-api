@@ -1,0 +1,24 @@
+AppBundle\Entity\TypeEntreeSortie:
+    type: entity
+    table: type_entree_sortie
+    repositoryClass: AppBundle\Repository\TypeEntreeSortieRepository
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            scale: 0
+            length: 30
+            unique: true
+            nullable: false
+            precision: 0
+    lifecycleCallbacks: {  }

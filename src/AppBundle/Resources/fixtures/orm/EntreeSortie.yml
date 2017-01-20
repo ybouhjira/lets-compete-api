@@ -3,3 +3,4 @@ AppBundle\Entity\EntreeSortie:
         entree: <paragraph()>
         sortie: <paragraph()>
         type: '@Test*'
+        probleme: '@probleme*'
