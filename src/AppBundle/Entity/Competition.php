@@ -3,97 +3,72 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-
-use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Competition
- *
- *
  */
 class Competition
 {
     /**
      * @var int
-     *
-     *
-     *
      */
     protected $id;
 
     /**
-     *
+     * @var ArrayCollection
      */
     private $problemes;
 
     /**
      * @var
-     * @Groups({"comp-read"})
-     *
      */
     private $langages;
 
     /**
      * Les demandes de participation
      * @var ArrayCollection
-     * @Groups({"comp-read"})
-     *
      */
     private $demandeParticipations;
 
     /**
      * Les invitations à participer
      * @var ArrayCollection
-     * @Groups({"comp-read"})
-     *
      */
     private $invitParticipations;
 
     /**
      * @var string
-     *
-     * @Groups({"comp-read", "write", "invit-read", "brief"})
-     *
      */
     private $titre;
 
     /**
      * @var string
-     * @Groups({"comp-read", "write"})
-     *
      */
     private $description;
 
     /**
-     *
-     * @Groups({"comp-read", "write", "brief"})
+     * @var \DateTime
      */
     private $tempsDebut;
 
     /**
      * @var Organisateur
-     * @Groups({"comp-read", "write"})
-     *
-     *
      */
     private $organisateur;
 
     /**
-     *
-     * @Groups({"comp-read", "write", "brief"})
+     * @var \DateTime
      */
     private $tempsFin;
 
     /**
-     *
-     * @Groups({"comp-read", "write"})
+     * @var boolean
      */
     private $public;
 
     /**
-     *
-     * @Groups({"comp-read", "write"})
+     * @var boolean
      */
     private $publie;
 

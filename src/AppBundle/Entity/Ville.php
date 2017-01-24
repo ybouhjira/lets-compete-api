@@ -9,34 +9,21 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Ville
- *
- *
- *
- *
- * @ApiResource()
  */
 class Ville
 {
     /**
      * @var int
-     *
-     *
-     *
      */
     private $id;
 
     /**
      * @var string
-     *
-     * @Groups({"read", "write"})
-     *
      */
     private $nom;
 
     /**
-     *
-     *
-     * @Groups({"read", "write"})
+     * @var Pays
      */
     private $pays;
 

@@ -10,50 +10,38 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Un problème un compétition
- *
- *
- *
  */
 class Probleme
 {
     /**
      * @var int
-     *
-     *
-     *
      */
     private $id;
 
     /**
      * @var string
-     * @Groups({"read", "write"})
-     *
      */
     private $enonce;
 
     /**
-     * @var Competition La compétition à laquelle appartient le problème.
-     *
-     *
+     * La compétition à laquelle appartient le problème.
+     * @var Competition
      */
     private $competition;
 
     /**
      * @var ArrayCollection
-     *
-     *
      */
     private $solutions;
 
     /**
      * @var string
-     *
      */
     private $titre;
 
     /**
-     * @var EntreeSortie Les d'entrée/sortie tests et exemples
-     *
+     * Les d'entrée/sortie tests et exemples
+     * @var EntreeSortie
      */
     private $entreeSorties;
 

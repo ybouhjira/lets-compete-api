@@ -2,42 +2,27 @@
 
 namespace AppBundle\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
-
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Pays
- *
- *
- *
- *
- * @ApiResource(attributes={
- *     "normalization_context"={"groups"={"user", "read"}},
- *     "denormalization_context"={"groups"={"user", "write"}}
- * })
  */
 class Pays
 {
     /**
      * @var int
-     *
-     *
-     *
      */
     private $id;
 
     /**
      * @var string
-     * @Groups({"read", "write"})
      *
      */
     private $nom;
 
     /**
-     *
-     *
+     * @var ArrayCollection
      */
     private $villes;
 
@@ -75,9 +60,7 @@ class Pays
 
     /**
      * Set nom
-     *
      * @param string $nom
-     *
      * @return Pays
      */
     public function setNom($nom)
@@ -89,7 +72,6 @@ class Pays
 
     /**
      * Get nom
-     *
      * @return string
      */
     public function getNom()

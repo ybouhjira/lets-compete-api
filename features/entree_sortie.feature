@@ -11,7 +11,8 @@ Feature: Gérer les entrée/sortie
     {
       "entree": "test",
       "sortie": "test",
-      "type": "/type_entree_sorties/1"
+      "type": "/type_entree_sorties/1",
+      "probleme": "/problemes/1"
     }
     """
     Then the response status code should be 201

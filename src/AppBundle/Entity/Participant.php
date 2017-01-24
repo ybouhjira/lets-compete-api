@@ -8,49 +8,40 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Programer
- *
- *
  */
 class Participant extends Membre
 {
 
     /**
-     *
-     * @Groups({"read", "write", "invit-read", "brief"})
+     * @var string
      */
     private $prenom;
 
     /**
-     *
-     * @Groups({"read", "write", "invit-read", "brief"})
+     * @var string
      */
     private $nom;
 
     /**
-     * @var
-     *
-     * @Groups({"read", "write"})
+     * @var string
      */
     private $job;
     
     /**
-     * @var ArrayCollection Les solutions écrite par le participants
-     *
-     *
+     * Les solutions écrite par le participants
+     * @var ArrayCollection
      */
     private $solutions;
 
     /**
      * Les invitations à participer
      * @var ArrayCollection
-     *
      */
     private $invitParticipations;
 
     /**
      * Les demandes de participation
      * @var ArrayCollection
-     *
      */
     private $demandeParticipations;
 

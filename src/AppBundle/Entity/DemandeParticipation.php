@@ -12,41 +12,26 @@ class DemandeParticipation
 {
     /**
      * @var int
-     *
-     *
-     *
      */
     private $id;
 
     /**
      * @var bool
-     *
-     *
-     * @Groups({"demande-read", "write", "brief"})
      */
     private $accepte;
 
     /**
      * @var \DateTime
-     *
-     *
-     * @Groups({"demande-read", "write", "brief"})
      */
     private $date;
 
     /**
      * @var Competition
-     *
-     *
-     * @Groups({"demande-read", "write"})
      */
     private $competition;
 
     /**
      * @var Participant
-     *
-     *
-     * @Groups({"demande-read", "write"})
      */
     private $participant;
 

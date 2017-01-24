@@ -8,48 +8,31 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * EntreeSortie
- *
- *
- *
- * @ApiResource(attributes={
- *     "normalization_context"={"groups"={"entreeSortie"}}
- * })
  */
 class EntreeSortie
 {
     /**
      * @var int
-     *
-     *
-     *
      */
     private $id;
 
     /**
      * @var string
-     * @Groups({"entreeSortie"})
-     *
      */
     private $entree;
 
     /**
      * @var string
-     *
-     * @Groups({"entreeSortie"})
      */
     private $sortie;
 
     /**
      * @var TypeEntreeSortie
-     *
-     *
-     * @Groups({"entreeSortie"})
      */
     private $type;
 
     /**
      * @var Probleme Le problème de cet entrée/sortie
-     *
      */
     private $probleme;
 
@@ -65,9 +48,7 @@ class EntreeSortie
 
     /**
      * Set entree
-     *
      * @param string $entree
-     *
      * @return EntreeSortie
      */
     public function setEntree($entree)
@@ -79,7 +60,6 @@ class EntreeSortie
 
     /**
      * Get entree
-     *
      * @return string
      */
     public function getEntree()

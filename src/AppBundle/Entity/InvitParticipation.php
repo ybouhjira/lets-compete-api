@@ -2,9 +2,6 @@
 
 namespace AppBundle\Entity;
 
-
-use Symfony\Component\Serializer\Annotation\Groups;
-
 /**
  * InvitParticipation
  */
@@ -12,34 +9,28 @@ class InvitParticipation
 {
     /**
      * @var int
-     *
-     *
-     *
      */
     private $id;
 
     /**
-     * @var bool
-     *
-     * @Groups({"read", "write", "brief"})
-     *
+     * @var boolean
      */
     private $accepte;
 
     /**
      * @var \DateTime
-     *
-     * @Groups({"read", "write", "brief"})
-     *
      */
     private $dateTime;
 
     /**
+     * Le participant
+     * @var Participant
+     */
+    private $participant;
+
+    /**
      * La compétition concernée
      * @var Competition
-     * @Groups({"read", "write", "invit-read"})
-     *
-     *
      */
     private $competition;
 
@@ -47,13 +38,6 @@ class InvitParticipation
     {
         $this->dateTime = new \DateTime('now');
     }
-
-    /**
-     * Le participant
-     * @var Participant
-     * @Groups({"write", "invit-read"})
-     */
-    private $participant;
 
     /**
      * Set accepte

@@ -2,37 +2,31 @@
 
 namespace AppBundle\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-
 use FOS\UserBundle\Model\User as BaseUser;
 use FOS\UserBundle\Model\UserInterface;
-use JMS\Serializer\Annotation\ExclusionPolicy;
-use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- *
- *
+ * Utilisateur
  */
 abstract class Utilisateur extends BaseUser
 {
     /**
-     *
-     *
+     * @var string
      */
     protected $id;
 
     /**
-     * @Groups({"read", "write", "invit-read"})
+     * @var string
      */
     protected $email;
 
     /**
-     * @Groups({"write"})
+     * @var string
      */
     protected $plainPassword;
 
     /**
-     * @Groups({"read", "write"})
+     * @var string
      */
     protected $username;
 

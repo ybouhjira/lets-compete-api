@@ -4,23 +4,19 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
-use Symfony\Component\Serializer\Annotation\Groups;
-
 /**
  * Organisateur
- *
  */
 class Organisateur extends Membre
 {
     /**
-     *
+     * @var ArrayCollection
      */
     protected $competitions;
 
     /**
      * Le nom de l'entreprise
-     *
-     * @Groups({"read", "write", "brief"})
+     * @var string
      */
     private $nom;
 
@@ -51,7 +47,7 @@ class Organisateur extends Membre
 
     /**
      * Le nom à afficher dans le profil
-     * @Groups({"read", "brief"})
+     *
      * @return string
      */
     public function getNomAffiche() : string

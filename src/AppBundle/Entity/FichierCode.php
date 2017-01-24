@@ -2,37 +2,23 @@
 
 namespace AppBundle\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-
-
 /**
  * FichierCode
- *
- *
- *
- * @ApiResource()
  */
 class FichierCode
 {
     /**
      * @var int
-     *
-     *
-     *
      */
     private $id;
 
     /**
      * @var string
-     *
-     *
      */
     private $contenu;
 
     /**
      * @var Solution la solution
-     *
-     *
      */
     private $solution;
 
@@ -66,9 +52,7 @@ class FichierCode
 
     /**
      * Set contenu
-     *
      * @param string $contenu
-     *
      * @return FichierCode
      */
     public function setContenu($contenu)
@@ -80,7 +64,6 @@ class FichierCode
 
     /**
      * Get contenu
-     *
      * @return string
      */
     public function getContenu()

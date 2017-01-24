@@ -16,63 +16,45 @@ class Solution
 {
     /**
      * @var int
-     *
-     *
-     *
      */
     private $id;
 
     /**
      * @var \DateTime
-     * @Groups({"read", "write"})
-     *
      */
     private $tempsEnvoie;
 
     /**
      * @var int
-     * @Groups({"read", "write"})
-     *
      */
     private $tempsExécution;
 
     /**
-     * @var FichierCode Les fichier contenant le code
-     * @Groups({"read", "write"})
-     *
+     * Les fichier contenant le code
+     * @var FichierCode
      */
     private $fichiersCode;
 
     /**
      * L'auteur
      * @var Participant
-     * @Groups({"read", "write"})
-     *
-     *
      */
     private $participant;
 
     /**
      * Le langage de la solution
      * @var Langage
-     *
-     *
-     * @Groups({"sol-read", "write"})
      */
     private $langage;
 
     /**
-     * @var bool
-     * @Groups({"read", "write"})
-     *
+     * @var boolean
      */
     private $correcte;
 
     /**
-     * @var Probleme Le problème au quel la solution répond
-     *
-     *
-     * @Groups({"read", "write"})
+     * Le problème au quel la solution répond
+     * @var Probleme
      */
     private $probleme;
 

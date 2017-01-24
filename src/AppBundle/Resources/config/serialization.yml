@@ -1,0 +1,141 @@
+AppBundle\Entity\EntreeSortie:
+    attributes:
+        entree:         
+            groups: [entreeSortie, write] 
+        sortie:         
+            groups: [entreeSortie, write] 
+        type:         
+            groups: [entreeSortie, write]
+        probleme:
+            groups: [entreeSortie, write]
+
+AppBundle\Entity\Utilisateur:
+    attributes:
+        username:         
+            groups: [read, write] 
+        email:         
+            groups: [read, write, invit-read]
+        plainPassword:
+            groups: [write]
+
+AppBundle\Entity\Organisateur:
+    attributes:
+        nom:         
+            groups: [read, write, brief] 
+
+AppBundle\Entity\TypeEntreeSortie:
+    attributes:
+        id:         
+            groups: [entreeSortie] 
+        name:         
+            groups: [entreeSortie] 
+
+AppBundle\Entity\Membre:
+    attributes:
+        ville:         
+            groups: [read, write] 
+        presentation:         
+            groups: [read, write] 
+        cheminPhoto:         
+            groups: [read] 
+        telephone:         
+            groups: [read, write] 
+        adresse:         
+            groups: [read, write] 
+        siteWeb:         
+            groups: [read, write] 
+
+AppBundle\Entity\DemandeParticipation:
+    attributes:
+        accepte:         
+            groups: [demande-read, write, brief]
+        date:         
+            groups: [demande-read, write, brief]
+        competition:         
+            groups: [demande-read, write] 
+        participant:         
+            groups: [demande-read, write] 
+
+AppBundle\Entity\Pays:
+    attributes:
+        nom:         
+            groups: [read, write] 
+
+AppBundle\Entity\Competition:
+    attributes:
+        demandeParticipations:         
+            groups: [comp-read]
+        invitParticipations:         
+            groups: [comp-read] 
+        organisateur:         
+            groups: [comp-read, write] 
+        problemes:
+            groups: [comp-read]
+        langages:
+            groups: [comp-read] 
+        titre:
+            groups: [comp-read, write]
+        description:
+            groups: [read, write]
+        tempsDebut:
+            groups: [read, write]
+        tempsFin:
+            groups: [read, write]
+        public:
+            groups: [read, write]
+        publie:
+            groups: [read, write]
+
+AppBundle\Entity\Langage:
+    attributes:
+        nom:         
+            groups: [read, write, brief] 
+
+AppBundle\Entity\Ville:
+    attributes:
+        pays:         
+            groups: [read, write] 
+        nom:         
+            groups: [read, write] 
+
+AppBundle\Entity\Participant:
+    attributes:
+        prenom:         
+            groups: [read, write, invit-read, brief] 
+        nom:         
+            groups: [read, write, invit-read, brief] 
+        job:         
+            groups: [read, write] 
+
+AppBundle\Entity\Solution:
+    attributes:
+        fichiersCode:         
+            groups: [read, write] 
+        participant:         
+            groups: [read, write] 
+        langage:         
+            groups: [sol-read, write] 
+        probleme:         
+            groups: [read, write] 
+        tempsEnvoie:         
+            groups: [read, write] 
+        tempsExécution:         
+            groups: [read, write] 
+        correcte:         
+            groups: [read, write] 
+
+AppBundle\Entity\InvitParticipation:
+    attributes:
+        competition:         
+            groups: [read, write, invit-read] 
+        participant:         
+            groups: [write, invit-read] 
+        accepte:         
+            groups: [read, write, brief] 
+        dateTime:         
+            groups: [read, write, brief] 
+
+AppBundle\Entity\Probleme:
+    attributes:
+        enonce:         
+            groups: [read, write] 

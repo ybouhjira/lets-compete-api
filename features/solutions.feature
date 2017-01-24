@@ -1,6 +1,6 @@
 Feature: Gérer les solutions
 
-  Scenario: Envoyer une solution
+  Scenario: Envoyer une solution vide
     When I add "content-type" header equal to "application/json"
     And I send a "POST" request to "/solutions" with body:
     """
@@ -10,7 +10,7 @@ Feature: Gérer les solutions
       "participant": "/participants/8"
     }
     """
-    Then the response status code should be 201
+    Then the response status code should be 400
 
   Scenario: Lister les toutes les solutions
     When I add "Accept" header equal to "application/ld+json"

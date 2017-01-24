@@ -8,10 +8,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * TypeEntreeSortie
- *
- *
- *
- * @ApiResource()
  */
 class TypeEntreeSortie
 {
@@ -20,7 +16,7 @@ class TypeEntreeSortie
      *
      *
      *
-     * @Groups({"entreeSortie"})
+     *
      */
     private $id;
 
@@ -28,7 +24,7 @@ class TypeEntreeSortie
      * @var string
      *
      *
-     * @Groups({"entreeSortie"})
+     *
      */
     private $name;
 

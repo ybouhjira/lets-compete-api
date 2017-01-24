@@ -4,7 +4,6 @@ namespace AppBundle\Entity;
 
 
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\Serializer\Annotation\Groups;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -14,7 +13,7 @@ abstract class Membre extends Utilisateur
 {
     /**
      * @var string
-     * @Groups({"read", "write"})
+     *
      *
      */
     private $presentation;
@@ -25,55 +24,37 @@ abstract class Membre extends Utilisateur
      *     mapping="membre_photo",
      *     fileNameProperty="cheminPhoto"
      * )
-     * @Groups({"write"})
      */
     private $fichierPhoto;
 
     /**
-     *
-     *
      * @var \DateTime
      */
     private $updatedAt;
 
     /**
-     *
-     *
      * @var string Le chemin de la photo de profil
-     * @Groups({"read"})
      */
     private $cheminPhoto;
 
     /**
      * @var string
-     *
-     *
-     * @Groups({"read", "write"})
      */
     private $telephone;
 
     /**
      * L'adresse de l'organisateur
      * @var string
-     *
-     * @Groups({"read", "write"})
      */
     private $adresse;
 
     /**
      * @var Ville La ville de résidance
-     *
-     *
-     *
-     * @Groups({"read", "write"})
      */
     private $ville;
 
     /**
      * @var string L'adresse de son site web
-     *
-     *
-     * @Groups({"read", "write"})
      */
     private $siteWeb;
 

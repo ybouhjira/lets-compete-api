@@ -1,79 +1,135 @@
 AppBundle\Entity\Utilisateur:
     attributes:
-        normalization_context: { groups: ['read'] }
-        denormalization_context: { groups: ['write'] }
-        filters: ['utilisateur.username_filter']
+        normalization_context: 
+            groups: [read] 
+        denormalization_context: 
+            groups: [write] 
+        filters: [utilisateur.username_filter]
 
 AppBundle\Entity\Pays:
     attributes:
-        normalization_context: { groups: ['read'] }
-        denormalization_context: {  groups: ['write'] }
+        normalization_context: 
+            groups: [read] 
+        denormalization_context: 
+            groups: [write] 
+
+AppBundle\Entity\Admin:
+    attributes:
+        normalization_context: 
+            groups: [read] 
+        denormalization_context: 
+            groups: [write] 
 
 AppBundle\Entity\Membre:
     attributes:
-        normalization_context: { groups: ['read'] }
-        denormalization_context: { groups: ['write'] }
+        normalization_context: 
+            groups: [read] 
+        denormalization_context: 
+            groups: [write] 
     itemOperations:
-        put: { method: 'PUT' }
-        delete: { method: 'DELETE' }
-        get: { route_name: 'membre_get' }
+        put: { method: PUT }
+        delete: { method: DELETE }
+        get: { route_name: membre_get }
         get_competitions:
-            route_name: 'organisateur_get_competitions'
+            route_name: organisateur_get_competitions
 
 AppBundle\Entity\Organisateur:
     attributes:
-       normalization_context: { groups: ['read', 'org'] }
-       denormalization_context: { groups: ['write'] }
+       normalization_context: 
+            groups: [read, org] 
+       denormalization_context: 
+            groups: [write] 
 
 AppBundle\Entity\Participant:
     attributes:
-        normalization_context: { groups: ['read', 'particip-invit-read'] }
-        denormalization_context: {  groups: ['write'] }
+        normalization_context: 
+            groups: [read, particip-invit-read] 
+        denormalization_context: 
+            groups: [write] 
 
 AppBundle\Entity\Competition:
     attributes:
-        normalization_context: { groups: ['brief', 'comp-read'] }
-        denormalization_context: { groups: ['write'] }
+        normalization_context: 
+            groups: [brief, comp-read] 
+        denormalization_context: 
+            groups: [write] 
         filters:
-            - "competition.public"
-            - "competition.publie"
-            - "competition.tempsDebut"
-            - "competition.tempsFin"
-            - "competition.titre_filter"
-            - "competition.langages_filter"
+            - competition.public
+            - competition.publie
+            - competition.tempsDebut
+            - competition.tempsFin
+            - competition.titre_filter
+            - competition.langages_filter
 
 AppBundle\Entity\Solution:
     attributes:
-        normalization_context: { groups: ['sol-read', 'brief'] }
-        denormalization_context: { groups: ['write'] }
+        normalization_context: 
+            groups: [sol-read, brief] 
+        denormalization_context: 
+            groups: [write] 
     itemOperations:
-        get: { method: 'GET' }
-        put: { method: 'PUT' }
-        delete: { method: 'DELETE' }
+        get: { method: GET }
+        put: { method: PUT }
+        delete: { method: DELETE }
         get_fichier_codes:
-            route_name: 'solution_get_fichier_codes'
+            route_name: solution_get_fichier_codes
 
 AppBundle\Entity\InvitParticipation:
     attributes:
-        normalization_context: { groups: ['invit-read', 'brief'] }
-        denormalization_context: { groups: ['write'] }
+        normalization_context: 
+            groups: [invit-read, brief] 
+        denormalization_context: 
+            groups: [write] 
         filters:
-            - 'invit_participation.accepte'
+            - invit_participation.accepte
 
 AppBundle\Entity\DemandeParticipation:
     attributes:
-        normalization_context: { groups: ['demande-read', 'brief'] }
-        denormalization_context: { groups: ['write'] }
+        normalization_context: 
+            groups: [demande-read, brief] 
+        denormalization_context: 
+            groups: [write] 
         filters:
-            - 'invit_participation.accepte'
+            - invit_participation.accepte
 
 AppBundle\Entity\Langage:
     attributes:
-        normalization_context: { groups: ['read', 'brief'] }
-        denormalization_context: { groups: ['write'] }
+        normalization_context: 
+            groups: [read, brief] 
+        denormalization_context: 
+            groups: [write] 
 
 AppBundle\Entity\Probleme:
     attributes:
-        normalization_context: { groups: ['read', 'brief'] }
-        denormalization_context: { groups: ['write'] }
+        normalization_context: 
+            groups: [read, brief] 
+        denormalization_context: 
+            groups: [write] 
 
+AppBundle\Entity\EntreeSortie:
+    attributes:
+        normalization_context: 
+            groups: [read, brief, entreeSortie] 
+        denormalization_context: 
+            groups: [write] 
+
+AppBundle\Entity\TypeEntreeSortie:
+    attributes:
+        normalization_context: 
+            groups: [read, brief] 
+        denormalization_context: 
+            groups: [write] 
+
+AppBundle\Entity\Ville:
+    attributes:
+        normalization_context: 
+            groups: [read, brief] 
+        denormalization_context: 
+            groups: [write] 
+
+AppBundle\Entity\FichierCode:
+    attributes:
+        normalization_context: 
+            groups: [read, brief] 
+        denormalization_context: 
+            groups: [write] 

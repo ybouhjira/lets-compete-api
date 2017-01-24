@@ -4,42 +4,29 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
-use Symfony\Component\Serializer\Annotation\Groups;
-
 /**
  * Langage
- *
- *
- *
  */
 class Langage
 {
     /**
      * @var int
-     *
-     *
-     *
      */
     private $id;
 
     /**
      * @var string
-     *
-     *
-     * @Groups({"read", "write", "brief"})
      */
     private $nom;
 
     /**
      * Les solutions écrite avec ce langage
      * @var ArrayCollection
-     *
      */
     private $solutions;
 
     /**
-     * @var
-     *
+     * @var ArrayCollection
      */
     private $competitions;
 
