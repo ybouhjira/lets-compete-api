@@ -3,6 +3,17 @@
     "hydra:member": {
       "type": "array",
       "items": {
+        "required": [
+          "@id",
+          "titre",
+          "description",
+          "tempsDebut",
+          "tempsFin",
+          "public",
+          "publie",
+          "organisateur",
+          "langages"
+        ],
         "properties": {
           "@id": {
             "type": "string"

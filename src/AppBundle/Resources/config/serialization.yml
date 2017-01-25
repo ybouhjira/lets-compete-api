@@ -63,6 +63,8 @@ AppBundle\Entity\Pays:
 
 AppBundle\Entity\Competition:
     attributes:
+        description:
+            groups: [comp-read, write]
         demandeParticipations:         
             groups: [comp-read]
         invitParticipations:         
@@ -75,16 +77,14 @@ AppBundle\Entity\Competition:
             groups: [comp-read] 
         titre:
             groups: [comp-read, write]
-        description:
-            groups: [read, write]
         tempsDebut:
-            groups: [read, write]
+            groups: [comp-read, write]
         tempsFin:
-            groups: [read, write]
+            groups: [comp-read, write]
         public:
-            groups: [read, write]
+            groups: [comp-read, write]
         publie:
-            groups: [read, write]
+            groups: [comp-read, write]
 
 AppBundle\Entity\Langage:
     attributes:
