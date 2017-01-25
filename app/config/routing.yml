@@ -75,6 +75,16 @@ competition_get_problemes:
         _controller: ApiPlatform\Core\Action\PlaceholderAction
         _sub_resource: ~
 
+probleme_get_solutions:
+    path: problemes/{id}/solutions
+    methods: ['GET']
+    defaults:
+        _parent_entity: probleme
+        _api_resource_class: AppBundle\Entity\Solution
+        _api_collection_operation_name: get_solutions
+        _controller: ApiPlatform\Core\Action\PlaceholderAction
+        _sub_resource: ~
+
 pays_get_villes:
     path: 'pays/{id}/villes'
     methods: ['GET']

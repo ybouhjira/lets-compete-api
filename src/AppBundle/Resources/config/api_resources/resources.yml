@@ -99,12 +99,7 @@ AppBundle\Entity\Langage:
         denormalization_context: 
             groups: [write] 
 
-AppBundle\Entity\Probleme:
-    attributes:
-        normalization_context: 
-            groups: [read, brief] 
-        denormalization_context: 
-            groups: [write] 
+AppBundle\Entity\Probleme: ~
 
 AppBundle\Entity\EntreeSortie:
     attributes:

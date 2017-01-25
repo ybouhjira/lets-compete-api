@@ -63,9 +63,6 @@ class MembreUploadPhoto extends WebTestCase
     private function url_photo_doit_etre_correcte()
     {
         $data = json_decode($this->client->getResponse()->getContent());
-
-        dump($data->cheminPhoto);
-        die();
     }
 
     private function fichier_photo_doit_exister()
