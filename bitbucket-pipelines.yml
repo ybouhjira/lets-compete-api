@@ -9,6 +9,10 @@ pipelines:
   default:
     - step:
         script: # Modify the commands below to build your repository.
+          - cp app/config/parameters.yml.dist app/config/parameters.yml
+          - mkdir -p var/jwt 
+          - openssl genrsa -passout pass:password -out var/jwt/private.pem -aes256 4096
+          - openssl rsa -pubout -in var/jwt/private.pem -out var/jwt/public.pem
           - composer install
           - chmod +x create-test-db.sh
           - ./create-test-db.sh
