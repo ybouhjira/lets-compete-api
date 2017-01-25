@@ -29,6 +29,7 @@ class MembreUploadPhoto extends WebTestCase
         $this->reponse_doit_etre_200();
         $this->requete_get_sur_le_membre($id);
         $this->reponse_doit_etre_200();
+        $this->url_photo_doit_etre_correcte();
         $this->fichier_photo_doit_exister();
     }
 
@@ -57,6 +58,14 @@ class MembreUploadPhoto extends WebTestCase
         $this->client->request('GET', "/membres/$id", [], [], [
             'HTTP_accept' => 'application/json'
         ]);
+    }
+
+    private function url_photo_doit_etre_correcte()
+    {
+        $data = json_decode($this->client->getResponse()->getContent());
+
+        dump($data->cheminPhoto);
+        die();
     }
 
     private function fichier_photo_doit_exister()

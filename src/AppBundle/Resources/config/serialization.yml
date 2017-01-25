@@ -107,6 +107,13 @@ AppBundle\Entity\Participant:
         job:         
             groups: [read, write] 
 
+AppBundle\Entity\FichierCode:
+    attributes:
+        contenu:
+            groups: [fich-code-read, read, write, brief]
+        solution:
+            groups: [fich-code-read]
+
 AppBundle\Entity\Solution:
     attributes:
         fichiersCode:         

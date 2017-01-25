@@ -1,0 +1,4 @@
+AppBundle\Entity\FichierCode:
+    fichier_code{1..200}:
+        contenu: <paragraph()>
+        solution: '@solution*'

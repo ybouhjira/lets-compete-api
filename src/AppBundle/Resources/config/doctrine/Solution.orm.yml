@@ -38,7 +38,8 @@ AppBundle\Entity\Solution:
     oneToMany:
         fichiersCode:
             targetEntity: AppBundle\Entity\FichierCode
-            cascade: {  }
+            cascade:
+                - persist
             fetch: LAZY
             mappedBy: solution
             inversedBy: null

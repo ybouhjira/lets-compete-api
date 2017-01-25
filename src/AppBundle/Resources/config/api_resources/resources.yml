@@ -130,6 +130,6 @@ AppBundle\Entity\Ville:
 AppBundle\Entity\FichierCode:
     attributes:
         normalization_context: 
-            groups: [read, brief] 
+            groups: [fich-code-read, brief]
         denormalization_context: 
             groups: [write] 

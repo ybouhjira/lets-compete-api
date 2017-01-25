@@ -1,4 +1,10 @@
+AppBundle\Entity\FichierCode:
+    properties:
+        contenu:
+            - Required: ~
+
 AppBundle\Entity\Solution:
     properties:
         fichiersCode:
-            - Count: { min: 1 }
+            - Valid: ~
+            #- Count: { min: 1 }
