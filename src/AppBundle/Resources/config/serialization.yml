@@ -1,13 +1,11 @@
-AppBundle\Entity\EntreeSortie:
-    attributes:
-        entree:         
-            groups: [entreeSortie, write] 
-        sortie:         
-            groups: [entreeSortie, write] 
-        type:         
-            groups: [entreeSortie, write]
-        probleme:
-            groups: [entreeSortie, write]
+AppBundle\Entity\EntreeSortie: ~
+AppBundle\Entity\TypeEntreeSortie: ~
+AppBundle\Entity\DemandeParticipation: ~
+AppBundle\Entity\Pays: ~
+AppBundle\Entity\FichierCode: ~
+AppBundle\Entity\Solution: ~
+AppBundle\Entity\InvitParticipation: ~
+AppBundle\Entity\Probleme: ~
 
 AppBundle\Entity\Utilisateur:
     attributes:
@@ -23,13 +21,6 @@ AppBundle\Entity\Organisateur:
         nom:         
             groups: [read, write, brief] 
 
-AppBundle\Entity\TypeEntreeSortie:
-    attributes:
-        id:         
-            groups: [entreeSortie] 
-        name:         
-            groups: [entreeSortie] 
-
 AppBundle\Entity\Membre:
     attributes:
         ville:         
@@ -43,22 +34,6 @@ AppBundle\Entity\Membre:
         adresse:         
             groups: [read, write] 
         siteWeb:         
-            groups: [read, write] 
-
-AppBundle\Entity\DemandeParticipation:
-    attributes:
-        accepte:         
-            groups: [demande-read, write, brief]
-        date:         
-            groups: [demande-read, write, brief]
-        competition:         
-            groups: [demande-read, write] 
-        participant:         
-            groups: [demande-read, write] 
-
-AppBundle\Entity\Pays:
-    attributes:
-        nom:         
             groups: [read, write] 
 
 AppBundle\Entity\Competition:
@@ -88,8 +63,8 @@ AppBundle\Entity\Competition:
 
 AppBundle\Entity\Langage:
     attributes:
-        nom:         
-            groups: [read, write, brief] 
+        nom:
+            groups: [read, write, brief]
 
 AppBundle\Entity\Ville:
     attributes:
@@ -105,44 +80,4 @@ AppBundle\Entity\Participant:
         nom:         
             groups: [read, write, invit-read, brief] 
         job:         
-            groups: [read, write] 
-
-AppBundle\Entity\FichierCode:
-    attributes:
-        contenu:
-            groups: [fich-code-read, read, write, brief]
-        solution:
-            groups: [fich-code-read]
-
-AppBundle\Entity\Solution:
-    attributes:
-        fichiersCode:         
-            groups: [read, write] 
-        participant:         
-            groups: [read, write] 
-        langage:         
-            groups: [sol-read, write] 
-        probleme:         
-            groups: [read, write] 
-        tempsEnvoie:         
-            groups: [read, write] 
-        tempsExécution:         
-            groups: [read, write] 
-        correcte:         
-            groups: [read, write] 
-
-AppBundle\Entity\InvitParticipation:
-    attributes:
-        competition:         
-            groups: [read, write, invit-read] 
-        participant:         
-            groups: [write, invit-read] 
-        accepte:         
-            groups: [read, write, brief] 
-        dateTime:         
-            groups: [read, write, brief] 
-
-AppBundle\Entity\Probleme:
-    attributes:
-        enonce:         
-            groups: [read, write] 
+            groups: [read, write]
