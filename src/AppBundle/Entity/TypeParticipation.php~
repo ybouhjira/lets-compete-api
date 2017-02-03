@@ -61,6 +61,10 @@ class TypeParticipation
     {
         return $this->nom;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $participation;
 
 
     /**
@@ -72,7 +76,7 @@ class TypeParticipation
      */
     public function addParticipation(Participation $participation)
     {
-        $this->participations[] = $participation;
+        $this->participation[] = $participation;
 
         return $this;
     }
@@ -84,7 +88,7 @@ class TypeParticipation
      */
     public function removeParticipation(Participation $participation)
     {
-        $this->participations->removeElement($participation);
+        $this->participation->removeElement($participation);
     }
 
     /**

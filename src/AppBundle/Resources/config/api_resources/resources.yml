@@ -12,6 +12,11 @@ AppBundle\Entity\Solution:
             method: GET
 
 AppBundle\Entity\Participation:
+    attributes:
+        normalization_context:
+            groups: [particip-read]
+        denormalization_context:
+            groups: [write]
     filters: [invit_participation.accepte]
 
 AppBundle\Entity\Utilisateur:

@@ -7,6 +7,18 @@ AppBundle\Entity\Solution: ~
 AppBundle\Entity\InvitParticipation: ~
 AppBundle\Entity\Probleme: ~
 
+AppBundle\Entity\Participation:
+    attributes:
+        accepte:
+            groups: [particip-read, write]
+        dateTime:
+            groups: [particip-read]
+        competition:
+            groups: [particip-read, write]
+        participant:
+            groups: [particip-read, write]
+
+
 AppBundle\Entity\Utilisateur:
     attributes:
         username:         

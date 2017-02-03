@@ -13,7 +13,6 @@ AppBundle\Entity\TypeParticipation:
             type: string
             length: 255
             unique: true
-
     oneToMany:
         participations:
             targetEntity: AppBundle\Entity\Participation

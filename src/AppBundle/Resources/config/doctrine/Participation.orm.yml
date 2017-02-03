@@ -22,17 +22,16 @@ AppBundle\Entity\Participation:
             column: date_time
     manyToOne:
         type:
-            targetEntity: participation
+            targetEntity: AppBundle\Entity\TypeParticipation
             inversedBy: participations
             joinColumns:
-                competition_id:
+                type_id:
                     onDelete: CASCADE
                     nullable: false
-
         competition:
             targetEntity: AppBundle\Entity\Competition
             cascade: {  }
-            inversedBy: invitParticipations
+            inversedBy: participations
             joinColumns:
                 competition_id:
                     onDelete: CASCADE
@@ -42,7 +41,7 @@ AppBundle\Entity\Participation:
             targetEntity: AppBundle\Entity\Participant
             cascade:
                 - persist
-            inversedBy: invitParticipations
+            inversedBy: participations
             joinColumns:
                 participant_id:
                     onDelete: CASCADE

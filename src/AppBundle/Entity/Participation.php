@@ -30,6 +30,11 @@ class Participation
     private $participant;
 
     /**
+     * @var TypeParticipation
+     */
+    private $type;
+
+    /**
      * Constructor.
      */
     public function __construct()
@@ -130,11 +135,6 @@ class Participation
         $this->competition = $competition;
         return $this;
     }
-    /**
-     * @var \AppBundle\Entity\participation
-     */
-    private $type;
-
 
     /**
      * Set type
@@ -143,7 +143,7 @@ class Participation
      *
      * @return Participation
      */
-    public function setType(\AppBundle\Entity\participation $type)
+    public function setType(TypeParticipation $type)
     {
         $this->type = $type;
 

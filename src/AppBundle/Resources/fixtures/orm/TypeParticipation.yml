@@ -1,5 +1,5 @@
 AppBundle\Entity\TypeParticipation:
     type_participation_0:
         nom: demande
-    type_participation_0:
+    type_participation_1:
         nom: invitation
