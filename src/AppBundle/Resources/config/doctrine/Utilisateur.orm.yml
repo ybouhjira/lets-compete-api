@@ -5,7 +5,6 @@ AppBundle\Entity\Utilisateur:
     discriminatorColumn:
         name: _type
         type: string
-        length: null
         columnDefinition: null
         fieldName: _type
     discriminatorMap:
@@ -17,11 +16,7 @@ AppBundle\Entity\Utilisateur:
     id:
         id:
             type: integer
-            scale: 0
-            length: null
-            unique: false
             nullable: false
-            precision: 0
             id: true
             generator:
                 strategy: IDENTITY

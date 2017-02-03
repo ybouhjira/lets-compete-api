@@ -1,7 +1,7 @@
 imports:
-    - { resource: parameters.yml }
-    - { resource: security.yml }
-    - { resource: services.yml }
+    - resource: parameters.yml
+    - resource: security.yml
+    - resource: services.yml
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -106,12 +106,27 @@ lexik_jwt_authentication:
     pass_phrase: "%jwt_key_pass_phrase%"
     token_ttl: "%jwt_token_ttl%"
 
+# Flysystem
+oneup_flysystem:
+    adapters:
+        storage:
+            local:
+                directory: %kernel.root_dir%/storage
+    filesystems:
+        my_filesystem:
+            adapter: storage
+            mount: storage_mount
+
 vich_uploader:
-    db_driver: orm # or mongodb or propel or phpcr
+    db_driver: orm
     mappings:
         membre_photo:
             uri_prefix: /membres/photos
             upload_destination: '%kernel.root_dir%/../web/uploads/membres/photos'
+            namer: vich_uploader.namer_uniqid
+        solution_zip:
+            uri_prefix: /solutions/zip
+            upload_destination: storage_mount
             namer: vich_uploader.namer_uniqid
 
 # RabbbitMQ

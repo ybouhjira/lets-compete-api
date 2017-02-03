@@ -1,0 +1,4 @@
+AppBundle\Entity\Solution:
+    fichierZip:
+        mapping: solution_zip
+        filename_property: cheminZip

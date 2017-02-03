@@ -38,7 +38,8 @@
         "vich/uploader-bundle": "^1.4",
         "guzzlehttp/guzzle": "^6.2",
         "phpunit/phpunit": "^5.7",
-        "php-amqplib/rabbitmq-bundle": "^1.12"
+        "php-amqplib/rabbitmq-bundle": "^1.12",
+        "oneup/flysystem-bundle": "^1.7"
     },
     "require-dev": {
         "api-platform/schema-generator": "^1.2",

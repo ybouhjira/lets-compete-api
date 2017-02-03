@@ -5,7 +5,6 @@ AppBundle\Entity\Membre:
     discriminatorColumn:
         name: _type
         type: string
-        length: null
         columnDefinition: null
         fieldName: _type
     discriminatorMap:
@@ -15,55 +14,36 @@ AppBundle\Entity\Membre:
     fields:
         presentation:
             type: text
-            scale: 0
-            length: null
-            unique: false
             nullable: true
-            precision: 0
         updatedAt:
             type: datetime
-            scale: 0
-            length: null
-            unique: false
             nullable: true
-            precision: 0
             column: updated_at
         cheminPhoto:
             type: string
-            scale: 0
             length: 255
-            unique: false
             nullable: true
-            precision: 0
             column: chemin_photo
         telephone:
             type: string
-            scale: 0
             length: 30
             unique: true
             nullable: true
-            precision: 0
         adresse:
             type: string
-            scale: 0
             length: 255
-            unique: false
             nullable: true
-            precision: 0
         siteWeb:
             type: string
-            scale: 0
             length: 255
             unique: true
             nullable: true
-            precision: 0
     manyToOne:
         ville:
             targetEntity: AppBundle\Entity\Ville
             cascade:
                 - persist
             fetch: EAGER
-            mappedBy: null
             inversedBy: null
             joinColumns:
                 ville_id:

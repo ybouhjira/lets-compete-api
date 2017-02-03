@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new LexikJWTAuthenticationBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
             new OldSound\RabbitMqBundle\OldSoundRabbitMqBundle(),
+            new Oneup\FlysystemBundle\OneupFlysystemBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

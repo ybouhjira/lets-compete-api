@@ -5,35 +5,22 @@ AppBundle\Entity\Probleme:
     id:
         id:
             type: integer
-            scale: 0
-            length: null
-            unique: false
             nullable: false
-            precision: 0
             id: true
             generator:
                 strategy: IDENTITY
     fields:
         enonce:
             type: text
-            scale: 0
-            length: null
-            unique: false
             nullable: false
-            precision: 0
         titre:
             type: string
-            scale: 0
             length: 255
-            unique: false
             nullable: false
-            precision: 0
     manyToOne:
         competition:
             targetEntity: AppBundle\Entity\Competition
             cascade: {  }
-            fetch: LAZY
-            mappedBy: null
             inversedBy: problemes
             joinColumns:
                 competition_id:
@@ -45,7 +32,6 @@ AppBundle\Entity\Probleme:
             targetEntity: AppBundle\Entity\Solution
             cascade:
                 - persist
-            fetch: LAZY
             mappedBy: probleme
             inversedBy: null
             orphanRemoval: false
@@ -54,7 +40,6 @@ AppBundle\Entity\Probleme:
             targetEntity: AppBundle\Entity\EntreeSortie
             cascade:
                 - persist
-            fetch: LAZY
             mappedBy: probleme
             inversedBy: null
             orphanRemoval: false

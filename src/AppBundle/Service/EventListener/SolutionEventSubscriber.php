@@ -2,6 +2,7 @@
 
 namespace AppBundle\Service\EventListener;
 
+use AppBundle\Entity\Solution;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use OldSound\RabbitMqBundle\RabbitMq\ProducerInterface;
@@ -40,7 +41,15 @@ class SolutionEventSubscriber implements EventSubscriber
     {
         if (php_sapi_name() === 'cli') return;
 
+        /** @var Solution $entity */
         $entity = $args->getEntity();
+//        $json = json_encode([
+//            '@id' => '/solutions/' . $entity->getId(),
+//            'zip' => base64_encode(
+//                file_get_contents($entity->getFichierZip()->getPath())
+//            )
+//        ]);
+
         $serializer = $this->container->get('serializer');
         $json = $serializer->serialize($entity, 'json');
         $this->producer->publish($json);

@@ -81,12 +81,15 @@ Feature: Sous resources
 
   Scenario: Récuperer les compétitions d'un langage
     When I send a "GET" request to "/langages/2"
-    Then the JSON should be valid according to this schema:
+    Then print last JSON response
+    And the JSON should be valid according to this schema:
     """
     {
       "required": ["competitions"],
       "properties": {
-        "competitions": {"type": "string", "pattern": "^/"}
+        "competitions": {
+          "constant": "langages/2/competitions"
+        }
       }
     }
     """

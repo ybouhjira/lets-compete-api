@@ -2,12 +2,11 @@
 
 namespace AppBundle\Entity;
 
-
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * @Vich\Uploadable()
+ * Membre
  */
 abstract class Membre extends Utilisateur
 {
@@ -20,10 +19,6 @@ abstract class Membre extends Utilisateur
 
     /**
      * @var File La photo de profil
-     * @Vich\UploadableField(
-     *     mapping="membre_photo",
-     *     fileNameProperty="cheminPhoto"
-     * )
      */
     private $fichierPhoto;
 
@@ -33,7 +28,7 @@ abstract class Membre extends Utilisateur
     private $updatedAt;
 
     /**
-     * @var string Le chemin de la photo de profil
+     * @var string
      */
     private $cheminPhoto;
 
@@ -43,7 +38,6 @@ abstract class Membre extends Utilisateur
     private $telephone;
 
     /**
-     * L'adresse de l'organisateur
      * @var string
      */
     private $adresse;
@@ -69,13 +63,14 @@ abstract class Membre extends Utilisateur
     }
 
     /**
-     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
-     * of 'UploadedFile' is injected into this setter to trigger the  update. If this
-     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
-     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an
+     * instance of 'UploadedFile' is injected into this setter to trigger
+     * the  update. If this bundle's configuration parameter
+     * 'inject_on_load' is set to 'true' this setter  must be able
+     * to accept an instance of 'File' as the bundle will inject one here
      * during Doctrine hydration.
      *
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $fichierPhoto
+     * @param File $fichierPhoto
      *
      * @return Membre $this
      */
@@ -103,6 +98,7 @@ abstract class Membre extends Utilisateur
     }
 
     /**
+     * Le chemin de la photo du profil.
      * @return string
      */
     public function getCheminPhoto()
@@ -119,7 +115,6 @@ abstract class Membre extends Utilisateur
         $this->cheminPhoto = $cheminPhoto;
         return $this;
     }
-    
     
     /**
      * @return \DateTime
@@ -229,6 +224,7 @@ abstract class Membre extends Utilisateur
     }
 
     /**
+     * L'adresse
      * @return string
      */
     public function getAdresse()

@@ -5,31 +5,21 @@ AppBundle\Entity\Participant:
     fields:
         prenom:
             type: string
-            scale: 0
             length: 255
-            unique: false
             nullable: false
-            precision: 0
         nom:
             type: string
-            scale: 0
             length: 255
-            unique: false
             nullable: false
-            precision: 0
         job:
             type: string
-            scale: 0
             length: 30
-            unique: false
             nullable: true
-            precision: 0
     oneToMany:
         solutions:
             targetEntity: AppBundle\Entity\Solution
             cascade:
                 - persist
-            fetch: LAZY
             mappedBy: participant
             inversedBy: null
             orphanRemoval: false
@@ -38,7 +28,6 @@ AppBundle\Entity\Participant:
             targetEntity: AppBundle\Entity\InvitParticipation
             cascade:
                 - persist
-            fetch: LAZY
             mappedBy: participant
             inversedBy: null
             orphanRemoval: false
@@ -47,7 +36,6 @@ AppBundle\Entity\Participant:
             targetEntity: AppBundle\Entity\DemandeParticipation
             cascade:
                 - persist
-            fetch: LAZY
             mappedBy: participant
             inversedBy: null
             orphanRemoval: false

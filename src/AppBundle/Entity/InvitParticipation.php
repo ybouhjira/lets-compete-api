@@ -1,5 +1,4 @@
 <?php
-
 namespace AppBundle\Entity;
 
 /**
@@ -49,7 +48,6 @@ class InvitParticipation
     public function setAccepte($accepte)
     {
         $this->accepte = $accepte;
-
         return $this;
     }
 
@@ -62,7 +60,6 @@ class InvitParticipation
     {
         return $this->id;
     }
-
 
     /**
      * Get accepte
@@ -91,7 +88,6 @@ class InvitParticipation
     {
         return $this->participant;
     }
-
     /**
      * @param Participant $participant
      * @return InvitParticipation
@@ -119,6 +115,4 @@ class InvitParticipation
         $this->competition = $competition;
         return $this;
     }
-
 }
-

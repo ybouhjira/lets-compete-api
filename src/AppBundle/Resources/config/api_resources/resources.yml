@@ -5,7 +5,10 @@ AppBundle\Entity\EntreeSortie: ~
 AppBundle\Entity\TypeEntreeSortie: ~
 AppBundle\Entity\Ville: ~
 AppBundle\Entity\FichierCode: ~
-AppBundle\Entity\Solution: ~
+AppBundle\Entity\Solution:
+    collectionOperations:
+        get:
+            method: GET
 
 AppBundle\Entity\Utilisateur:
     attributes:

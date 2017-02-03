@@ -5,17 +5,14 @@ AppBundle\Entity\Organisateur:
     fields:
         nom:
             type: string
-            scale: 0
             length: 255
             unique: true
             nullable: false
-            precision: 0
     oneToMany:
         competitions:
             targetEntity: AppBundle\Entity\Competition
             cascade:
                 - persist
-            fetch: LAZY
             mappedBy: organisateur
             inversedBy: null
             orphanRemoval: false

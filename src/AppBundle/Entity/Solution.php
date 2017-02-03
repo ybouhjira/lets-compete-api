@@ -4,13 +4,10 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-
-use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * Solution
- *
- *
  */
 class Solution
 {
@@ -22,7 +19,22 @@ class Solution
     /**
      * @var \DateTime
      */
+    private $updatedAt;
+
+    /**
+     * @var File
+     */
+    private $fichierZip;
+
+    /**
+     * @var \DateTime
+     */
     private $tempsEnvoie;
+
+    /**
+     * @var string
+     */
+    private $cheminZip;
 
     /**
      * @var int
@@ -61,7 +73,7 @@ class Solution
     /**
      * @return Probleme
      */
-    public function getProbleme() : Probleme
+    public function getProbleme()
     {
         return $this->probleme;
     }
@@ -70,7 +82,7 @@ class Solution
      * @param Probleme $probleme
      * @return Solution
      */
-    public function setProbleme($probleme) : self
+    public function setProbleme($probleme)
     {
         $this->probleme = $probleme;
         return $this;
@@ -176,7 +188,7 @@ class Solution
      * @param FichierCode $fichierCode
      * @return Solution
      */
-    public function addFichierCode(FichierCode $fichierCode) : self
+    public function addFichierCode(FichierCode $fichierCode)
     {
         $this->fichiersCode[] = $fichierCode;
         return $this;
@@ -188,7 +200,7 @@ class Solution
      * @param \AppBundle\Entity\FichierCode $fichierCode
      * @return Solution $this
      */
-    public function removeFichierCode(FichierCode $fichierCode) : self
+    public function removeFichierCode(FichierCode $fichierCode)
     {
         $this->fichiersCode->removeElement($fichierCode);
         return $this;
@@ -218,6 +230,67 @@ class Solution
     public function setLangage($langage)
     {
         $this->langage = $langage;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     * @return Solution
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+        return $this;
+    }
+
+    /**
+     * @return File
+     */
+    public function getFichierZip()
+    {
+        return $this->fichierZip;
+    }
+
+    /**
+     * @param File $fichierZip
+     * @return Solution
+     */
+    public function setFichierZip(File $fichierZip = null)
+    {
+        $this->fichierZip = $fichierZip;
+
+        // It is required that at least one field changes if you
+        // are using doctrine otherwise the event listeners won't
+        // be called and the file is lost
+        if ($fichierZip)
+            $this->updatedAt = new \DateTimeImmutable();
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCheminZip()
+    {
+        return $this->cheminZip;
+    }
+
+    /**
+     * @param string $cheminZip
+     * @return Solution
+     */
+    public function setCheminZip($cheminZip)
+    {
+        $this->cheminZip = $cheminZip;
         return $this;
     }
 }

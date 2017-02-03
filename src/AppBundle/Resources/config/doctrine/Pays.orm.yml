@@ -5,27 +5,20 @@ AppBundle\Entity\Pays:
     id:
         id:
             type: integer
-            scale: 0
-            length: null
-            unique: false
             nullable: false
-            precision: 0
             id: true
             generator:
                 strategy: IDENTITY
     fields:
         nom:
             type: string
-            scale: 0
             length: 255
             unique: true
             nullable: false
-            precision: 0
     oneToMany:
         villes:
             targetEntity: AppBundle\Entity\Ville
             cascade: {  }
-            fetch: LAZY
             mappedBy: pays
             inversedBy: null
             orphanRemoval: false

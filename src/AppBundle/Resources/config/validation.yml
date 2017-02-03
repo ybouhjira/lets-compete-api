@@ -5,6 +5,14 @@ AppBundle\Entity\FichierCode:
 
 AppBundle\Entity\Solution:
     properties:
-        fichiersCode:
-            - Valid: ~
+        participant:
+            - NotNull: ~
+        langage:
+            - NotNull: ~
+        probleme:
+            - NotNull: ~
+        fichierZip:
+            - NotNull: ~
+        #fichiersCode:
+        #    - Valid: ~
             #- Count: { min: 1 }

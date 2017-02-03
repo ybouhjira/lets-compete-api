@@ -118,3 +118,15 @@ services:
             - name: kernel.event_listener
               event: kernel.view
               priority: 65
+
+#    app.event_listeners.multipart_deserializer:
+#        class: AppBundle\Service\EventListener\MultipartDeserializer
+#        arguments:
+#            - '@api_platform.serializer'
+#            - '@api_platform.serializer.context_builder'
+#            - '@api_platform.listener.request.deserialize'
+#        tags:
+#            - name: kernel.event_listener
+#              event: kernel.request
+#              method: onKernelRequest
+#              priority: 17

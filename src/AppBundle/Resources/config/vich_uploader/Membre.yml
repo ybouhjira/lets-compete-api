@@ -1,0 +1,4 @@
+AppBundle\Entity\Membre:
+    fichierPhoto:
+        mapping: membre_photo
+        filename_property: cheminPhoto

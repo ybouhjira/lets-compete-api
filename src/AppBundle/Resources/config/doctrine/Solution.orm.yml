@@ -5,44 +5,33 @@ AppBundle\Entity\Solution:
     id:
         id:
             type: integer
-            scale: 0
-            length: null
-            unique: false
             nullable: false
-            precision: 0
             id: true
             generator:
                 strategy: IDENTITY
     fields:
+        updatedAt:
+            type: datetime
+            nullable: true
+        cheminZip:
+            type: string
+            length: 255
+            nullable: true
         tempsEnvoie:
             type: datetime
-            scale: 0
-            length: null
-            unique: false
             nullable: false
-            precision: 0
         tempsExécution:
             type: integer
-            scale: 0
-            length: null
-            unique: false
             nullable: true
-            precision: 0
         correcte:
             type: boolean
-            scale: 0
-            length: null
-            unique: false
             nullable: true
-            precision: 0
     oneToMany:
         fichiersCode:
             targetEntity: AppBundle\Entity\FichierCode
             cascade:
                 - persist
-            fetch: LAZY
             mappedBy: solution
-            inversedBy: null
             orphanRemoval: false
             orderBy: null
     manyToOne:
@@ -50,8 +39,6 @@ AppBundle\Entity\Solution:
             targetEntity: AppBundle\Entity\Participant
             cascade:
                 - persist
-            fetch: LAZY
-            mappedBy: null
             inversedBy: solutions
             joinColumns:
                 participant_id:
@@ -61,8 +48,6 @@ AppBundle\Entity\Solution:
         langage:
             targetEntity: AppBundle\Entity\Langage
             cascade: {  }
-            fetch: LAZY
-            mappedBy: null
             inversedBy: solutions
             joinColumns:
                 langage_id:
@@ -73,8 +58,6 @@ AppBundle\Entity\Solution:
             targetEntity: AppBundle\Entity\Probleme
             cascade:
                 - persist
-            fetch: LAZY
-            mappedBy: null
             inversedBy: solutions
             joinColumns:
                 probleme_id:

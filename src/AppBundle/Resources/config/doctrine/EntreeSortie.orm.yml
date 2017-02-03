@@ -5,51 +5,33 @@ AppBundle\Entity\EntreeSortie:
     id:
         id:
             type: integer
-            scale: 0
-            length: null
-            unique: false
             nullable: false
-            precision: 0
             id: true
             generator:
                 strategy: IDENTITY
     fields:
         entree:
             type: text
-            scale: 0
-            length: null
-            unique: false
             nullable: false
-            precision: 0
         sortie:
             type: text
-            scale: 0
-            length: null
-            unique: false
             nullable: false
-            precision: 0
     manyToOne:
         type:
             targetEntity: AppBundle\Entity\TypeEntreeSortie
             cascade: {  }
-            fetch: LAZY
-            mappedBy: null
             inversedBy: null
             joinColumns:
                 type_id:
-
                     nullable: false
             orphanRemoval: false
         probleme:
             targetEntity: AppBundle\Entity\Probleme
             cascade:
                 - persist
-            fetch: LAZY
-            mappedBy: null
             inversedBy: entreeSorties
             joinColumns:
                 probleme_id:
-
                     nullable: false
             orphanRemoval: false
     lifecycleCallbacks: {  }

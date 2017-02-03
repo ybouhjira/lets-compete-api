@@ -103,6 +103,12 @@ solution_get_fichier_codes:
         _api_item_operation_name: 'get_fichier_codes'
         _controller: 'AppBundle\Action\GetSubResourcesAction'
 
+solution_create:
+    path: solutions
+    methods: [POST]
+    defaults:
+        _controller: 'AppBundle\Action\Solution\Create:action'
+
 membre_get:
     path: 'membres/{id}'
     methods: ['GET']

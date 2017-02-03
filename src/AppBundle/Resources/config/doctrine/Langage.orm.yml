@@ -5,28 +5,21 @@ AppBundle\Entity\Langage:
     id:
         id:
             type: integer
-            scale: 0
-            length: null
-            unique: false
             nullable: false
-            precision: 0
             id: true
             generator:
                 strategy: IDENTITY
     fields:
         nom:
             type: string
-            scale: 0
             length: 255
             unique: true
             nullable: false
-            precision: 0
     oneToMany:
         solutions:
             targetEntity: AppBundle\Entity\Solution
             cascade:
                 - persist
-            fetch: LAZY
             mappedBy: langage
             inversedBy: null
             orphanRemoval: false
@@ -36,8 +29,6 @@ AppBundle\Entity\Langage:
             targetEntity: AppBundle\Entity\Competition
             cascade:
                 - persist
-            fetch: LAZY
-            mappedBy: null
             inversedBy: langages
             orderBy: null
     lifecycleCallbacks: {  }
