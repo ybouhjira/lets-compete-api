@@ -3,3 +3,4 @@ AppBundle\Entity\Solution:
         participant: '@participant*'
         probleme: '@probleme*'
         langage: '@langage*'
+        tempsExecution: '<randomFloat(2, 0.1, 5)>'

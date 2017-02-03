@@ -24,26 +24,10 @@ Feature: Sous resources
     And the response should be in JSON
     And the JSON should be valid according to the schema "features/schemas/list.json"
 
-  Scenario: Récuperer les invitations d'un participant
+  Scenario: Récuperer les participations d'un participant
     When I send a "GET" request to "/participants/15"
     Then the response status code should be 200
-    When I send a "GET" request to "/participants/15/invit_participations"
-    And the response status code should be 200
-    And the response should be in JSON
-    And the JSON should be valid according to the schema "features/schemas/list.json"
-
-  Scenario: Récuperer les invitations d'un participant
-    When I send a "GET" request to "/participants/15"
-    Then the response status code should be 200
-    When I send a "GET" request to "/participants/15/invit_participations"
-    And the response status code should be 200
-    And the response should be in JSON
-    And the JSON should be valid according to the schema "features/schemas/list.json"
-
-  Scenario: Récuperer les demandes d'un participant
-    When I send a "GET" request to "/participants/15"
-    Then the response status code should be 200
-    When I send a "GET" request to "/participants/15/demande_participations"
+    When I send a "GET" request to "/participants/15/participations"
     And the response status code should be 200
     And the response should be in JSON
     And the JSON should be valid according to the schema "features/schemas/list.json"

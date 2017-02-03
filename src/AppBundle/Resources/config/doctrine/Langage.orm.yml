@@ -1,6 +1,5 @@
 AppBundle\Entity\Langage:
     type: entity
-    table: langage
     repositoryClass: AppBundle\Repository\LangageRepository
     id:
         id:

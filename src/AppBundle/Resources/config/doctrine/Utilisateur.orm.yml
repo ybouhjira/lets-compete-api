@@ -1,6 +1,5 @@
 AppBundle\Entity\Utilisateur:
     type: entity
-    table: utilisateur
     inheritanceType: JOINED
     discriminatorColumn:
         name: _type

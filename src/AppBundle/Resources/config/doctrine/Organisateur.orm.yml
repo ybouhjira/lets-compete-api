@@ -1,6 +1,5 @@
 AppBundle\Entity\Organisateur:
     type: entity
-    table: organisateur
     repositoryClass: AppBundle\Repository\OrganiserRepository
     fields:
         nom:

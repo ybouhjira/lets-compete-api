@@ -1,6 +1,5 @@
 AppBundle\Entity\TypeEntreeSortie:
     type: entity
-    table: type_entree_sortie
     repositoryClass: AppBundle\Repository\TypeEntreeSortieRepository
     id:
         id:

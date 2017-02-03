@@ -1,6 +1,5 @@
 AppBundle\Entity\Pays:
     type: entity
-    table: pays
     repositoryClass: AppBundle\Repository\PaysRepository
     id:
         id:

@@ -1,6 +1,5 @@
 AppBundle\Entity\FichierCode:
     type: entity
-    table: fichier_code
     repositoryClass: AppBundle\Repository\FichierCodeRepository
     id:
         id:

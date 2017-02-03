@@ -1,6 +1,5 @@
 AppBundle\Entity\Competition:
     type: entity
-    table: competition
     repositoryClass: AppBundle\Repository\CompetitionRepository
     id:
         id:
@@ -19,7 +18,6 @@ AppBundle\Entity\Competition:
             nullable: false
         tempsDebut:
             type: datetime
-            
             nullable: false
             column: temps_debut
         tempsFin:
@@ -41,29 +39,17 @@ AppBundle\Entity\Competition:
             inversedBy: null
             orphanRemoval: false
             orderBy: null
-        demandeParticipations:
-            targetEntity: AppBundle\Entity\DemandeParticipation
+        participations:
+            targetEntity: AppBundle\Entity\Participation
             cascade:
                 - persist
             mappedBy: competition
-            inversedBy: null
-            orphanRemoval: false
-            orderBy: null
-        invitParticipations:
-            targetEntity: AppBundle\Entity\InvitParticipation
-            cascade:
-                - persist
-            mappedBy: competition
-            inversedBy: null
-            orphanRemoval: false
-            orderBy: null
     manyToMany:
         langages:
             targetEntity: AppBundle\Entity\Langage
             cascade:
                 - persist
             inversedBy: competitions
-            orderBy: null
     manyToOne:
         organisateur:
             targetEntity: AppBundle\Entity\Organisateur

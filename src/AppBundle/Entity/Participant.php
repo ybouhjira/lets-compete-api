@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class Participant extends Membre
 {
-
     /**
      * @var string
      */
@@ -125,74 +124,6 @@ class Participant extends Membre
         $this->solutions->removeElement($solution);
     }
 
-    /**
-     * Add invitParticipation
-     *
-     * @param \AppBundle\Entity\InvitParticipation $invitParticipation
-     *
-     * @return Participant
-     */
-    public function addInvitParticipation(\AppBundle\Entity\InvitParticipation $invitParticipation)
-    {
-        $this->invitParticipations[] = $invitParticipation;
-
-        return $this;
-    }
-
-    /**
-     * Remove invitParticipation
-     *
-     * @param \AppBundle\Entity\InvitParticipation $invitParticipation
-     */
-    public function removeInvitParticipation(\AppBundle\Entity\InvitParticipation $invitParticipation)
-    {
-        $this->invitParticipations->removeElement($invitParticipation);
-    }
-
-    /**
-     * Get invitParticipations
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getInvitParticipations()
-    {
-        return $this->invitParticipations;
-    }
-
-    /**
-     * Add demandeParticipation
-     *
-     * @param \AppBundle\Entity\DemandeParticipation $demandeParticipation
-     *
-     * @return Participant
-     */
-    public function addDemandeParticipation(\AppBundle\Entity\DemandeParticipation $demandeParticipation)
-    {
-        $this->demandeParticipations[] = $demandeParticipation;
-
-        return $this;
-    }
-
-    /**
-     * Remove demandeParticipation
-     *
-     * @param \AppBundle\Entity\DemandeParticipation $demandeParticipation
-     */
-    public function removeDemandeParticipation(\AppBundle\Entity\DemandeParticipation $demandeParticipation)
-    {
-        $this->demandeParticipations->removeElement($demandeParticipation);
-    }
-
-    /**
-     * Get demandeParticipations
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getDemandeParticipations()
-    {
-        return $this->demandeParticipations;
-    }
-
     /*
      * @return mixed
      */
@@ -210,5 +141,73 @@ class Participant extends Membre
         $this->job = $job;
 
         return $this;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $pariticipations;
+
+    /**
+     * @var \AppBundle\Entity\participation
+     */
+    private $type;
+
+
+    /**
+     * Add pariticipation
+     *
+     * @param \AppBundle\Entity\Participation $pariticipation
+     *
+     * @return Participant
+     */
+    public function addPariticipation(\AppBundle\Entity\Participation $pariticipation)
+    {
+        $this->pariticipations[] = $pariticipation;
+
+        return $this;
+    }
+
+    /**
+     * Remove pariticipation
+     *
+     * @param \AppBundle\Entity\Participation $pariticipation
+     */
+    public function removePariticipation(\AppBundle\Entity\Participation $pariticipation)
+    {
+        $this->pariticipations->removeElement($pariticipation);
+    }
+
+    /**
+     * Get pariticipations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPariticipations()
+    {
+        return $this->pariticipations;
+    }
+
+    /**
+     * Set type
+     *
+     * @param \AppBundle\Entity\participation $type
+     *
+     * @return Participant
+     */
+    public function setType(\AppBundle\Entity\participation $type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \AppBundle\Entity\participation
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

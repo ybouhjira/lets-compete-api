@@ -2,13 +2,7 @@
 
 namespace AppBundle\Entity;
 
-
-use Symfony\Component\Serializer\Annotation\Groups;
-
-/**
- * DemandeParticipation
- */
-class DemandeParticipation
+class Participation
 {
     /**
      * @var int
@@ -23,7 +17,7 @@ class DemandeParticipation
     /**
      * @var \DateTime
      */
-    private $date;
+    private $dateTime;
 
     /**
      * @var Competition
@@ -40,7 +34,7 @@ class DemandeParticipation
      */
     public function __construct()
     {
-        $this->date = new \DateTime('now');
+        $this->dateTime = new \DateTime('now');
     }
 
     /**
@@ -80,13 +74,13 @@ class DemandeParticipation
     /**
      * Set date
      *
-     * @param \DateTime $date
+     * @param \DateTime $dateTime
      *
      * @return DemandeParticipation
      */
-    public function setDate($date)
+    public function setDateTime($dateTime)
     {
-        $this->date = $date;
+        $this->dateTime = $dateTime;
 
         return $this;
     }
@@ -96,9 +90,9 @@ class DemandeParticipation
      *
      * @return \DateTime
      */
-    public function getDate()
+    public function getDateTime()
     {
-        return $this->date;
+        return $this->dateTime;
     }
 
     /**
@@ -136,5 +130,33 @@ class DemandeParticipation
         $this->competition = $competition;
         return $this;
     }
-}
+    /**
+     * @var \AppBundle\Entity\participation
+     */
+    private $type;
 
+
+    /**
+     * Set type
+     *
+     * @param \AppBundle\Entity\participation $type
+     *
+     * @return Participation
+     */
+    public function setType(\AppBundle\Entity\participation $type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \AppBundle\Entity\participation
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+}

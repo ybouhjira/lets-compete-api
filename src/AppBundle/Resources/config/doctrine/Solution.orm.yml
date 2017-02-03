@@ -1,6 +1,11 @@
 AppBundle\Entity\Solution:
     type: entity
-    table: solution
+    inheritanceType: JOINED
+    discriminatorColumn:
+        name: _type
+        type: string
+        columnDefinition: null
+        fieldName: _type
     repositoryClass: AppBundle\Repository\SolutionRepository
     id:
         id:
@@ -20,8 +25,8 @@ AppBundle\Entity\Solution:
         tempsEnvoie:
             type: datetime
             nullable: false
-        tempsExécution:
-            type: integer
+        tempsExecution:
+            type: float
             nullable: true
         correcte:
             type: boolean

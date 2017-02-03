@@ -1,0 +1,4 @@
+AppBundle\Entity\Participation:
+    participation{1..100}:
+        participant: '@participant*'
+        competition: '@competition*'

@@ -1,6 +1,5 @@
 AppBundle\Entity\Membre:
     type: entity
-    table: membre
     inheritanceType: JOINED
     discriminatorColumn:
         name: _type

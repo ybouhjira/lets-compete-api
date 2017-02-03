@@ -39,7 +39,7 @@ class Solution
     /**
      * @var int
      */
-    private $tempsExécution;
+    private $tempsExecution;
 
     /**
      * Les fichier contenant le code
@@ -129,13 +129,13 @@ class Solution
     /**
      * Set tempsExécution
      *
-     * @param integer $tempsExécution
+     * @param integer $tempsExecution
      *
      * @return Solution
      */
-    public function setTempsExécution($tempsExécution)
+    public function setTempsExecution($tempsExecution)
     {
-        $this->tempsExécution = $tempsExécution;
+        $this->tempsExecution = $tempsExecution;
 
         return $this;
     }
@@ -145,9 +145,9 @@ class Solution
      *
      * @return int
      */
-    public function getTempsExécution()
+    public function getTempsExecution()
     {
-        return $this->tempsExécution;
+        return $this->tempsExecution;
     }
 
     /**

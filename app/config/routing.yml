@@ -9,6 +9,16 @@ app:
 api_login_check:
     path: /api/login_check
 
+participant_get_competitions:
+    path: participants/{id}/competitions
+    methods: ['GET']
+    defaults:
+        _related_entity: langages
+        _api_resource_class: AppBundle\Entity\Competition
+        _api_collection_operation_name: 'get_competitions'
+        _controller: ApiPlatform\Core\Action\PlaceholderAction
+        _sub_resource: ~
+
 langage_get_competitions:
     path: langages/{id}/competitions
     methods: ['GET']
@@ -29,23 +39,13 @@ participant_get_solutions:
         _controller: ApiPlatform\Core\Action\PlaceholderAction
         _sub_resource: ~
 
-participant_get_invit_participations:
-    path: participants/{id}/invit_participations
+participant_get_participations:
+    path: participants/{id}/participations
     methods: ['GET']
     defaults:
         _parent_entity: participant
-        _api_resource_class: AppBundle\Entity\InvitParticipation
-        _api_collection_operation_name: get_invit_participations
-        _controller: ApiPlatform\Core\Action\PlaceholderAction
-        _sub_resource: ~
-
-participant_get_demande_participations:
-    path: participants/{id}/demande_participations
-    methods: ['GET']
-    defaults:
-        _parent_entity: participant
-        _api_resource_class: AppBundle\Entity\DemandeParticipation
-        _api_collection_operation_name: get_demande_participations
+        _api_resource_class: AppBundle\Entity\Participation
+        _api_collection_operation_name: get_participations
         _controller: ApiPlatform\Core\Action\PlaceholderAction
         _sub_resource: ~
 

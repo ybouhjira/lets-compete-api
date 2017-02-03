@@ -5,10 +5,14 @@ AppBundle\Entity\EntreeSortie: ~
 AppBundle\Entity\TypeEntreeSortie: ~
 AppBundle\Entity\Ville: ~
 AppBundle\Entity\FichierCode: ~
+
 AppBundle\Entity\Solution:
     collectionOperations:
         get:
             method: GET
+
+AppBundle\Entity\Participation:
+    filters: [invit_participation.accepte]
 
 AppBundle\Entity\Utilisateur:
     attributes:
@@ -57,9 +61,3 @@ AppBundle\Entity\Competition:
             - competition.tempsFin
             - competition.titre_filter
             - competition.langages_filter
-
-AppBundle\Entity\InvitParticipation:
-    filters: [invit_participation.accepte]
-
-AppBundle\Entity\DemandeParticipation:
-    filters: [invit_participation.accepte]

@@ -1,6 +1,5 @@
 AppBundle\Entity\Probleme:
     type: entity
-    table: probleme
     repositoryClass: AppBundle\Repository\ProblemeRepository
     id:
         id:

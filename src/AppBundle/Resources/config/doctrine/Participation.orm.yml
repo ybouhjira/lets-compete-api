@@ -1,12 +1,10 @@
-AppBundle\Entity\InvitParticipation:
+AppBundle\Entity\Participation:
     type: entity
-    table: invit_participation
-    repositoryClass: AppBundle\Repository\InvitParticipationRepository
+    repositoryClass: AppBundle\Repository\ParticipationRepository
     uniqueConstraints:
-        -
-            columns:
-                - participant_id
-                - competition_id
+        - columns:
+            - participant_id
+            - competition_id
     id:
         id:
             type: integer
@@ -23,6 +21,14 @@ AppBundle\Entity\InvitParticipation:
             nullable: false
             column: date_time
     manyToOne:
+        type:
+            targetEntity: participation
+            inversedBy: participations
+            joinColumns:
+                competition_id:
+                    onDelete: CASCADE
+                    nullable: false
+
         competition:
             targetEntity: AppBundle\Entity\Competition
             cascade: {  }

@@ -26,18 +26,6 @@ class Competition
     private $langages;
 
     /**
-     * Les demandes de participation
-     * @var ArrayCollection
-     */
-    private $demandeParticipations;
-
-    /**
-     * Les invitations à participer
-     * @var ArrayCollection
-     */
-    private $invitParticipations;
-
-    /**
      * @var string
      */
     private $titre;
@@ -284,70 +272,42 @@ class Competition
     }
 
     /**
-     * Add invitParticipation
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $participations;
+
+
+    /**
+     * Add participation
      *
-     * @param InvitParticipation $invitParticipation
+     * @param \AppBundle\Entity\Participation $participation
      *
      * @return Competition
      */
-    public function addInvitParticipation(InvitParticipation $invitParticipation)
+    public function addParticipation(\AppBundle\Entity\Participation $participation)
     {
-        $this->invitParticipations[] = $invitParticipation;
+        $this->participations[] = $participation;
 
         return $this;
     }
 
     /**
-     * Remove invitParticipation
+     * Remove participation
      *
-     * @param InvitParticipation $invitParticipation
+     * @param \AppBundle\Entity\Participation $participation
      */
-    public function removeInvitParticipation(InvitParticipation $invitParticipation)
+    public function removeParticipation(\AppBundle\Entity\Participation $participation)
     {
-        $this->invitParticipations->removeElement($invitParticipation);
+        $this->participations->removeElement($participation);
     }
 
     /**
-     * Get invitParticipations
+     * Get participations
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getInvitParticipations()
+    public function getParticipations()
     {
-        return $this->invitParticipations;
-    }
-
-    /**
-     * Add demandeParticipation
-     *
-     * @param DemandeParticipation $demandeParticipation
-     *
-     * @return Participant
-     */
-    public function addDemandeParticipation(DemandeParticipation $demandeParticipation)
-    {
-        $this->demandeParticipations[] = $demandeParticipation;
-
-        return $this;
-    }
-
-    /**
-     * Remove demandeParticipation
-     *
-     * @param DemandeParticipation $demandeParticipation
-     */
-    public function removeDemandeParticipation(DemandeParticipation $demandeParticipation)
-    {
-        $this->demandeParticipations->removeElement($demandeParticipation);
-    }
-
-    /**
-     * Get demandeParticipations
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getDemandeParticipations()
-    {
-        return $this->demandeParticipations;
+        return $this->participations;
     }
 }

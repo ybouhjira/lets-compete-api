@@ -1,6 +1,6 @@
 AppBundle\Entity\Ville:
     type: entity
-    table: ville
+    
     repositoryClass: AppBundle\Repository\VilleRepository
     id:
         id:

@@ -1,0 +1,21 @@
+AppBundle\Entity\TypeParticipation:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\TypeParticipationRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+            unique: true
+
+    oneToMany:
+        participations:
+            targetEntity: AppBundle\Entity\Participation
+            mappedBy: type
+    lifecycleCallbacks: {  }

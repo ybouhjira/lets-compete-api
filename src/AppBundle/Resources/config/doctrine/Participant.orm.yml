@@ -1,6 +1,5 @@
 AppBundle\Entity\Participant:
     type: entity
-    table: participant
     repositoryClass: AppBundle\Repository\ParticipantRepository
     fields:
         prenom:
@@ -24,16 +23,8 @@ AppBundle\Entity\Participant:
             inversedBy: null
             orphanRemoval: false
             orderBy: null
-        invitParticipations:
-            targetEntity: AppBundle\Entity\InvitParticipation
-            cascade:
-                - persist
-            mappedBy: participant
-            inversedBy: null
-            orphanRemoval: false
-            orderBy: null
-        demandeParticipations:
-            targetEntity: AppBundle\Entity\DemandeParticipation
+        pariticipations:
+            targetEntity: AppBundle\Entity\Participation
             cascade:
                 - persist
             mappedBy: participant
