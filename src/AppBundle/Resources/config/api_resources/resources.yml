@@ -1,20 +1,46 @@
 AppBundle\Entity\Pays: ~
 AppBundle\Entity\Langage: ~
-AppBundle\Entity\Probleme: ~
-AppBundle\Entity\EntreeSortie: ~
-AppBundle\Entity\TypeEntreeSortie: ~
+
 AppBundle\Entity\Ville: ~
 AppBundle\Entity\FichierCode: ~
+
+AppBundle\Entity\EntreeSortie:
+    attributes:
+        normalization_context:
+            groups: [es-read]
+        denormalization_context:
+            groups: [write]
+
+AppBundle\Entity\TypeEntreeSortie:
+    attributes:
+        normalization_context:
+            groups: [type-es-read]
+        denormalization_context:
+            groups: [write]
 
 AppBundle\Entity\Solution:
     collectionOperations:
         get:
             method: GET
 
+AppBundle\Entity\Probleme:
+    attributes:
+        normalization_context:
+            groups: [prob-read]
+        denormalization_context:
+            groups: [write]
+
+AppBundle\Entity\TypeParticipation:
+    attributes:
+        normalization_context:
+            groups: [type-particip-read, brief]
+        denormalization_context:
+            groups: [write]
+
 AppBundle\Entity\Participation:
     attributes:
         normalization_context:
-            groups: [particip-read]
+            groups: [particip-read, brief]
         denormalization_context:
             groups: [write]
     filters: [invit_participation.accepte]

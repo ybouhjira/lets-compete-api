@@ -1,11 +1,41 @@
-AppBundle\Entity\EntreeSortie: ~
-AppBundle\Entity\TypeEntreeSortie: ~
-AppBundle\Entity\DemandeParticipation: ~
+
 AppBundle\Entity\Pays: ~
 AppBundle\Entity\FichierCode: ~
 AppBundle\Entity\Solution: ~
-AppBundle\Entity\InvitParticipation: ~
-AppBundle\Entity\Probleme: ~
+
+AppBundle\Entity\EntreeSortie:
+    attributes:
+        entree:
+            groups: [es-read, write]
+        sortie:
+            groups: [es-read, write]
+        type:
+            groups: [es-read, write]
+        probleme:
+            groups: [es-read, write]
+
+AppBundle\Entity\TypeEntreeSortie:
+    attributes:
+        name:
+            groups: [type-es-read, write]
+
+AppBundle\Entity\Probleme:
+    attributes:
+        enonce:
+            groups: [prob-read, write]
+        competition:
+            groups: [prob-read, write]
+        solutions:
+            groups: [prob-read, write]
+        titre:
+            groups: [prob-read, write]
+        entreeSorties:
+            groups: [write]
+
+AppBundle\Entity\TypeParticipation: ~
+#    attributes:
+#        nom:
+#            groups: [type-particip-read, brief]
 
 AppBundle\Entity\Participation:
     attributes:
@@ -17,7 +47,8 @@ AppBundle\Entity\Participation:
             groups: [particip-read, write]
         participant:
             groups: [particip-read, write]
-
+        type:
+            groups: [particip-read, write]
 
 AppBundle\Entity\Utilisateur:
     attributes:

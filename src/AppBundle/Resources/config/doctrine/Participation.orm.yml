@@ -24,10 +24,13 @@ AppBundle\Entity\Participation:
         type:
             targetEntity: AppBundle\Entity\TypeParticipation
             inversedBy: participations
-            joinColumns:
-                type_id:
-                    onDelete: CASCADE
-                    nullable: false
+            joinColumn:
+                name: product_id
+                referencedColumnName: id
+#            joinColumns:
+#                type_id:
+#                    onDelete: CASCADE
+#                    nullable: false
         competition:
             targetEntity: AppBundle\Entity\Competition
             cascade: {  }

@@ -19,18 +19,18 @@ AppBundle\Entity\EntreeSortie:
         type:
             targetEntity: AppBundle\Entity\TypeEntreeSortie
             cascade: {  }
-            inversedBy: null
+            inversedBy: enteeSorties
             joinColumns:
                 type_id:
                     nullable: false
             orphanRemoval: false
         probleme:
             targetEntity: AppBundle\Entity\Probleme
+            inversedBy: entreeSorties
             cascade:
                 - persist
-            inversedBy: entreeSorties
-            joinColumns:
-                probleme_id:
-                    nullable: false
+#            joinColumns:
+#                probleme_id:
+#                    nullable: false
             orphanRemoval: false
     lifecycleCallbacks: {  }

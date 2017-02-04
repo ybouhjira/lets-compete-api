@@ -32,15 +32,11 @@ AppBundle\Entity\Probleme:
             cascade:
                 - persist
             mappedBy: probleme
-            inversedBy: null
             orphanRemoval: false
-            orderBy: null
         entreeSorties:
             targetEntity: AppBundle\Entity\EntreeSortie
             cascade:
                 - persist
             mappedBy: probleme
-            inversedBy: null
             orphanRemoval: false
-            orderBy: null
     lifecycleCallbacks: {  }

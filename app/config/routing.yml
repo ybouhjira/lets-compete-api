@@ -9,6 +9,14 @@ app:
 api_login_check:
     path: /api/login_check
 
+competition_get_score:
+    path: competitions/{id}/score
+    methods: [GET]
+    defaults:
+        _api_resource_class: AppBundle\Entity\Competition
+        _api_item_operation_name: 'get_competitions'
+        _controller: AppBundle\Entity\Competition\GetScore
+
 participant_get_competitions:
     path: participants/{id}/competitions
     methods: ['GET']

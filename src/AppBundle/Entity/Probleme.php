@@ -51,6 +51,7 @@ class Probleme
     public function __construct()
     {
         $this->solutions = new ArrayCollection();
+        $this->entreeSorties = new ArrayCollection();
     }
 
     /**
@@ -167,7 +168,7 @@ class Probleme
      * Get entreeSortie
      * @return Collection
      */
-    public function getEntreeSorties() : Collection
+    public function getEntreeSorties()
     {
         return $this->entreeSorties;
     }

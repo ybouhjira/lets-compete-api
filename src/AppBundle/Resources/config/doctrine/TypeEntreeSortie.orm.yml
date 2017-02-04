@@ -14,4 +14,8 @@ AppBundle\Entity\TypeEntreeSortie:
             length: 30
             unique: true
             nullable: false
+    oneToMany:
+        entreeSorties:
+            targetEntity: AppBundle\Entity\EntreeSortie
+            mappedBy: type
     lifecycleCallbacks: {  }
