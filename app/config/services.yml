@@ -54,6 +54,14 @@ services:
             - name: 'api_platform.filter'
               id: 'competition.titre_filter'
 
+    participation.type_filter:
+        parent:    api_platform.doctrine.orm.search_filter
+        arguments:
+            - type.nom: exact
+        tags:
+            - name: api_platform.filter
+              id: participation.type_filter
+
     competition.langages_filter:
         class: AppBundle\Service\Filter\RelatedIdsFilter
         arguments:
@@ -118,15 +126,3 @@ services:
             - name: kernel.event_listener
               event: kernel.view
               priority: 65
-
-#    app.event_listeners.multipart_deserializer:
-#        class: AppBundle\Service\EventListener\MultipartDeserializer
-#        arguments:
-#            - '@api_platform.serializer'
-#            - '@api_platform.serializer.context_builder'
-#            - '@api_platform.listener.request.deserialize'
-#        tags:
-#            - name: kernel.event_listener
-#              event: kernel.request
-#              method: onKernelRequest
-#              priority: 17

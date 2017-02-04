@@ -3,3 +3,4 @@ AppBundle\Entity\Participation:
         participant: '@participant*'
         competition: '@competition*'
         type: '@type_participation_*'
+        accepte: '70%? <boolean()>'

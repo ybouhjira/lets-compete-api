@@ -40,10 +40,15 @@ AppBundle\Entity\TypeParticipation:
 AppBundle\Entity\Participation:
     attributes:
         normalization_context:
-            groups: [particip-read, brief]
+            groups:
+                - particip-read
+                - brief
         denormalization_context:
-            groups: [write]
-    filters: [invit_participation.accepte]
+            groups:
+                - write
+        filters:
+            - invit_participation.accepte
+            - participation.type_filter
 
 AppBundle\Entity\Utilisateur:
     attributes:
