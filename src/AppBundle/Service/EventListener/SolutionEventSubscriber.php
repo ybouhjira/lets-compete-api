@@ -43,15 +43,12 @@ class SolutionEventSubscriber implements EventSubscriber
 
         /** @var Solution $entity */
         $entity = $args->getEntity();
-//        $json = json_encode([
-//            '@id' => '/solutions/' . $entity->getId(),
-//            'zip' => base64_encode(
-//                file_get_contents($entity->getFichierZip()->getPath())
-//            )
-//        ]);
 
         $serializer = $this->container->get('serializer');
-        $json = $serializer->serialize($entity, 'json');
+        $json = $serializer->serialize([
+            'solution' => $entity,
+            'entreeSorties' => $entity->getProbleme()->getEntreeSorties()
+        ], 'json');
         $this->producer->publish($json);
     }
 
