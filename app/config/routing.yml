@@ -15,6 +15,12 @@ competition_get_score:
     defaults:
         _controller: AppBundle\Action\Competition\GetScore
 
+participant_a_participer:
+    path: participants/{pid}/competitions/{cid}
+    methods: [GET]
+    defaults:
+        _controller: AppBundle\Action\Participant\AParticipe
+
 competitions_get_participations:
     path: competitions/{id}/participations
     methods: [GET]
