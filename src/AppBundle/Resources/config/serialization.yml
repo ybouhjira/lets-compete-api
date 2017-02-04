@@ -37,6 +37,7 @@ AppBundle\Entity\TypeParticipation:
         nom:
             groups: [type-particip-read, brief]
 
+
 AppBundle\Entity\Participation:
     attributes:
         accepte:
