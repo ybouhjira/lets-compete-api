@@ -13,8 +13,6 @@ competition_get_score:
     path: competitions/{id}/score
     methods: [GET]
     defaults:
-        _api_resource_class: AppBundle\Entity\Competition
-        _api_item_operation_name: 'get_competitions'
         _controller: AppBundle\Action\Competition\GetScore
 
 participant_get_competitions:

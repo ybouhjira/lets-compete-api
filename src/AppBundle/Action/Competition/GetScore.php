@@ -9,6 +9,7 @@ use AppBundle\Entity\Solution;
 use Doctrine\ORM\EntityManager;
 use AppBundle\Entity\Participation;
 use Doctrine\ORM\Query\Expr\Join;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class GetScore
 {
@@ -22,10 +23,8 @@ class GetScore
         $this->em = $entityManager;
     }
 
-    public function __invoke(Competition $competition)
+    public function __invoke($id)
     {
-        $id = $competition->getId();
-
         $result = $this->em
             ->createQueryBuilder()
             ->select('pp.id as participant, pp.nom, pp.prenom, AVG(s.tempsExecution) as average_exec_time')
@@ -38,29 +37,6 @@ class GetScore
             ->getQuery()
             ->getResult();
 
-        return $result;
-
-//        /** @var \DateInterval $dureeEnSeconds */
-//        $dureeEnSeconds = $competition->getTempsFin()->getTimestamp() -
-//            $competition->getTempsDebut()->getTimestamp();
-//
-//        $participants = [];
-//        foreach($competition->getParticipations() as $participation) {
-//            $participants[$participation->getParticipant()->getId()] =
-//                $dureeEnSeconds;
-//        }
-//
-//        dump($participants);
-//        /** @var Probleme $probleme */
-//        /** @var Solution $solution*/
-//        foreach ($competition->getProblemes() as $probleme) {
-//            foreach ($probleme->getSolutions() as $solution) {
-//                dump([
-//                    'envoie' => $solution->getTempsEnvoie(),
-//                    'exec' => $solution->getTempsExecution(),
-//                    'user' => $solution->getParticipant()->getNomAffiche()
-//                ]);
-//            }
-//        }
+        return new JsonResponse($result);
     }
 }
