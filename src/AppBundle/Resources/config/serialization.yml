@@ -30,12 +30,12 @@ AppBundle\Entity\Probleme:
         titre:
             groups: [prob-read, write]
         entreeSorties:
-            groups: [write]
+            groups: [prob-read, write]
 
-AppBundle\Entity\TypeParticipation: ~
-#    attributes:
-#        nom:
-#            groups: [type-particip-read, brief]
+AppBundle\Entity\TypeParticipation:
+    attributes:
+        nom:
+            groups: [type-particip-read, brief]
 
 AppBundle\Entity\Participation:
     attributes:

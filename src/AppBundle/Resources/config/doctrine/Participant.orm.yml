@@ -23,7 +23,7 @@ AppBundle\Entity\Participant:
             inversedBy: null
             orphanRemoval: false
             orderBy: null
-        pariticipations:
+        participations:
             targetEntity: AppBundle\Entity\Participation
             cascade:
                 - persist

@@ -210,43 +210,4 @@ class Participant extends Membre
     {
         return $this->type;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $participations;
-
-
-    /**
-     * Add participation
-     *
-     * @param \AppBundle\Entity\Participation $participation
-     *
-     * @return Participant
-     */
-    public function addParticipation(\AppBundle\Entity\Participation $participation)
-    {
-        $this->participations[] = $participation;
-
-        return $this;
-    }
-
-    /**
-     * Remove participation
-     *
-     * @param \AppBundle\Entity\Participation $participation
-     */
-    public function removeParticipation(\AppBundle\Entity\Participation $participation)
-    {
-        $this->participations->removeElement($participation);
-    }
-
-    /**
-     * Get participations
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getParticipations()
-    {
-        return $this->participations;
-    }
 }

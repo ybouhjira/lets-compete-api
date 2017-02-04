@@ -47,9 +47,9 @@ AppBundle\Entity\Competition:
     manyToMany:
         langages:
             targetEntity: AppBundle\Entity\Langage
+            mappedBy: competitions
             cascade:
                 - persist
-            inversedBy: competitions
     manyToOne:
         organisateur:
             targetEntity: AppBundle\Entity\Organisateur
