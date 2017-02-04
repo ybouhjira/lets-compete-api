@@ -15,6 +15,16 @@ competition_get_score:
     defaults:
         _controller: AppBundle\Action\Competition\GetScore
 
+competitions_get_participations:
+    path: competitions/{id}/participations
+    methods: [GET]
+    defaults:
+        _parent_entity: competition
+        _api_resource_class: AppBundle\Entity\Participation
+        _api_collection_operation_name: get_participations
+        _controller: ApiPlatform\Core\Action\PlaceholderAction
+        _sub_resource: ~
+
 participant_get_competitions:
     path: participants/{id}/competitions
     methods: ['GET']
