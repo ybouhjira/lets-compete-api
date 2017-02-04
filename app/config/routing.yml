@@ -15,7 +15,7 @@ competition_get_score:
     defaults:
         _api_resource_class: AppBundle\Entity\Competition
         _api_item_operation_name: 'get_competitions'
-        _controller: AppBundle\Entity\Competition\GetScore
+        _controller: AppBundle\Action\Competition\GetScore
 
 participant_get_competitions:
     path: participants/{id}/competitions

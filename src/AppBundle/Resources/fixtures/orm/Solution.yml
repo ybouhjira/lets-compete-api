@@ -4,3 +4,4 @@ AppBundle\Entity\Solution:
         probleme: '@probleme*'
         langage: '@langage*'
         tempsExecution: '<randomFloat(2, 0.1, 5)>'
+        correcte: '70%? <boolean()>'
